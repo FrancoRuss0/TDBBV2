@@ -205,5 +205,5 @@ public class ACSPaxSeat {
 	public void setMsgCreateDateTime(final Timestamp MsgCreateDateTime) {
 		this.MsgCreateDateTime = MsgCreateDateTime;
 	}
-	
+
 }

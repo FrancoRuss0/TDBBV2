@@ -24,11 +24,6 @@
 	<!-- Dipendenze -->
 	<dependencies>
 		<!-- Dipendenza per il driver JDBC MySQL, per esempio -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
-		</dependency>
 
 		<!-- Dipendenza per JUnit (per test unitari) -->
 		<dependency>
@@ -61,74 +56,84 @@
 			<artifactId>guava</artifactId>
 			<version>32.1.2-jre</version> <!-- Usa l'ultima versione disponibile -->
 		</dependency>
-		<!-- Bouncy Castle PGP: per il supporto delle operazioni PGP -->
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcpg-jdk18on</artifactId>
-			<version>1.77</version> <!-- Assicurati di usare la versione più
-			recente -->
-		</dependency>
+    <!-- Bouncy Castle PGP: per il supporto delle operazioni PGP -->
+    <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpg-jdk18on</artifactId>
+        <version>1.77</version> <!-- Assicurati di usare la versione più recente -->
+    </dependency>
 
-		<!-- Bouncy Castle Provider: per le operazioni crittografiche generali -->
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk18on</artifactId>
-			<version>1.77</version> <!-- Usa la stessa versione di bcpg -->
-		</dependency>
+    <!-- Bouncy Castle Provider: per le operazioni crittografiche generali -->
+    <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk18on</artifactId>
+        <version>1.77</version> <!-- Usa la stessa versione di bcpg -->
+    </dependency>
 
-		<!-- Bouncy Castle TSP (Time Stamp Protocol), utile per la gestione
-		delle firme -->
-
-
-		<!-- JDK18-specific BC libraries (se vuoi usarle per versioni più
-		moderne di Java) -->
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcutil-jdk18on</artifactId>
-			<version>1.77</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>5.5.2</version>
-		</dependency>
-
-		<dependency>
-            <groupId>org.mule.weave</groupId>
-            <artifactId>core</artifactId>
-            <version>2.6.0-20230123</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.weave</groupId>
-            <artifactId>core-modules</artifactId>
-            <version>2.6.0-20230123</version>
-        </dependency>
-		<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.15.0</version> <!-- Assicurati di usare l'ultima versione disponibile -->
+    <!-- Bouncy Castle TSP (Time Stamp Protocol), utile per la gestione delle firme -->
+    <!-- JDK18-specific BC libraries (se vuoi usarle per versioni più moderne di Java) -->
+    <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcutil-jdk18on</artifactId>
+        <version>1.77</version>
+    </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter</artifactId>
+      <exclusions>
+         <exclusion>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-logging</artifactId>
+         </exclusion>
+     </exclusions>
+      <version>3.4.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-test</artifactId>
+   <scope>test</scope>
+   <version>3.4.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-beans</artifactId>
+   <version>6.2.2</version>
+  </dependency>
+  <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>6.2.2</version>
+  </dependency>
+  <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-core</artifactId>
+         <version>6.2.2</version>
+     </dependency>
+     <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+         <version>6.2.2</version>
+     </dependency>
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+         <version>3.4.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-actuator</artifactId>
+      <version>3.4.2</version>
+  </dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+<dependency>
+    <groupId>com.microsoft.sqlserver</groupId>
+    <artifactId>mssql-jdbc</artifactId>
+    <version>11.2.3.jre17</version>
 </dependency>
 
-        <dependency>
-            <groupId>org.mule.weave</groupId>
-            <artifactId>java-module</artifactId>
-            <version>2.6.0-20230123</version>
-        </dependency>
+</dependencies>
 
-        <dependency>
-            <groupId>org.mule.weave</groupId>
-            <artifactId>runtime</artifactId>
-            <version>2.6.0-20230123</version>
-        </dependency>
-		
-	</dependencies>
-		<repositories>
-    <repository>
-        <id>mule-releases</id>
-        <url>https://repository.mulesoft.org/nexus/content/repositories/releases/</url>
-    </repository>
-</repositories>
 	<!-- Plugin di build -->
 	<build>
 		<plugins>
@@ -136,7 +141,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.10.1</version>
 				<configuration>
 					<source>17</source>  <!-- Imposta la versione di Java da usare
 					per compilare -->
@@ -147,4 +152,3 @@
 		</plugins>
 	</build>
 </project>
- 

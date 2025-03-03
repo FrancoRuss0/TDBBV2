@@ -176,7 +176,7 @@ package poc_tdb;
 	            PGPLiteralData ld = (PGPLiteralData) o;
 	            InputStream unc = ld.getInputStream();
 	            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-	    	    Streams.pipeAll(unc, byteArrayOutputStream, 8888192);
+	    	    Streams.pipeAll(unc, byteArrayOutputStream, 8192);
 	    	    byte[] decryptedData = byteArrayOutputStream.toByteArray();
 
 	            // Verifica dell'integrità del messaggio
@@ -211,7 +211,8 @@ package poc_tdb;
 	    	        while (keyIter.hasNext()) {
 	    	            PGPSecretKey secretKey = (PGPSecretKey) keyIter.next();
 	    	            if (secretKey.getPublicKey().getKeyID() == pubKeyEncData.getKeyID()) {
-	    	                privateKey = secretKey.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder().setProvider("BC").build(passPhrase));
+	    	                privateKey = secretKey.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder()
+	    	                    .setProvider("BC").build(passPhrase));
 	    	                break;
 	    	            }
 	    	        }
@@ -225,7 +226,8 @@ package poc_tdb;
 	    	    }
 
 	    	    // Usa la chiave privata per decriptare i dati cifrati con chiave pubblica
-	    	    InputStream clear = pubKeyEncData.getDataStream(new JcePublicKeyDataDecryptorFactoryBuilder().setProvider("BC").build(privateKey));
+	    	    InputStream clear = pubKeyEncData.getDataStream(new JcePublicKeyDataDecryptorFactoryBuilder()
+	    	        .setProvider("BC").build(privateKey));
 
 	    	    pgpF = new JcaPGPObjectFactory(clear);
 	    	    o = pgpF.nextObject();
@@ -241,7 +243,7 @@ package poc_tdb;
 	    	    PGPLiteralData ld = (PGPLiteralData) o;
 	    	    InputStream unc = ld.getInputStream();
 	    	    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-	    	    Streams.pipeAll(unc, byteArrayOutputStream, 8888192);
+	    	    Streams.pipeAll(unc, byteArrayOutputStream, 8192);
 	    	    byte[] decryptedData = byteArrayOutputStream.toByteArray();
 
 

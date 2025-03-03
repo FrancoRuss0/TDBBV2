@@ -385,5 +385,5 @@ public class ACSFlight {
 	public void setReservedFutureUse9(final Short ReservedFutureUse9) {
 		this.ReservedFutureUse9 = ReservedFutureUse9;
 	}
-	
+
 }

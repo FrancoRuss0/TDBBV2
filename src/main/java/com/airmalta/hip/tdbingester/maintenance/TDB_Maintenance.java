@@ -55,12 +55,7 @@ public class TDB_Maintenance {
 		this.dateEnded = dateEnded;
 	}
 	
-	@Override
-	public String toString() {
-		return "TDB_Maintenance [runId=" + runId + ", fileName=" + fileName + ", numRecords=" + numRecords
-				+ ", success=" + success + ", encFileName=" + encFileName + ", dateStarted=" + dateStarted
-				+ ", dateEnded=" + dateEnded + "]";
-	}
+	
 	
 	
 }
