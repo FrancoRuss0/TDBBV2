@@ -12,26 +12,24 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 
 public class SqlQueries {
-	private SqlProperty sqlProperty ;
+	private SqlProperty sqlProperty;
 
-	
 	public SqlQueries(SqlProperty sqlProperty) {
 		this.sqlProperty = sqlProperty;
 
 	}
-	
-	
+
 	public Statement dbConnection() throws SQLException {
-		
-        Connection connection = sqlProperty.dataSource().getConnection();
-        Statement statement = connection.createStatement();
+
+		Connection connection = sqlProperty.dataSource().getConnection();
+		Statement statement = connection.createStatement();
 		return statement;
-                
+
 	}
+
 //	public void clearTemporaryTables(){
 //		try {
 //		;
@@ -54,15 +52,13 @@ public class SqlQueries {
 //        e.printStackTrace();
 //    }
 //}
-	public void clearTemporaryTables(){
+	public void clearTemporaryTables() {
 		try {
 			dbConnection().executeUpdate("DELETE FROM Res_Temp");
 			dbConnection().executeUpdate("DELETE FROM TktDocument_Temp");
-		}catch (SQLException e) {
-	        e.printStackTrace();
-		    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
-	
+
 }

@@ -19,4 +19,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	PaymentRemarks : cast.toString(record[12]),
 	PaymentApprovalCode : cast.toString(record[13]),
 	PaymentApprovalTypeCode : cast.toString(record[14])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktPayment"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktPayment"}

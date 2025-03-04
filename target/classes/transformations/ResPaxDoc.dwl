@@ -35,4 +35,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	IntraPNRSetNbr : cast.toNumber(record[28]),
 	DocIssueDate : cast.toDate(record[29],"yyyy-MM-dd"),
 	DocExpDate : cast.toDate(record[30],"yyyy-MM-dd")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResPaxDoc"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResPaxDoc"}

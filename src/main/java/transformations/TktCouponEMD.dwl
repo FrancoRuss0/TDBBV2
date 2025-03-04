@@ -24,4 +24,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	RelPrimaryDocNbr : cast.toString(record[17]),
 	RelCouponSeqNbr : cast.toNumber(record[18]),
 	RelVCRCreateDate : cast.toDate(record[19],"yyyy-MM-dd")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktCouponEMD"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktCouponEMD"}

@@ -30,4 +30,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	LastUpdate : cast.toDate(record[23],"yyyy-MM-dd"),
 	LastUpdateSysTime : cast.toLocalTime(record[24],"HH:mm:ss"),
 	HistorySeqNbr : cast.toNumber(record[25])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktCouponHistory"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktCouponHistory"}

@@ -28,4 +28,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	MarketingCarrierCode : cast.toString(record[21]),
 	OpertatingCarrierCode : cast.toString(record[22]),
 	SourceSystemID : cast.toString(record[23])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResAirExtraPortionofTravel"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResAirExtraPortionofTravel"}

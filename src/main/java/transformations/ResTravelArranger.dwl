@@ -24,4 +24,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	OACCityCode : cast.toString(record[17]),
 	OACAcctCode : cast.toString(record[18]),
 	OACStationNbr : cast.toString(record[19])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResTravelArranger"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResTravelArranger"}

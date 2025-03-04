@@ -17,4 +17,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	IntraPNRSetNbr : cast.toNumber(record[10]),
 	CDISeqNbr : cast.toNumber(record[11]),
 	ResActivityCode : cast.toString(record[12])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResDataIndex"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResDataIndex"}

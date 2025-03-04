@@ -1,0 +1,464 @@
+2025-03-04 14:47:06 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.boot.logging.log4j2.Log4J2LoggingSystem.initialize(Log4J2LoggingSystem.java:222)
+
+The following method did not exist:
+
+    'void org.apache.logging.log4j.util.PropertiesUtil.addPropertySource(org.apache.logging.log4j.util.PropertySource)'
+
+The calling method's class, org.springframework.boot.logging.log4j2.Log4J2LoggingSystem, was loaded from the following location:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/springframework/boot/spring-boot/3.4.2/spring-boot-3.4.2.jar!/org/springframework/boot/logging/log4j2/Log4J2LoggingSystem.class
+
+The called method's class, org.apache.logging.log4j.util.PropertiesUtil, is available from the following locations:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar!/org/apache/logging/log4j/util/PropertiesUtil.class
+
+The called method's class hierarchy was loaded from the following locations:
+
+    org.apache.logging.log4j.util.PropertiesUtil: file:/C:/Users/Franco%20Russo/.m2/repository/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains compatible versions of the classes org.springframework.boot.logging.log4j2.Log4J2LoggingSystem and org.apache.logging.log4j.util.PropertiesUtil
+
+2025-03-04 14:51:24 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.boot.logging.log4j2.Log4J2LoggingSystem.initialize(Log4J2LoggingSystem.java:222)
+
+The following method did not exist:
+
+    'void org.apache.logging.log4j.util.PropertiesUtil.addPropertySource(org.apache.logging.log4j.util.PropertySource)'
+
+The calling method's class, org.springframework.boot.logging.log4j2.Log4J2LoggingSystem, was loaded from the following location:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/springframework/boot/spring-boot/3.4.2/spring-boot-3.4.2.jar!/org/springframework/boot/logging/log4j2/Log4J2LoggingSystem.class
+
+The called method's class, org.apache.logging.log4j.util.PropertiesUtil, is available from the following locations:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar!/org/apache/logging/log4j/util/PropertiesUtil.class
+
+The called method's class hierarchy was loaded from the following locations:
+
+    org.apache.logging.log4j.util.PropertiesUtil: file:/C:/Users/Franco%20Russo/.m2/repository/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains compatible versions of the classes org.springframework.boot.logging.log4j2.Log4J2LoggingSystem and org.apache.logging.log4j.util.PropertiesUtil
+
+2025-03-04 14:57:11 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 12508 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 14:57:11 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 14:57:12 [main] WARN  org.springframework.context.annotation.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [poc_tdb/SqlProperty.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: Unresolved compilation problems: 
+	DriverManagerDataSource cannot be resolved to a type
+	DriverManagerDataSource cannot be resolved to a type
+
+2025-03-04 14:57:12 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-03-04 14:57:12 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [poc_tdb/SqlProperty.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: Unresolved compilation problems: 
+	DriverManagerDataSource cannot be resolved to a type
+	DriverManagerDataSource cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) [spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) [spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) [spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) [spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) [spring-boot-3.4.2.jar:3.4.2]
+	at poc_tdb.Main.main(Main.java:35) [classes/:?]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: Unresolved compilation problems: 
+	DriverManagerDataSource cannot be resolved to a type
+	DriverManagerDataSource cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 20 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DriverManagerDataSource cannot be resolved to a type
+	DriverManagerDataSource cannot be resolved to a type
+
+	at poc_tdb.SqlProperty.dataSource(SqlProperty.java:55) ~[classes/:?]
+	at poc_tdb.SqlProperty$$SpringCGLIB$$0.CGLIB$dataSource$0(<generated>) ~[classes/:?]
+	at poc_tdb.SqlProperty$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.2.2.jar:6.2.2]
+	at poc_tdb.SqlProperty$$SpringCGLIB$$0.dataSource(<generated>) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 20 more
+2025-03-04 14:58:01 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 16772 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 14:58:01 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 14:58:05 [main] INFO  poc_tdb.Main - Started Main in 6.094 seconds (process running for 8.608)
+2025-03-04 14:58:05 [main] INFO  poc_tdb.Main - km_acs_prod_20240731_dat.zip.gpg
+2025-03-04 14:58:15 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:17 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:25 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:28 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:31 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:32 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:39 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:40 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:41 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:42 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:43 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 14:58:44 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:00:28 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 13244 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:00:28 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:00:30 [main] WARN  org.springframework.context.annotation.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'healthContributorRegistry' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Unsatisfied dependency expressed through method 'healthContributorRegistry' parameter 2: Error creating bean with name 'dbHealthContributor' defined in class path resource [org/springframework/boot/actuate/autoconfigure/jdbc/DataSourceHealthContributorAutoConfiguration.class]: Failed to instantiate [org.springframework.boot.actuate.health.HealthContributor]: Factory method 'dbHealthContributor' threw exception with message: 'java.util.Map org.springframework.beans.factory.support.SimpleAutowireCandidateResolver.resolveAutowireCandidates(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, java.lang.Class)'
+2025-03-04 15:00:30 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-03-04 15:00:30 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration.dbHealthContributor(DataSourceHealthContributorAutoConfiguration.java:91)
+
+The following method did not exist:
+
+    'java.util.Map org.springframework.beans.factory.support.SimpleAutowireCandidateResolver.resolveAutowireCandidates(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, java.lang.Class)'
+
+The calling method's class, org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration, was loaded from the following location:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.3/spring-boot-actuator-autoconfigure-3.4.3.jar!/org/springframework/boot/actuate/autoconfigure/jdbc/DataSourceHealthContributorAutoConfiguration.class
+
+The called method's class, org.springframework.beans.factory.support.SimpleAutowireCandidateResolver, is available from the following locations:
+
+    jar:file:/C:/Users/Franco%20Russo/.m2/repository/org/springframework/spring-beans/6.2.2/spring-beans-6.2.2.jar!/org/springframework/beans/factory/support/SimpleAutowireCandidateResolver.class
+
+The called method's class hierarchy was loaded from the following locations:
+
+    org.springframework.beans.factory.support.SimpleAutowireCandidateResolver: file:/C:/Users/Franco%20Russo/.m2/repository/org/springframework/spring-beans/6.2.2/spring-beans-6.2.2.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains compatible versions of the classes org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration and org.springframework.beans.factory.support.SimpleAutowireCandidateResolver
+
+2025-03-04 15:01:51 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 10400 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:01:51 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:01:55 [main] INFO  poc_tdb.Main - Started Main in 5.21 seconds (process running for 7.666)
+2025-03-04 15:01:55 [main] INFO  poc_tdb.Main - km_acs_prod_20240731_dat.zip.gpg
+2025-03-04 15:07:47 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 17252 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:07:47 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:07:50 [main] INFO  poc_tdb.Main - Started Main in 4.079 seconds (process running for 6.675)
+2025-03-04 15:08:00 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:08:02 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:08:07 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:08:08 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:13:46 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 17784 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:13:46 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:13:50 [main] INFO  poc_tdb.Main - Started Main in 4.53 seconds (process running for 6.621)
+2025-03-04 15:13:53 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:13:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:13:59 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:01 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:14:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:14:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:14:06 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:07 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:14:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:14:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:14:10 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:11 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:17 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:14:17 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:14:17 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:14:18 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:19 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:19 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:14:19 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:14:19 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:14:20 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:20 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:21 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:14:21 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:14:21 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:14:21 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:14:22 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:15:37 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:15:37 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:15:37 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:15:38 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:15:38 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:15:42 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:15:42 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:15:42 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:15:43 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:15:43 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:15:45 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:15:45 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:15:45 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Processed all .dat files.
+2025-03-04 15:15:45 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully persisted data in TDB_Maintenance table.
+2025-03-04 15:15:45 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully built and sent status report.
+2025-03-04 15:15:45 [main] ERROR poc_tdb.Main - Il file km_acs_prod_20240731_dat.zip.gpg non ha estensione '.done'
+2025-03-04 15:23:45 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 18192 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:23:45 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:23:48 [main] INFO  poc_tdb.Main - Started Main in 4.922 seconds (process running for 7.048)
+2025-03-04 15:23:51 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:23:51 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:23:53 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+2025-03-04 15:23:53 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Processed all .dat files.
+2025-03-04 15:23:53 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully persisted data in TDB_Maintenance table.
+2025-03-04 15:23:53 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully built and sent status report.
+2025-03-04 15:24:14 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 14308 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:24:14 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:24:17 [main] INFO  poc_tdb.Main - Started Main in 5.186 seconds (process running for 7.042)
+2025-03-04 15:24:21 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:24:21 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:22 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:22 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:22 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:22 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:22 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:22 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:22 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:22 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:23 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:23 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:23 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:23 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:23 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:23 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:23 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+2025-03-04 15:24:23 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Processed all .dat files.
+2025-03-04 15:24:23 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully persisted data in TDB_Maintenance table.
+2025-03-04 15:24:23 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully built and sent status report.
+2025-03-04 15:24:34 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 18392 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:24:34 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:24:37 [main] INFO  poc_tdb.Main - Started Main in 4.977 seconds (process running for 6.854)
+2025-03-04 15:24:41 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:24:41 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:24:48 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:24:49 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:06 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 16144 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:25:06 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:25:09 [main] INFO  poc_tdb.Main - Started Main in 5.016 seconds (process running for 7.478)
+2025-03-04 15:25:12 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:25:12 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:19 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:21 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:21 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Option `separator` is not valid. Valid options are: `streaming`
+
+5| transform(read(payload, "application/json", { separator: "|", header: false}))
+                                                 ^^^^^^^^^
+Trace:
+  at read (line: 5, column: 47)
+  at main (line: 5, column: 11)
+2025-03-04 15:25:21 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:23 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:24 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:24 [main] ERROR poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Option `separator` is not valid. Valid options are: `streaming`
+
+5| transform(read(payload, "application/json", { separator: "|", header: false}))
+                                                 ^^^^^^^^^
+Trace:
+  at read (line: 5, column: 47)
+  at main (line: 5, column: 11)
+2025-03-04 15:25:24 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:34 [main] INFO  poc_tdb.Main - Starting Main using Java 17.0.12 with PID 10876 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+2025-03-04 15:25:34 [main] INFO  poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-04 15:25:38 [main] INFO  poc_tdb.Main - Started Main in 4.905 seconds (process running for 7.181)
+2025-03-04 15:25:41 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Skip preprocessing for non BATCH files
+2025-03-04 15:25:41 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:47 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:49 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:52 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:25:52 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:25:52 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:53 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:54 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:57 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:25:57 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:25:57 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:25:58 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:25:59 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:26:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:26:05 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:26:06 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:06 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:07 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:26:07 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:26:07 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:26:08 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:09 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:26:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:26:09 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:26:09 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:26:10 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:27:41 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:27:41 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:27:41 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:27:42 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:27:43 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:27:45 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:27:45 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:27:45 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Processing .dat file. 
+2025-03-04 15:27:45 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:27:46 [main] WARN  org.mule.weave.v2.model.service.DefaultLoggingService$ - Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+2025-03-04 15:27:47 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully transformed file into POJOs.
+2025-03-04 15:27:47 [main] INFO  poc_tdb.LoadDatFileIntoPojoAndPersistPrivateflow - Successfully persisted all records in the respective table.
+2025-03-04 15:27:47 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Processed all .dat files.
+2025-03-04 15:27:47 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully persisted data in TDB_Maintenance table.
+2025-03-04 15:27:47 [main] INFO  poc_tdb.IterateOverDoneFileEntriesToPopulateAndPersistFilePojos - Successfully built and sent status report.

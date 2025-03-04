@@ -1,48 +1,36 @@
 package poc_tdb;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.origin.SystemEnvironmentOrigin;
-import org.springframework.stereotype.Component;
-
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import com.google.common.io.CountingInputStream;
+import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
+import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
+import com.kmmaltairlines.hip.tdbingester.sftp.QuerySingleFileProcessor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import com.airmalta.hip.tdbingester.filepojos.DoneFile;
-import com.airmalta.hip.tdbingester.filepojos.DoneFileEntry;
-import com.airmalta.hip.tdbingester.sftp.QuerySingleFileProcessor;
 @SpringBootApplication
-
-
 public class Main {
 	
-	
+	private static final Logger logger = LogManager.getLogger(Main.class);
 	private static SqlProperty sqlProperty;
 	private static DataSource ds;
+
 	public Main(SqlProperty sqlProperty) {
 		this.sqlProperty = sqlProperty;
 	}
+
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Main.class, args);
-		//Utility utility = new Utility();
+		// Utility utility = new Utility();
 		String filePath = "C:\\tdb"; // Modifica con il percorso desiderato
 		String destinationPath = "C:\\tdb1\\";
 		String fileName;
@@ -54,11 +42,11 @@ public class Main {
 		Unzip unzip = new Unzip();
 		// Creazione oggetto File
 		File folder = new File(filePath);
-		HashMap<String,String> filesUnzipped = new HashMap<String,String>();
+		HashMap<String, String> filesUnzipped = new HashMap<String, String>();
 		char[] passPhrase = "ESBA1rmalta.".toCharArray();
 		PreprocessTdbBatchSubflow preprocess = new PreprocessTdbBatchSubflow();
 		SqlQueries sqlQ = new SqlQueries(sqlProperty);
-
+		iterateOverDoneFileEntries iterateOverDoneFile = new iterateOverDoneFileEntries();
 		// Controllo se il percorso è una directory
 		if (folder.isDirectory()) {
 
@@ -80,56 +68,55 @@ public class Main {
 						doneFile = Utility.createDoneFile(fileName, readedFile, doneFileEntryList);
 
 						// Nome encFileName
-						encFileName = doneFile.getFileName().substring(0, doneFile.getFileName().length() - 5).concat(".zip.gpg");
-						
-						System.out.println(encFileName);
-						
-						//Ciclo sui file criptati
+						encFileName = doneFile.getFileName().substring(0, doneFile.getFileName().length() - 5)
+								.concat(".zip.gpg");
+
+						// Ciclo sui file criptati
 						for (File fileEnc : fileList) {
 							if (fileEnc.getName().equals(encFileName)) {
-								
-								//Decripta file
-								byte[] decryptedFile = decrypt.decryptFile(filePath.concat("\\" + encFileName), passPhrase);
+
+								// Decripta file
+								byte[] decryptedFile = decrypt.decryptFile(filePath.concat("\\" + encFileName),passPhrase);
 								Path path = Path.of(fileEnc.getPath());
 								InputStream inputStream = Files.newInputStream(path);
 								CountingInputStream countingInputStream = (CountingInputStream) querySingleFileProcessor.onCall(inputStream);
-						        try {
-						        	//Unzip del file
-						             filesUnzipped = unzip.unzipToMemory(decryptedFile); 
-						             //Controllo bytes tra DoneFileEntries e DoneFile
-						            if(Utility.compareFileEntries(doneFileEntryList, filesUnzipped, doneFile)) { 
-						            	
-						            		//Se non corrisponde, eccezione
-											if(countingInputStream.available() != doneFile.getNumberOfBytes()) {
-												throw new IOException("File size denoted in " + doneFile.getFileName() + " (" + doneFile.getNumberOfBytes() + " bytes) does not match " + encFileName + " file size (" + countingInputStream.available() + ")");
-											}
-											else {
-												System.out.println(doneFileEntryList.size());
-										        doneFileEntryList = preprocess.process(doneFileEntryList);
-										        System.out.println(doneFileEntryList.size());
-										        sqlQ.clearTemporaryTables();
-										        System.out.println("DELETED TEMPS");
-											}
-											}    					           
-						        } catch (IOException e) {
-						           System.out.println(e.getMessage());
-						        }
-						        
+								try {
+									// Unzip del file
+									filesUnzipped = unzip.unzipToMemory(decryptedFile);
+									// Controllo bytes tra DoneFileEntries e DoneFile
+									if (Utility.compareFileEntries(doneFileEntryList, filesUnzipped, doneFile)) {
+
+										// Se non corrisponde, eccezione
+										if (countingInputStream.available() != doneFile.getNumberOfBytes()) {
+											throw new IOException("File size denoted in " + doneFile.getFileName()
+													+ " (" + doneFile.getNumberOfBytes() + " bytes) does not match "
+													+ encFileName + " file size (" + countingInputStream.available()
+													+ ")");
+										} else {
+											iterateOverDoneFile.iterateOverDoneFile(filesUnzipped, doneFileEntryList,encFileName);
+
+										}
+									}
+								} catch (IOException e) {
+									System.out.println(e.getMessage());
+									logger.error(e.getMessage());
+								}
+
 							}
 						}
-						//Sposta il file in un'altra cartella
-						//utility.moveFile(file, destinationPath);
+						// Sposta il file in un'altra cartella
+						// utility.moveFile(file, destinationPath);
 					} else {
-						System.out.println("Il file " + file.getName() + " non ha estensione '.done'");
-						
-						//utility.moveFile(file, destinationPath);
+						// utility.moveFile(file, destinationPath);
 					}
 
 				}
 			}
 		} else {
 			System.out.println("La cartella è vuota o non accessibile.");
+			logger.error("La cartella è vuota o non accessibile.");
 		}
+		
 	}
 
 }

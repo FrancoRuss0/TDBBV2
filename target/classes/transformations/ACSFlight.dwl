@@ -46,4 +46,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	ReservedFutureUse7 : cast.toNumber(record[39]),
 	ReservedFutureUse8 : cast.toNumber(record[40]),
 	ReservedFutureUse9 : cast.toNumber(record[41])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSFlight"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlight"}

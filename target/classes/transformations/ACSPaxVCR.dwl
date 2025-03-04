@@ -40,4 +40,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	InfVCRInUseInd : cast.toString(record[33]),
 	InfCheckInComplete : cast.toString(record[34]),
 	MsgCreateDateTime : cast.toLocalDateTime(record[35],"yyyy-MM-dd HH:mm:ss")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxVCR"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxVCR"}

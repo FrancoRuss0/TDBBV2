@@ -1,0 +1,269 @@
+Starting Main using Java 17.0.12 with PID 17784 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 4.53 seconds (process running for 6.621)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processed all .dat files.
+Successfully persisted data in TDB_Maintenance table.
+Successfully built and sent status report.
+Il file km_acs_prod_20240731_dat.zip.gpg non ha estensione '.done'
+Starting Main using Java 17.0.12 with PID 18192 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 4.922 seconds (process running for 7.048)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processing .dat file. 
+Invalid input 'o', expected `}` or ',' for the object expression. (line 5, column 76):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false,only data:true}))
+                                                                              ^
+Location:
+anonymous (line: 5, column:76)
+Processed all .dat files.
+Successfully persisted data in TDB_Maintenance table.
+Successfully built and sent status report.
+Starting Main using Java 17.0.12 with PID 14308 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 5.186 seconds (process running for 7.042)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processing .dat file. 
+Invalid input 'd', expected Namespace (line 5, column 83):
+
+
+5| transform(read(payload, "application/csv", { separator: "|", header: false},{only data:true}))
+                                                                                     ^
+Location:
+anonymous (line: 5, column:83)
+Processed all .dat files.
+Successfully persisted data in TDB_Maintenance table.
+Successfully built and sent status report.
+Starting Main using Java 17.0.12 with PID 18392 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 4.977 seconds (process running for 6.854)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Starting Main using Java 17.0.12 with PID 16144 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 5.016 seconds (process running for 7.478)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Option `separator` is not valid. Valid options are: `streaming`
+
+5| transform(read(payload, "application/json", { separator: "|", header: false}))
+                                                 ^^^^^^^^^
+Trace:
+  at read (line: 5, column: 47)
+  at main (line: 5, column: 11)
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Option `separator` is not valid. Valid options are: `streaming`
+
+5| transform(read(payload, "application/json", { separator: "|", header: false}))
+                                                 ^^^^^^^^^
+Trace:
+  at read (line: 5, column: 47)
+  at main (line: 5, column: 11)
+Processing .dat file. 
+Starting Main using Java 17.0.12 with PID 10876 (C:\Users\Franco Russo\eclipse-workspace\tdbv2\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\tdbv2)
+No active profile set, falling back to 1 default profile: "default"
+Started Main in 4.905 seconds (process running for 7.181)
+Skip preprocessing for non BATCH files
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processing .dat file. 
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Using Weave Reader at Runtime May Cause Performance Issues. It is strongly advice to either use with `onlyData=true` or try other MimeType. This format was design for debugging and design only.
+Successfully transformed file into POJOs.
+Successfully persisted all records in the respective table.
+Processed all .dat files.
+Successfully persisted data in TDB_Maintenance table.
+Successfully built and sent status report.

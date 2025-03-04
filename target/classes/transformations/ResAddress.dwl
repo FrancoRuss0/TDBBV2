@@ -25,4 +25,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	HistoryActionCodeId : cast.toString(record[18]),
 	ResAddressSeqID : cast.toNumber(record[19]),
 	IntraPNRSetNbr : cast.toNumber(record[20])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResAddress"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResAddress"}

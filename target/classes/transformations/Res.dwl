@@ -38,4 +38,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	CreateHomeCityCode : cast.toString(record[31]),
 	CodeSharePNRInd : cast.toString(record[32]),
 	MCPCarrierInd : cast.toString(record[33])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.Res"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.Res"}

@@ -93,4 +93,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	OBFeeTotal : cast.toNumber(record[86]),
 	OBFeeTotalUSD : cast.toNumber(record[87]),
 	PricedPassengerType : cast.toString(record[88])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktDocument"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktDocument"}

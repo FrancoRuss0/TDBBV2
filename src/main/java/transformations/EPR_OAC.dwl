@@ -12,4 +12,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	Station_Code : cast.toString(record[5]),
 	RecordStatus : cast.toString(record[6]),
 	EffectiveDate : cast.toDate(record[7],"yyyy-MM-dd")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.EPR_OAC"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.EPR_OAC"}

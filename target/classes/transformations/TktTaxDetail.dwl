@@ -15,4 +15,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	TaxCode : cast.toString(record[8]),
 	LocationTypeCode : cast.toNumber(record[9]),
 	ServiceCityCode : cast.toString(record[10])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktTaxDetail"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktTaxDetail"}

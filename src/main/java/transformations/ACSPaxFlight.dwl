@@ -120,4 +120,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	PaxOutbOrigin : cast.toString(record[113]),
 	PaxOutbDest : cast.toString(record[114]),
 	PaxOutbBookedClass : cast.toString(record[115])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxFlight"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxFlight"}

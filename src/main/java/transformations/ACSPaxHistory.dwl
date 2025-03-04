@@ -40,4 +40,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	Prev_OnBoardStatus : cast.toString(record[33]),
 	Prev_BPIssueStatus : cast.toString(record[34]),
 	Prev_BPReprintedStatus : cast.toString(record[35])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxHistory"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxHistory"}

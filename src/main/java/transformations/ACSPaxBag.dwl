@@ -107,4 +107,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	RerouteDestCd4 : cast.toString(record[100]),
 	RerouteDestCd5 : cast.toString(record[101]),
 	MsgCreateDateTime : cast.toLocalDateTime(record[102],"yyyy-MM-dd HH:mm:ss")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxBag"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxBag"}

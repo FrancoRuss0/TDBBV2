@@ -17,4 +17,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	AirlineDestCntry : cast.toString(record[10]),
 	TravelerOrigCntry : cast.toString(record[11]),
 	TravelerDestCntry : cast.toString(record[12])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResODFlight"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResODFlight"}

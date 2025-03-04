@@ -12,4 +12,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	TransactionDateTime : cast.toLocalDateTime(record[5],"yyyy-MM-dd HH:mm:ss.SSSSSS"),
 	AddrSeqNbr : cast.toNumber(record[6]),
 	AddrTxt : cast.toString(record[7])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktAddress"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktAddress"}

@@ -23,4 +23,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	OwnerCurrencyCode : cast.toString(record[16]),
 	ProrateBaseFareOwnerAmt : cast.toNumber(record[17]),
 	ProrateTotalDocOwnerAmt : cast.toNumber(record[18])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktProRation"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktProRation"}

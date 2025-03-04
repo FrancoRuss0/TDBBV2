@@ -69,4 +69,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	AEPreviousSegmentStatus : cast.toString(record[62]),
 	ACSCount : cast.toNumber(record[63]),
 	AssociatedSegmentCount : cast.toNumber(record[64])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResAirExtra"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResAirExtra"}

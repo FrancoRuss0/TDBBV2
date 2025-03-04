@@ -21,4 +21,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	FeeDescription : cast.toString(record[14]),
 	FeePriceCd : cast.toString(record[15]),
 	FeeWaiverCd : cast.toString(record[16])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TKTFees"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TKTFees"}

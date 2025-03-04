@@ -26,4 +26,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	CoachUpgradeInd : cast.toString(record[19]),
 	BusinessUpgradeInd : cast.toString(record[20]),
 	MsgCreateDateTime : cast.toLocalDateTime(record[21],"yyyy-MM-dd HH:mm:ss")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxSeat"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxSeat"}

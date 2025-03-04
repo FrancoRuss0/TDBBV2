@@ -50,4 +50,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	FareBreakCurrencyCode : cast.toString(record[43]),
 	SettlementAuthCode : cast.toString(record[44]),
 	BaggageAlwncText : cast.toString(record[45])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktCoupon"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktCoupon"}

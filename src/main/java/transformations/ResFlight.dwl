@@ -58,4 +58,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	IATAEquipCode : cast.toString(record[51]),
 	IATAEquipDesc : cast.toString(record[52]),
 	OperatingAirlnLocatorID : cast.toString(record[53])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResFlight"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResFlight"}

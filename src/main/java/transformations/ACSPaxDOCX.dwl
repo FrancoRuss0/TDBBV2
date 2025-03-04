@@ -57,4 +57,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	OtherDocPaxAgentInputLoc : cast.toString(record[50]),
 	OtherDocPaxCntryCdTwoChar : cast.toString(record[51]),
 	OtherDocPaxCntryCdThrChar : cast.toString(record[52])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSPaxDOCX"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxDOCX"}

@@ -15,4 +15,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	RecordUpdateDate : cast.toDate(record[8],"yyyy-MM-dd"),
 	RecordUpdateTime : cast.toLocalTime(record[9],"HH:mm:ss"),
 	IntraPNRSetNbr : cast.toNumber(record[10])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ResRemarks"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ResRemarks"}

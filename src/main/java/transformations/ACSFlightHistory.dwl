@@ -20,4 +20,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	AgntDtyCd : cast.toString(record[13]),
 	AgntHomeStation : cast.toString(record[14]),
 	MsgCreateDateTime : cast.toLocalDateTime(record[15],"yyyy-MM-dd HH:mm:ss")
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.ACSFlightHistory"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory"}

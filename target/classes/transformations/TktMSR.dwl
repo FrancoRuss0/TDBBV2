@@ -21,4 +21,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	SourceSystemId : cast.toString(record[14]),
 	OCGroupCode : cast.toString(record[15]),
 	RFISubCode : cast.toString(record[16])
-} as Object {class: "com.airmalta.hip.tdbingester.filepojos.TktMSR"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.TktMSR"}
