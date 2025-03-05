@@ -3,60 +3,87 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- Informazioni sul progetto -->
-	<groupId>com</groupId>
-	<artifactId>tdbv2</artifactId>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>Test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging> <!-- o war se è un'applicazione web -->
-
-	<!-- Informazioni su Maven -->
-	<name>TDBv2 Project</name>
-	<url>http://example.com</url>
-
-	<!-- Proprietà di configurazione -->
+	<name>Test</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
 	<properties>
-		<maven.compiler.source>17</maven.compiler.source>  <!-- Versione Java -->
-		<maven.compiler.target>17</maven.compiler.target>  <!-- Versione di
-		destinazione Java -->
+		<java.version>17</java.version>
 	</properties>
-
-	<!-- Dipendenze -->
 	<dependencies>
-		<!-- Dipendenza per il driver JDBC MySQL, per esempio -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
 
-		<!-- Dipendenza per JUnit (per test unitari) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+	<!-- LOGGING DEPEENDENCIES -->
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>4.0.0</version>
+			<scope>runtime</scope>
+		</dependency>
+	 	<dependency>
+	        <groupId>io.logz.log4j2</groupId>
+	        <artifactId>logzio-log4j2-appender</artifactId>
+	        <version>2.0.1</version>
+	    </dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+	<dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-api</artifactId>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	</dependency>
+	
+	<!-- Dipendenza per JUnit (per test unitari) -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.2</version>
 			<scope>test</scope>
 		</dependency>
-
-
-		<!-- Apache Commons Lang per Validate -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.12.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.17.0</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>32.1.2-jre</version> <!-- Usa l'ultima versione disponibile -->
-		</dependency>
-		<!-- Bouncy Castle PGP: per il supporto delle operazioni PGP -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcpg-jdk18on</artifactId>
@@ -80,77 +107,14 @@
 			<artifactId>bcutil-jdk18on</artifactId>
 			<version>1.77</version>
 		</dependency>
-		
-		
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-			<version>3.4.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<version>3.4.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>6.2.2</version>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>6.2.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>6.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>6.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-			<version>3.4.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>3.4.2</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-			<version>11.2.3.jre17</version>
-		</dependency>
-
-		<!-- JDK18-specific BC libraries (se vuoi usarle per versioni più
-		moderne di Java) -->
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcutil-jdk18on</artifactId>
-			<version>1.77</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>5.5.2</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.mule.weave</groupId>
 			<artifactId>core</artifactId>
@@ -164,52 +128,39 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.15.0</version> <!-- Assicurati di usare l'ultima versione
-			disponibile -->
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mule.weave</groupId>
 			<artifactId>java-module</artifactId>
 			<version>2.6.0-20230123</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mule.weave</groupId>
 			<artifactId>runtime</artifactId>
 			<version>2.6.0-20230123</version>
 		</dependency>
-		<!-- LOGGING DEPEENDENCIES -->
 		<dependency>
-			<groupId>com.lmax</groupId>
-			<artifactId>disruptor</artifactId>
-			<version>4.0.0</version>
-			<scope>runtime</scope>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>11.2.3.jre17</version>
 		</dependency>
-	 	<dependency>
-	        <groupId>io.logz.log4j2</groupId>
-	        <artifactId>logzio-log4j2-appender</artifactId>
-	        <version>2.0.1</version>
-	    </dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
-	<dependency>
-    	<groupId>org.apache.logging.log4j</groupId>
-    	<artifactId>log4j-api</artifactId>
-    	<version>2.24.1</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.logging.log4j</groupId>
-	    <artifactId>log4j-core</artifactId>
-	    <version>2.24.1</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.logging.log4j</groupId>
-	    <artifactId>log4j-slf4j-impl</artifactId>
-	    <version>2.24.1</version>
-	</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.17.0</version>
+		</dependency>
 	</dependencies>
-
+	
 	<repositories>
 		<repository>
 			<id>mule-releases</id>
@@ -217,22 +168,26 @@
 				https://repository.mulesoft.org/nexus/content/repositories/releases/</url>
 		</repository>
 	</repositories>
-
-	<!-- Plugin di build -->
+	
 	<build>
 		<plugins>
-			<!-- Plugin per la compilazione -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
 				<configuration>
-					<source>17</source>  <!-- Imposta la versione di Java da usare
-					per compilare -->
-					<target>17</target>  <!-- Imposta la versione di Java per il
-					bytecode -->
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-configuration-processor</artifactId>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

@@ -385,4 +385,28 @@ public class ACSFlight {
 		this.ReservedFutureUse9 = ReservedFutureUse9;
 	}
 
+	@Override
+	public String toString() {
+		return "ACSFlight [SourceSystemID=" + SourceSystemID + ", AirlineCode=" + AirlineCode + ", FltNbr=" + FltNbr
+				+ ", ServiceStartDate=" + ServiceStartDate + ", AirlineOrigAirport=" + AirlineOrigAirport
+				+ ", AirlineDestAirport=" + AirlineDestAirport + ", SchdAirlineOrigAirport=" + SchdAirlineOrigAirport
+				+ ", SchdAirlineDestAirport=" + SchdAirlineDestAirport + ", AirlineOrigGate=" + AirlineOrigGate
+				+ ", COGInd=" + COGInd + ", FltOverFlyInd=" + FltOverFlyInd + ", FltFlagStopInd=" + FltFlagStopInd
+				+ ", FltStubInd=" + FltStubInd + ", GateReaderLNIATA=" + GateReaderLNIATA + ", EstServiceEndDate="
+				+ EstServiceEndDate + ", EstServiceEndTime=" + EstServiceEndTime + ", EstServiceStartDate="
+				+ EstServiceStartDate + ", EstServiceStartTime=" + EstServiceStartTime + ", SchdServiceStartDate="
+				+ SchdServiceStartDate + ", SchdServiceStartTime=" + SchdServiceStartTime + ", SchdServiceEndDate="
+				+ SchdServiceEndDate + ", SchdServiceEndTime=" + SchdServiceEndTime + ", FltCloseDate=" + FltCloseDate
+				+ ", FltCloseTime=" + FltCloseTime + ", PDCDate=" + PDCDate + ", PDCTime=" + PDCTime
+				+ ", FltLegDelayedInd=" + FltLegDelayedInd + ", FltLegStatus=" + FltLegStatus + ", TailNbr=" + TailNbr
+				+ ", MsgCreateDateTime=" + MsgCreateDateTime + ", EquipmentType=" + EquipmentType + ", AircraftConfig="
+				+ AircraftConfig + ", TotalPaxCount=" + TotalPaxCount + ", ReservedFutureUse1=" + ReservedFutureUse1
+				+ ", ReservedFutureUse2=" + ReservedFutureUse2 + ", ReservedFutureUse3=" + ReservedFutureUse3
+				+ ", ReservedFutureUse4=" + ReservedFutureUse4 + ", ReservedFutureUse5=" + ReservedFutureUse5
+				+ ", ReservedFutureUse6=" + ReservedFutureUse6 + ", ReservedFutureUse7=" + ReservedFutureUse7
+				+ ", ReservedFutureUse8=" + ReservedFutureUse8 + ", ReservedFutureUse9=" + ReservedFutureUse9 + "]";
+	}
+	
+	
+	
 }
