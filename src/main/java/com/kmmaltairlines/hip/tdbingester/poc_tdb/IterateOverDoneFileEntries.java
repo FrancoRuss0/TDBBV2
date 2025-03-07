@@ -10,44 +10,64 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class IterateOverDoneFileEntries {
+
+    // Injected SQL property for database interaction
 	@Autowired
     private SqlProperty sqlProperty;
+
+    // Constructor to initialize the class with SqlProperty
 	public IterateOverDoneFileEntries(SqlProperty sqlProperty) {
-		this.sqlProperty=sqlProperty;
+		this.sqlProperty = sqlProperty;
 	}
+
+    // Logger for logging events and errors
 	private static final Logger logger = LogManager.getLogger(IterateOverDoneFileEntries.class);
 	
-		public void iterateOverDoneFile(HashMap<String, String> doneFileEntryList, ArrayList<DoneFileEntry> doneFileEntryListA,String encFileName) {
-		UUID run_id = UUID.randomUUID();
-		System.out.println("Generated UUID: " + run_id.toString());
-		ArrayList<String> executionStatuses = new ArrayList<String>();
-		OneIteration oneIteration =  new OneIteration(sqlProperty);
-		PreprocessTdbBatchSubflow tdbBatch = new PreprocessTdbBatchSubflow();
-		HashMap<String, String> doneFileEntry;
+	// Method to iterate over the entries in the .done file and process them
+	public void iterateOverDoneFile(HashMap<String, String> doneFileEntryList, ArrayList<DoneFileEntry> dotFiles, String encFileName) {
 		
+        // Generate a unique run ID for this process
+		UUID run_id = UUID.randomUUID();
+		System.out.println("Generated UUID: " + run_id.toString()); // Log the generated UUID
+		ArrayList<String> executionStatuses = new ArrayList<String>(); // List to store execution statuses
+
+        // Create instances of the classes responsible for batch processing and iteration
+		OneIteration oneIteration = new OneIteration(sqlProperty);
+		PreprocessTdbBatchSubflow tdbBatch = new PreprocessTdbBatchSubflow();
+
+        // Check if the done file contains "batch" (indicating batch processing is required)
 		if (doneFileEntryList.toString().toLowerCase().contains("batch")) {
-			tdbBatch.process(doneFileEntryListA);
+            // If batch processing is needed, call the preprocess method to handle batch files
+			tdbBatch.process(dotFiles);
 		} else {
+            // If not a batch file, log and skip preprocessing
 			System.out.println("Skip preprocessing for non BATCH files");
 			logger.info("Skip preprocessing for non BATCH files");
 		}
 
+        // Iterate through each entry in the done file entry list and process it
 		for (String key : doneFileEntryList.keySet()) {
-			executionStatuses.add(oneIteration.oneIterationOverDoneFile(key, doneFileEntryList.get(key), run_id, doneFileEntryListA,encFileName));
+            // Call the `oneIterationOverDoneFile` method for each file entry to process it
+			String result= oneIteration.processDoneFiles(key, doneFileEntryList.get(key), run_id, dotFiles, encFileName);
+			executionStatuses.add(result);
 		}
 
+        // Log after processing all the .dat files
 		System.out.println("Processed all .dat files.");
 		logger.info("Processed all .dat files.");
 
-		// richiamo al metodo per il insert-into-TDB-Maintenance-table-subflow
-		// ATTENZIONE
-		// DOVE SCRIVERE IL RICHIAMO AL METODO
+        // Call to persist the processed data into the TDB_Maintenance table (specific subflow logic should be implemented here)
+		// ATTENTION: The exact location and method to call for the insert into the TDB_Maintenance table should be determined
+		// (Here you can add a call to a subflow or method that performs the database insert operation)
 
+        // Log successful persistence of data into the TDB_Maintenance table
 		System.out.println("Successfully persisted data in TDB_Maintenance table.");
 		logger.info("Successfully persisted data in TDB_Maintenance table.");
 
-		//TODO invio email
+        // TODO: Add logic to send an email with the status report (this part is to be implemented)
+		// For example, you could call a utility method to generate and send an email
 
+        // Log the successful creation and sending of the status report
 		System.out.println("Successfully built and sent status report.");
 		logger.info("Successfully built and sent status report.");
 	}

@@ -151,4 +151,15 @@ public class ACSFlightHistory {
 		this.MsgCreateDateTime = MsgCreateDateTime;
 	}
 
+	@Override
+	public String toString() {
+		return "ACSFlightHistory [SourceSystemID=" + SourceSystemID + ", ACSFltSegDate=" + ACSFltSegDate
+				+ ", AirlineCode=" + AirlineCode + ", FltNbr=" + FltNbr + ", AirlineOrigAirport=" + AirlineOrigAirport
+				+ ", AirlineDestAirport=" + AirlineDestAirport + ", SchdServiceStartTime=" + SchdServiceStartTime
+				+ ", AAACityCode=" + AAACityCode + ", AgentSine=" + AgentSine + ", ActionDate=" + ActionDate
+				+ ", ActionTime=" + ActionTime + ", AgntStationLNIATA=" + AgntStationLNIATA + ", ActionItem="
+				+ ActionItem + ", AgntDtyCd=" + AgntDtyCd + ", AgntHomeStation=" + AgntHomeStation
+				+ ", MsgCreateDateTime=" + MsgCreateDateTime + "]";
+	}
+
 }

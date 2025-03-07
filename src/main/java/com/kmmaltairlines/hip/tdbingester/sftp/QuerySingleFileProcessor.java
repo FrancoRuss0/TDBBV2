@@ -1,14 +1,14 @@
 package com.kmmaltairlines.hip.tdbingester.sftp;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
+//import java.io.UnsupportedEncodingException;
+//import java.net.URLEncoder;
+//import java.nio.ByteBuffer;
+//import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
 //import org.mule.api.DefaultMuleException;
 //import org.mule.api.MuleContext;
 //import org.mule.api.MuleEventContext;
@@ -27,8 +27,8 @@ import org.apache.commons.logging.LogFactory;
 //import org.mule.extension.sftp.internal.operation.SftpInputStream;
 
 import com.google.common.io.CountingInputStream;
-import com.kmmaltairlines.hip.tdbingester.exceptions.EncFileDoesNotExistException;
-import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
+//import com.kmmaltairlines.hip.tdbingester.exceptions.EncFileDoesNotExistException;
+//import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
 
 /**
  * 
@@ -41,7 +41,7 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
  */
 public class QuerySingleFileProcessor {
 
-	private static final Log LOG = LogFactory.getLog(QuerySingleFileProcessor.class);
+	//private static final Log logger = LogFactory.getLog(QuerySingleFileProcessor.class);
 
 	/**
 	 * Reads DoneFile POJO from doneFile flowVariable, gets the corresponding .enc
@@ -51,7 +51,7 @@ public class QuerySingleFileProcessor {
 	 * needed in order to validate that the byte size of the .enc file is equal to
 	 * the byte size denoted in the corresponding .done file.
 	 */
-	public static Object onCall(InputStream inputStream) throws Exception {
+	public Object onCall(InputStream inputStream) throws Exception {
 
 //		DoneFile doneFile = (DoneFile) eventContext.getMessage().getInvocationProperty("doneFile");
 

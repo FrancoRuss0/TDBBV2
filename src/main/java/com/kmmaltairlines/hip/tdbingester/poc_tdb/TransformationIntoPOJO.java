@@ -14,44 +14,56 @@ import org.mule.weave.v2.runtime.ScriptingBindings;
 
 public class TransformationIntoPOJO {
 
+    /**
+     * Loads a .dat file, processes it using a DataWeave script, and converts it into a list of POJO objects.
+     * The script is dynamically executed based on the provided input string and filename.
+     * 
+     * @param inputString - The raw input string representing the content of the .dat file.
+     * @param filename - The filename used to determine the target POJO class.
+     * @return An ArrayList containing the transformed objects.
+     * @throws IOException - If an error occurs while reading the DWL file or performing file operations.
+     * @throws ClassNotFoundException - If the dynamically loaded POJO class is not found.
+     */
+    @SuppressWarnings("unchecked")
 	public ArrayList<Object> loadDatFileIntoPOJO(String inputString, String filename)
-			throws IOException, ClassNotFoundException {
-		// Percorso del file DWL
-		String directory = "src\\main\\java\\transformations\\prova.dwl";
+            throws IOException, ClassNotFoundException {
+        
+        // Path to the DWL (DataWeave Language) script file
+        String directory = "src\\main\\java\\transformations\\prova.dwl";
 
-		// Leggi lo script DWL dal file
-		String dwlScript = new String(Files.readAllBytes(Paths.get(directory)));
+        // Read the DWL script from the file into a string
+        String dwlScript = new String(Files.readAllBytes(Paths.get(directory)));
 
-		// Crea un motore DataWeave
-		DataWeaveScriptingEngine scriptingEngine = new DataWeaveScriptingEngine();
+        // Create a DataWeave scripting engine
+        DataWeaveScriptingEngine scriptingEngine = new DataWeaveScriptingEngine();
 
-		// Compila lo script DataWeave
-		DataWeaveScript compile = scriptingEngine.compile(dwlScript, new String[] { "payload", "filename" });
-		// Esegui lo script
-		DataWeaveResult result = compile
-				.write(new ScriptingBindings().addBinding("payload", inputString, "text/plain", new HashMap<>())
-						.addBinding("filename", filename, "text/plain", new HashMap<>()));
+        // Compile the DWL script, binding the 'payload' and 'filename' variables to the inputString and filename
+        DataWeaveScript compile = scriptingEngine.compile(dwlScript, new String[] { "payload", "filename" });
+        
+        // Execute the DataWeave script with the provided bindings and capture the result
+        DataWeaveResult result = compile
+                .write(new ScriptingBindings().addBinding("payload", inputString, "text/plain", new HashMap<>())
+                        .addBinding("filename", filename, "text/plain", new HashMap<>()));
 
-		String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + filename;
+        // Dynamically construct the class name based on the filename, assuming it's the name of a POJO class
+        String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + filename;
 
-		// Carica la classe dinamicamente
-		Class<?> clazz = Class.forName(className);
+        // Dynamically load the class corresponding to the filename
+        Class<?> clazz = Class.forName(className);
 
-		// Ora, supponiamo che il risultato DataWeave sia una lista di oggetti di tipo
-		// 'clazz'
-		List<Object> list = (List<Object>) result.getContent();
+        // Assuming the result of the DataWeave script is a list of objects of the dynamically loaded class
+        List<Object> list = (List<Object>) result.getContent();
 
-		// Creare un ArrayList del tipo specificato
-		ArrayList<Object> typedList = new ArrayList<>();
+        // Create a typed ArrayList to hold the transformed objects
+        ArrayList<Object> typedList = new ArrayList<>();
 
-		// Aggiungi tutti gli oggetti della lista al nuovo ArrayList
-		for (Object obj : list) {
-			// Esegui il cast del singolo oggetto al tipo specificato
-			typedList.add(clazz.cast(obj));
-		}
+        // Add each object from the result list to the typed ArrayList
+        for (Object obj : list) {
+            // Cast each object to the dynamically loaded class type
+            typedList.add(clazz.cast(obj));
+        }
 
-		// Ritorna l'ArrayList con gli oggetti del tipo corretto
-		return typedList;
-	}
-
+        // Return the ArrayList containing the objects of the correct type
+        return typedList;
+    }
 }

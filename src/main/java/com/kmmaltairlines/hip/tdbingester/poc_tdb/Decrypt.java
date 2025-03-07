@@ -41,6 +41,7 @@ public class Decrypt {
 	 * @throws IOException
 	 * @throws PGPException
 	 */
+	@SuppressWarnings("rawtypes")
 	static PGPPublicKey readPublicKey(InputStream input) throws IOException, PGPException {
 		PGPPublicKeyRingCollection pgpPub = new PGPPublicKeyRingCollection(PGPUtil.getDecoderStream(input),
 				new JcaKeyFingerprintCalculator());
@@ -84,6 +85,7 @@ public class Decrypt {
 	 * @throws IOException  on a problem with using the input stream.
 	 * @throws PGPException if there is an issue parsing the input stream.
 	 */
+	@SuppressWarnings("rawtypes")
 	static PGPSecretKey readSecretKey(InputStream input) throws IOException, PGPException {
 		PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection(PGPUtil.getDecoderStream(input),
 				new JcaKeyFingerprintCalculator());
@@ -111,7 +113,7 @@ public class Decrypt {
 		throw new IllegalArgumentException("Can't find signing key in key ring.");
 	}
 
-	public static byte[] decryptFile(String inputFileName, char[] passPhrase) throws IOException, PGPException {
+	public byte[] decryptFile(String inputFileName, char[] passPhrase) throws IOException, PGPException {
 		InputStream in = new BufferedInputStream(new FileInputStream(inputFileName));
 		byte[] prova = decryptFile(in, passPhrase);
 		in.close();
@@ -119,6 +121,7 @@ public class Decrypt {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static byte[] decryptFile(InputStream in, char[] passPhrase) throws IOException, PGPException {
 		in = PGPUtil.getDecoderStream(in);
 		Security.addProvider(new BouncyCastleProvider());
@@ -165,7 +168,7 @@ public class Decrypt {
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			Streams.pipeAll(unc, byteArrayOutputStream, 8192);
 			byte[] decryptedData = byteArrayOutputStream.toByteArray();
-
+			unc.close();
 			// Verifica dell'integrità del messaggio
 			if (!pbe.verify()) {
 				System.err.println("Il messaggio ha fallito il controllo di integrità.");
@@ -217,7 +220,7 @@ public class Decrypt {
 
 			pgpF = new JcaPGPObjectFactory(clear);
 			o = pgpF.nextObject();
-
+			clear.close();
 			// Gestione della compressione dei dati (come nel caso precedente)
 			if (o instanceof PGPCompressedData) {
 				PGPCompressedData cData = (PGPCompressedData) o;
@@ -231,7 +234,8 @@ public class Decrypt {
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			Streams.pipeAll(unc, byteArrayOutputStream, 8192);
 			byte[] decryptedData = byteArrayOutputStream.toByteArray();
-
+			unc.close();
+			in.close();
 			// Verifica dell'integrità del messaggio
 			if (pubKeyEncData.verify()) {
 				System.out.println("IL CONTROLLO DI INTEGRITÀ DEL MESSAGGIO È STATO SUPERATO.");

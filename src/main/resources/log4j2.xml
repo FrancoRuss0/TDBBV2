@@ -11,8 +11,6 @@
 			<!-- <JSONLayout complete="true" compact="false" eventEol="true" includeStacktrace="true">
 				<KeyValuePair key="extraINFO" value="${ctx:extraINFO}"/> <KeyValuePair key="extraINFO2"
 				value="${ctx:nullextraINFO:-nullextraINFO is in fact null!}"/> </JSONLayout> -->
-			<JsonTemplateLayout
-				eventTemplateUri="classpath:log4j2-json-template.json" />
 			<Policies>
 				<SizeBasedTriggeringPolicy size="10MB" />
 			</Policies>
