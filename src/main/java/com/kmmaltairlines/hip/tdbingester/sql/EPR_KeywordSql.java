@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
 import com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Keyword;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class EPR_KeywordSql {
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -20,20 +24,18 @@ public class EPR_KeywordSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public static void insert(List<EPR_Keyword> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<EPR_Keyword> flights,Connection connessione) throws SQLException, IOException {
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/persistEPR_Keyword.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/persistEPR_Keyword.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
 
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
 			for (EPR_Keyword EPR_Keyword : flights) {
@@ -48,15 +50,13 @@ public class EPR_KeywordSql {
 	        	stmt.setString(8, EPR_Keyword.getKeyword());
 	        	stmt.setString(9,EPR_Keyword.getRecordStatus());
 	        	stmt.setObject(10,EPR_Keyword.getEffectiveDate(), Types.TIMESTAMP);
-	        	stmt.setObject(11, Utility.nowUtcTimestamp(), Types.TIMESTAMP);
+	        	stmt.setObject(11, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 	        	
 	        	stmt.addBatch();
 			}
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();

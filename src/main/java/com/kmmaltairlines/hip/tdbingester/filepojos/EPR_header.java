@@ -2,7 +2,7 @@ package com.kmmaltairlines.hip.tdbingester.filepojos;
 
 import java.sql.Date;
 
-public class EPR_header {
+public class EPR_Header {
 
 	private String PCC_Cd;
 	private String User_Id;

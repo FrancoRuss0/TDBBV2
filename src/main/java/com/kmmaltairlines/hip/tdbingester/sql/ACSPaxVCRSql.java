@@ -7,10 +7,14 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxVCR;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSPaxVCRSql {
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -19,20 +23,18 @@ public class ACSPaxVCRSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public static void insert(List<ACSPaxVCR> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<ACSPaxVCR> flights,Connection connessione) throws SQLException, IOException {
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/insertACSPaxVCR.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insertACSPaxVCR.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
 
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
 			for (ACSPaxVCR ACSPaxVCR : flights) {
@@ -80,15 +82,14 @@ public class ACSPaxVCRSql {
 	            stmt.setString(34, ACSPaxVCR.getInfVCRInUseInd());
 	            stmt.setString(35, ACSPaxVCR.getInfCheckInComplete());
 	            stmt.setObject(36, ACSPaxVCR.getMsgCreateDateTime(), Types.TIMESTAMP);
-	            stmt.setObject(37, Utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+	            stmt.setObject(37, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 	        	
 	        	stmt.addBatch();
 			}
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
+
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();

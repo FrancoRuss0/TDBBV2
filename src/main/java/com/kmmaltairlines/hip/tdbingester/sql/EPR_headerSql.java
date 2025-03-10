@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
 import com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Header;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class EPR_headerSql {
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -20,20 +24,18 @@ public class EPR_headerSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public static void insert(List<EPR_Header> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<EPR_Header> flights,Connection connessione) throws SQLException, IOException {
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/InsertEpr_header.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/InsertEpr_header.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
 
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
 			for (EPR_Header EPR_header : flights) {
@@ -142,14 +144,13 @@ public class EPR_headerSql {
 				stmt.setString(102, EPR_header.getMCP_Partition_Code()); // MCP_Partition_Code
 				stmt.setString(103, EPR_header.getDefault_Ticketing_Carrier()); // Default_Ticketing_Carrier
 				stmt.setString(104, EPR_header.getStation_Code()); // Station_Code
-				stmt.setObject(105, Utility.nowUtcTimestamp(), Types.TIMESTAMP); // tdb_created_at (it’s not part of `EPR_header`, assumed it's a different variable)
+				stmt.setObject(105, utility.nowUtcTimestamp(), Types.TIMESTAMP); // tdb_created_at (it’s not part of `EPR_header`, assumed it's a different variable)
 	        	stmt.addBatch();
 			}
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
+
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();

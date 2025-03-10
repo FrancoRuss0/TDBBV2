@@ -1,19 +1,16 @@
 package com.kmmaltairlines.hip.tdbingester.poc_tdb;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlight;
-import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
-import com.kmmaltairlines.hip.tdbingester.sql.ACSFlightSql;
-import com.kmmaltairlines.hip.tdbingester.sql.ACSFlightHistorySql;
 
 @Service
 public class SqlQueries {
@@ -28,49 +25,70 @@ public class SqlQueries {
 	 * @param baseFilename - The name of the file that helps determine the data type
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException - If an error occurs while reading SQL files
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
 	 */
-	public void sql(List<Object> flights, String baseFilename,Connection conn) throws SQLException, IOException {
+	public void sql(List<Object> flights, String baseFilename,Connection conn) throws SQLException, IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		
+//		try {
+//		// Switch to handle different base filenames and determine the correct insert method
+//		switch (baseFilename) {
+//		case "ACSPaxVCR":
+//			// Convert flights to the specific ACSFlight type
+//			ArrayList<ACSPaxVCR> trasformACSPaxDOCX = new ArrayList<ACSPaxVCR>();
+//			for (Object flight : flights) {
+//				trasformACSPaxDOCX.add((ACSPaxVCR) flight);
+//			}
+//			// Insert ACSFlight records into the database
+//			ACSPaxVCRSql.insert(trasformACSPaxDOCX,conn);
+//			break;
+//
+//		default:
+//			// Print an error message if no matching filename was found
+//			System.err.println("NO MATCH FOUND");
+//			break;
+//		}
+//		
+//		conn.close();
+//		
+//		}catch (SQLException ex){
+//			logger.error("Error processing file : " + ex.getMessage());
+//			if (conn != null) {
+//				conn.rollback(); // Rollback in case of an error
+//			}
+//		}
+//			if (conn != null) {
+//				conn.close();
+//		}
 		
 		try {
-		// Switch to handle different base filenames and determine the correct insert method
-		switch (baseFilename) {
-		case "ACSFlight":
-			// Convert flights to the specific ACSFlight type
-			ArrayList<ACSFlight> trasformACSFlight = new ArrayList<ACSFlight>();
-			for (Object flight : flights) {
-				trasformACSFlight.add((ACSFlight) flight);
-			}
-			// Insert ACSFlight records into the database
-			ACSFlightSql.insert(trasformACSFlight,conn);
-			break;
-
-		case "ACSFlightHistory":
-			// Convert flights to the specific ACSFlightHistory type
-			ArrayList<ACSFlightHistory> trasformACSFlightHistory = new ArrayList<ACSFlightHistory>();
-			for (Object flight : flights) {
-				trasformACSFlightHistory.add((ACSFlightHistory) flight);
-			}
-			// Insert ACSFlightHistory records into the database
-			ACSFlightHistorySql.insert(trasformACSFlightHistory,conn);
-			break;
-
-		default:
-			// Print an error message if no matching filename was found
-			System.err.println("NO MATCH FOUND");
-			break;
-		}
-		
+            // Trova la classe SQL corrispondente (es: ACSFlight -> ACSFlightSql)
+            String sqlClassName = baseFilename + "Sql";  // Esempio: "ACSFlightSql"
+            System.out.println("NOME--"+sqlClassName);
+            Class<?> sqlClass = Class.forName("com.kmmaltairlines.hip.tdbingester.sql." + sqlClassName);
+            System.out.println(sqlClass);
+            // Trova il metodo "insert" con i parametri corretti
+            Method insertMethod = sqlClass.getMethod("insert", List.class, Connection.class);
+            // Chiama dinamicamente il metodo di inserimento
+            // Disable auto-commit for batch processing
+         	conn.setAutoCommit(false);
+            insertMethod.invoke(null, flights, conn);
+			// Commit the transaction
+			conn.commit();
+			
+            System.out.println("Inserted " + flights.size() + " records into " + baseFilename);
+            conn.close();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("SQL class not found for: " + baseFilename, e);
+            
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Insert method not found for: " + baseFilename, e);
+            
+        } catch (SQLException ex) {
+        	logger.error("Error processing file : " + ex.getMessage());
+            
+        }
 		conn.close();
-		
-		}catch (SQLException ex){
-			logger.error("Error processing file : " + ex.getMessage());
-			if (conn != null) {
-				conn.rollback(); // Rollback in case of an error
-			}
 		}
-			if (conn != null) {
-				conn.close();
-			}
-		}
-	}
-
+}

@@ -7,11 +7,17 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxFlight;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSPaxFlightSql {
+	
+	@Autowired
+	Utility utility;
+	
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -20,14 +26,14 @@ public class ACSPaxFlightSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public static void insert(List<ACSPaxFlight> flights,Connection connessione) throws SQLException, IOException {
+	public  void insert(List<ACSPaxFlight> flights,Connection connessione) throws SQLException, IOException {
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/InsertACSPaxFlight.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/InsertACSPaxFlight.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
@@ -169,7 +175,7 @@ public class ACSPaxFlightSql {
 			    stmt.setString(114, ACSPaxFlight.getPaxOutbOrigin());
 			    stmt.setString(115, ACSPaxFlight.getPaxOutbDest());
 			    stmt.setString(116, ACSPaxFlight.getPaxOutbBookedClass());
-			    stmt.setObject(117, Utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			    stmt.setObject(117, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			    
 			    stmt.addBatch();
 			    cont++;

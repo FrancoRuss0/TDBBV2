@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Keyword;
 import com.kmmaltairlines.hip.tdbingester.filepojos.EPR_OAC;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class EPR_OACSql {
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -20,20 +24,17 @@ public class EPR_OACSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public static void insert(List<EPR_OAC> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<EPR_OAC> flights,Connection connessione) throws SQLException, IOException {
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/persistEPR_OAC.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/persistEPR_OAC.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
-
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
 			for (EPR_OAC EPR_OAC : flights) {
@@ -54,7 +55,7 @@ public class EPR_OACSql {
 	        	stmt.setString(14, EPR_OAC.getStation_Code());
 	        	stmt.setString(15, EPR_OAC.getRecordStatus());
 	        	stmt.setObject(16, EPR_OAC.getEffectiveDate(), Types.TIMESTAMP);
-	        	stmt.setObject(17, EPR_OAC.getEffectiveDate(), Types.TIMESTAMP);
+	        	stmt.setObject(17, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 	        	
 
 	        	stmt.addBatch();
@@ -62,8 +63,6 @@ public class EPR_OACSql {
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();
