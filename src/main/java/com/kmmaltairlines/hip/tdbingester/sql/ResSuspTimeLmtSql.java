@@ -13,9 +13,6 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.ResSuspTimeLmt;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ResSuspTimeLmtSql {
-	
-	@Autowired
-	Utility utility;
 	/**
 	 * Inserts ACSFlight records into the database in bulk.
 	 * 
@@ -23,17 +20,15 @@ public class ResSuspTimeLmtSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException - If an error occurs while reading SQL files
 	 */
-	public void insert(List<ResSuspTimeLmt> resSuspTimeLmt,Connection connessione) throws SQLException, IOException {
+	public void insert(List<ResSuspTimeLmt> resSuspTimeLmt,Connection connection) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
 		PreparedStatement stmt = null;
-
+		Utility utility=new Utility();
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertResSuspTimeLmt.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 			// Add the flight data to the batch for bulk insertion
 			for (ResSuspTimeLmt suspTimeLmt : resSuspTimeLmt) {
@@ -42,7 +37,11 @@ public class ResSuspTimeLmtSql {
 				stmt.setString(2, suspTimeLmt.getPNRLocatorID());
 				stmt.setObject(3, suspTimeLmt.getPNRCreateDate(), Types.DATE);
 				stmt.setObject(4, suspTimeLmt.getFromDateTime(), Types.TIMESTAMP);
-                stmt.setShort(5, suspTimeLmt.getSuspenseSequenceId());
+                if(suspTimeLmt.getSuspenseSequenceId()==null) {
+			    	stmt.setNull(12, Types.NULL);
+			    }else{
+			    	stmt.setShort(5, suspTimeLmt.getSuspenseSequenceId());
+			    }
                 stmt.setString(6, suspTimeLmt.getTimeLimitActionTime());
                 stmt.setObject(7, suspTimeLmt.getTimeLimitActionDate(), Types.DATE);
                 stmt.setString(8, suspTimeLmt.getTimeLimitLocationCode());
@@ -50,7 +49,12 @@ public class ResSuspTimeLmtSql {
                 stmt.setString(10, suspTimeLmt.getHistoryActionCodeId() );
                 stmt.setObject(11, suspTimeLmt.getRecordUpdateDate(), Types.DATE);
                 stmt.setObject(12, suspTimeLmt.getRecordUpdateTime(), Types.TIME);
-                stmt.setShort(13, suspTimeLmt.getIntraPNRSetNbr());
+                
+                if(suspTimeLmt.getIntraPNRSetNbr()==null) {
+			    	stmt.setNull(12, Types.NULL);
+			    }else{
+			    	stmt.setShort(13, suspTimeLmt.getIntraPNRSetNbr());
+			    }
                 stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP);
                 stmt.addBatch();
 			}

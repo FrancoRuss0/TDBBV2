@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,6 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.ResSuspDocAgmt;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ResSuspDocAgmtSql {
-
-    @Autowired
-    Utility utility;
 
     /**
      * Inserts a list of ResSuspDocAgmt records into the database in bulk.
@@ -28,7 +26,7 @@ public class ResSuspDocAgmtSql {
     public void insert(List<ResSuspDocAgmt> resSuspDocAgmts, Connection connection) throws SQLException, IOException {
 
         PreparedStatement stmt = null;
-
+        Utility utility=new Utility();
         // Read the SQL insert query from the file
         String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertResSuspDocAgmt.sql");
 
@@ -38,34 +36,58 @@ public class ResSuspDocAgmtSql {
         // Add ResSuspDocAgmt data to the batch for bulk insertion
         for (ResSuspDocAgmt docAgmt : resSuspDocAgmts) {
             stmt.setString(1, docAgmt.getID());
-            stmt.setShort(2, docAgmt.getPNRPassengerSeqID());
-            stmt.setShort(3, docAgmt.getResArrSequenceId());
-            stmt.setDate(4, docAgmt.getResArrQueuePlaceDate());
-            stmt.setString(5, docAgmt.getResArrQueueName());
-            stmt.setString(6, docAgmt.getResArrangementLocationCode());
-            stmt.setString(7, docAgmt.getArrPassengerReferenceName());
-            stmt.setDate(8, docAgmt.getArrActivityDate());
-            stmt.setTime(9, docAgmt.getArrActivityTime());
-            stmt.setString(10, docAgmt.getArrDutyCode());
-            stmt.setString(11, docAgmt.getArrSine());
-            stmt.setString(12, docAgmt.getSSRText());
-            stmt.setString(13, docAgmt.getSSRCode());
-            stmt.setString(14, docAgmt.getSourceTypeCode());
-            stmt.setString(15, docAgmt.getSSRIdTypeCode());
-            stmt.setString(16, docAgmt.getResArrActionCode());
-            stmt.setString(17, docAgmt.getServiceStartCityCode());
-            stmt.setString(18, docAgmt.getServiceEndCityCode());
-            stmt.setString(19, docAgmt.getTicketNbr());
-            stmt.setShort(20, docAgmt.getSSRNbrInParty());
-            stmt.setDate(21, docAgmt.getSSRStartDate());
-            stmt.setString(22, docAgmt.getSSRFlightNumber());
-            stmt.setString(23, docAgmt.getClassOfService());
-            stmt.setString(24, docAgmt.getVendorCode());
-            stmt.setString(25, docAgmt.getSSRStatusCode());
-            stmt.setString(26, docAgmt.getHistoryActionCodeId());
-            stmt.setDate(27, docAgmt.getRecordUpdateDate());
-            stmt.setTime(28, docAgmt.getRecordUpdateTime());
-            stmt.setShort(29, docAgmt.getIntraPNRSetNbr());
+            stmt.setString(2, docAgmt.getPNRLocatorID());
+            stmt.setObject(3, docAgmt.getPNRCreateDate(), Types.DATE);
+            stmt.setTimestamp(4, docAgmt.getFromDateTime());
+            if(docAgmt.getPNRPassengerSeqID()==null) {
+		    	stmt.setNull(5, Types.NULL);
+		    }else{
+		    	stmt.setShort(5, docAgmt.getPNRPassengerSeqID());
+		    }
+            
+            if(docAgmt.getResArrSequenceId()==null) {
+		    	stmt.setNull(6, Types.NULL);
+		    }else{
+		    	stmt.setShort(6, docAgmt.getResArrSequenceId());
+		    }
+            
+           
+            stmt.setDate(7, docAgmt.getResArrQueuePlaceDate());
+            stmt.setString(8, docAgmt.getResArrQueueName());
+            stmt.setString(9, docAgmt.getResArrangementLocationCode());
+            stmt.setString(10, docAgmt.getArrPassengerReferenceName());
+            stmt.setDate(11, docAgmt.getArrActivityDate());
+            stmt.setTime(12, docAgmt.getArrActivityTime());
+            stmt.setString(13, docAgmt.getArrDutyCode());
+            stmt.setString(14, docAgmt.getArrSine());
+            stmt.setString(15, docAgmt.getSSRText());
+            stmt.setString(16, docAgmt.getSSRCode());
+            stmt.setString(17, docAgmt.getSourceTypeCode());
+            stmt.setString(18, docAgmt.getSSRIdTypeCode());
+            stmt.setString(19, docAgmt.getResArrActionCode());
+            stmt.setString(20, docAgmt.getServiceStartCityCode());
+            stmt.setString(21, docAgmt.getServiceEndCityCode());
+            stmt.setString(22, docAgmt.getTicketNbr());
+            if(docAgmt.getSSRNbrInParty()==null) {
+		    	stmt.setNull(23, Types.NULL);
+		    }else{
+		    	stmt.setShort(23, docAgmt.getSSRNbrInParty());
+		    }
+            
+            stmt.setDate(24, docAgmt.getSSRStartDate());
+            stmt.setString(25, docAgmt.getSSRFlightNumber());
+            stmt.setString(26, docAgmt.getClassOfService());
+            stmt.setString(27, docAgmt.getVendorCode());
+            stmt.setString(28, docAgmt.getSSRStatusCode());
+            stmt.setString(29, docAgmt.getHistoryActionCodeId());
+            stmt.setDate(30, docAgmt.getRecordUpdateDate());
+            stmt.setTime(31, docAgmt.getRecordUpdateTime());
+            if(docAgmt.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(32, Types.NULL);
+		    }else{
+		    	stmt.setShort(32, docAgmt.getIntraPNRSetNbr());
+		    }
+            stmt.setObject(33, utility.nowUtcTimestamp(), Types.TIMESTAMP);
             stmt.addBatch(); // Add this record to the batch
         }
 

@@ -11620,3 +11620,1057 @@ Trace:
   at main (Unknown)
 2025-03-10 16:39:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=22f41ca5-6eb4-4ead-bc14-f877094de45c, fileName=TktTax_20240521, numRecords=100238, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 16:39:18.0628077, dateEnded=2025-03-10 16:39:21.1829655]
 2025-03-10 16:39:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:18:56 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 2424 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:18:56 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:18:56 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-10 17:18:56 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-10 17:18:59 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:18:59 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2665 ms
+2025-03-10 17:19:00 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:19:00 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:19:01 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:19:01 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 5.531 seconds (process running for 7.377)
+2025-03-10 17:19:02 [RMI TCP Connection(8)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-10 17:19:02 [RMI TCP Connection(8)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-03-10 17:19:05 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:19:45 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:19:45 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Error executing insert for: ResSuspDocAgmt
+2025-03-10 17:19:45 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=a9d3b139-10dc-4140-941a-67fbfdd9a2c9, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:19:05.6885972, dateEnded=2025-03-10 17:19:45.7463065]
+2025-03-10 17:19:45 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:19:48 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:19:48 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:19:48 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=a9d3b139-10dc-4140-941a-67fbfdd9a2c9, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:19:45.7537982, dateEnded=2025-03-10 17:19:48.479464]
+2025-03-10 17:19:48 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:19:50 [RMI TCP Connection(10)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:19:50 [RMI TCP Connection(10)-127.0.0.1] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:19:51 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:20:21 [RMI TCP Connection(10)-127.0.0.1] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:20:21 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.flushBuffer(PersistedLongArray.scala:114)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.reloadBuffer(PersistedLongArray.scala:198)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.apply(PersistedLongArray.scala:173)
+	at org.mule.weave.v2.module.reader.DefaultLongArray.apply(DefaultLongArray.scala:56)
+	at org.mule.weave.v2.module.xml.reader.indexed.TokenArray.apply(TokenArray.scala:70)
+	at org.mule.weave.v2.module.csv.reader.parser.CsvTokenHelper$.getRecord(IndexedCSVRecord.scala:128)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.elementAt(IndexedCSVParser.scala:90)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.get(IndexedCSVParser.scala:31)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:94)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:86)
+	at scala.collection.Iterator$$anon$10.next(Iterator.scala:459)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.doWriteValue(JavaWriter.scala:213)
+	at org.mule.weave.v2.module.writer.Writer.writeValue(Writer.scala:62)
+	at org.mule.weave.v2.module.writer.Writer.writeValue$(Writer.scala:48)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.writeValue(JavaWriter.scala:40)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while writing Java at 
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.
+
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace:
+  at dw::Core::main (line: 2106, column: 99)
+2025-03-10 17:20:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=a9d3b139-10dc-4140-941a-67fbfdd9a2c9, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:19:48.4804638, dateEnded=2025-03-10 17:20:21.7435371]
+2025-03-10 17:20:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:23:30 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 19948 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:23:30 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:23:30 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-10 17:23:30 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-10 17:23:32 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:23:32 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2615 ms
+2025-03-10 17:23:34 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:23:34 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:23:34 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:23:34 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 5.462 seconds (process running for 7.265)
+2025-03-10 17:23:35 [RMI TCP Connection(7)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-10 17:23:35 [RMI TCP Connection(7)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-03-10 17:23:39 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:24:19 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:24:20 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Error executing insert for: ResSuspDocAgmt
+2025-03-10 17:24:20 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:23:39.5674435, dateEnded=2025-03-10 17:24:20.0951619]
+2025-03-10 17:24:20 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:24:21 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:24:21 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:24:22 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:24:23 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:24:23 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:24:23 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:24:20.1016352, dateEnded=2025-03-10 17:24:23.1482307]
+2025-03-10 17:24:23 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:24:52 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:24:52 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.flushBuffer(PersistedLongArray.scala:114)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.reloadBuffer(PersistedLongArray.scala:198)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.apply(PersistedLongArray.scala:173)
+	at org.mule.weave.v2.module.reader.DefaultLongArray.apply(DefaultLongArray.scala:56)
+	at org.mule.weave.v2.module.xml.reader.indexed.TokenArray.apply(TokenArray.scala:70)
+	at org.mule.weave.v2.module.csv.reader.parser.CsvTokenHelper$.getRecord(IndexedCSVRecord.scala:128)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.elementAt(IndexedCSVParser.scala:90)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.get(IndexedCSVParser.scala:31)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:94)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:86)
+	at scala.collection.Iterator$$anon$10.next(Iterator.scala:459)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.doWriteValue(JavaWriter.scala:213)
+	at org.mule.weave.v2.module.writer.Writer.writeValue(Writer.scala:62)
+	at org.mule.weave.v2.module.writer.Writer.writeValue$(Writer.scala:48)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.writeValue(JavaWriter.scala:40)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while writing Java at 
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.
+
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace:
+  at dw::Core::main (line: 2106, column: 99)
+2025-03-10 17:24:52 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:24:23.1512236, dateEnded=2025-03-10 17:24:52.6640325]
+2025-03-10 17:24:52 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:24:55 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:24:55 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=TktPayment_20240521, numRecords=21992, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:24:52.666032, dateEnded=2025-03-10 17:24:55.4766732]
+2025-03-10 17:24:55 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:24:59 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:24:59 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:24:59 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=TKTFees_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:24:55.4776746, dateEnded=2025-03-10 17:24:59.1981431]
+2025-03-10 17:24:59 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:25:04 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:25:04 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Error executing insert for: TktCouponEMD
+2025-03-10 17:25:04 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=49e0c899-fbb0-4c44-9d54-da28fe4f7f07, fileName=TktCouponEMD_20240521, numRecords=6065, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:24:59.1994656, dateEnded=2025-03-10 17:25:04.6323688]
+2025-03-10 17:25:04 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:29:45 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 15820 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:29:45 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:29:45 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-10 17:29:45 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-10 17:29:47 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:29:47 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2438 ms
+2025-03-10 17:29:48 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:29:48 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:29:49 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:29:49 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 5.123 seconds (process running for 6.991)
+2025-03-10 17:29:49 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-10 17:29:49 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-03-10 17:29:53 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:30:36 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:30:38 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Error processing file : Conversion failed when converting date and/or time from character string.
+2025-03-10 17:30:38 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:30:38 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:29:53.5604939, dateEnded=2025-03-10 17:30:38.214492]
+2025-03-10 17:30:38 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:30:39 [RMI TCP Connection(11)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:30:39 [RMI TCP Connection(11)-127.0.0.1] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:30:40 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:30:41 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:30:41 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:30:41 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:30:38.2231465, dateEnded=2025-03-10 17:30:41.7677582]
+2025-03-10 17:30:41 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:30:53 [RMI TCP Connection(12)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:31:10 [RMI TCP Connection(11)-127.0.0.1] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:31:10 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.flushBuffer(PersistedLongArray.scala:114)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.reloadBuffer(PersistedLongArray.scala:198)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.apply(PersistedLongArray.scala:173)
+	at org.mule.weave.v2.module.reader.DefaultLongArray.apply(DefaultLongArray.scala:56)
+	at org.mule.weave.v2.module.xml.reader.indexed.TokenArray.apply(TokenArray.scala:70)
+	at org.mule.weave.v2.module.csv.reader.parser.CsvTokenHelper$.getRecord(IndexedCSVRecord.scala:128)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.elementAt(IndexedCSVParser.scala:90)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.get(IndexedCSVParser.scala:31)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:94)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:86)
+	at scala.collection.Iterator$$anon$10.next(Iterator.scala:459)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.doWriteValue(JavaWriter.scala:213)
+	at org.mule.weave.v2.module.writer.Writer.writeValue(Writer.scala:62)
+	at org.mule.weave.v2.module.writer.Writer.writeValue$(Writer.scala:48)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.writeValue(JavaWriter.scala:40)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while writing Java at 
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.
+
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace:
+  at dw::Core::main (line: 2106, column: 99)
+2025-03-10 17:31:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:30:41.7687592, dateEnded=2025-03-10 17:31:10.3285456]
+2025-03-10 17:31:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:31:12 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:31:12 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=TktPayment_20240521, numRecords=21992, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:31:10.3295514, dateEnded=2025-03-10 17:31:12.9627104]
+2025-03-10 17:31:12 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:31:15 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:31:15 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:31:15 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=TKTFees_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:31:12.9627104, dateEnded=2025-03-10 17:31:15.4273927]
+2025-03-10 17:31:15 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:31:19 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:31:19 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:31:19 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=TktCouponEMD_20240521, numRecords=6065, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:31:15.4273927, dateEnded=2025-03-10 17:31:19.8182124]
+2025-03-10 17:31:19 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:31:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:31:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:31:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=8b870074-6c3c-4aca-8309-f70b68fbedb0, fileName=ResPassenger_20240521, numRecords=15153, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:31:19.8182124, dateEnded=2025-03-10 17:31:25.308439]
+2025-03-10 17:31:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:35:28 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 17180 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:35:28 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:35:28 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-10 17:35:28 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-10 17:35:35 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:35:35 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6626 ms
+2025-03-10 17:35:37 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:35:37 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:35:37 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:35:37 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 10.651 seconds (process running for 12.992)
+2025-03-10 17:35:38 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-10 17:35:38 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-03-10 17:35:44 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:36:38 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:39:09 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-03-10 17:39:09 [Thread-5] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:39:10 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:39:17 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:39:40 [Thread-5] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:39:41 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 17180 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:39:41 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:39:42 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:39:43 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1402 ms
+2025-03-10 17:39:43 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:39:43 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:39:43 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:39:43 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 2.865 seconds (process running for 258.836)
+2025-03-10 17:39:43 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-03-10 17:39:45 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-03-10 17:39:45 [Thread-7] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:39:47 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:39:49 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:39:55 [RMI TCP Connection(9)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:40:06 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Error processing file : Operand type clash: smallint is incompatible with datetime2
+2025-03-10 17:40:06 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:40:06 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:35:44.1583429, dateEnded=2025-03-10 17:40:06.8958578]
+2025-03-10 17:40:06 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:40:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:40:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:06.9032142, dateEnded=2025-03-10 17:40:10.3930069]
+2025-03-10 17:40:10 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:14 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:40:14 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:10.3930069, dateEnded=2025-03-10 17:40:14.1950991]
+2025-03-10 17:40:14 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:17 [Thread-7] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:40:17 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.flushBuffer(PersistedLongArray.scala:114)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.reloadBuffer(PersistedLongArray.scala:198)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.apply(PersistedLongArray.scala:173)
+	at org.mule.weave.v2.module.reader.DefaultLongArray.apply(DefaultLongArray.scala:56)
+	at org.mule.weave.v2.module.xml.reader.indexed.TokenArray.apply(TokenArray.scala:70)
+	at org.mule.weave.v2.module.csv.reader.parser.CsvTokenHelper$.getRecord(IndexedCSVRecord.scala:128)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.elementAt(IndexedCSVParser.scala:90)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.get(IndexedCSVParser.scala:31)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:94)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:86)
+	at scala.collection.Iterator$$anon$10.next(Iterator.scala:459)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.doWriteValue(JavaWriter.scala:213)
+	at org.mule.weave.v2.module.writer.Writer.writeValue(Writer.scala:62)
+	at org.mule.weave.v2.module.writer.Writer.writeValue$(Writer.scala:48)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.writeValue(JavaWriter.scala:40)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while writing Java at 
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.
+
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace:
+  at dw::Core::main (line: 2106, column: 99)
+2025-03-10 17:40:17 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=c86d1406-cdce-4669-b03b-4df4a65e366f, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:39:49.7089894, dateEnded=2025-03-10 17:40:17.2847193]
+2025-03-10 17:40:17 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:17 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:40:17 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=TktPayment_20240521, numRecords=21992, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:14.1990988, dateEnded=2025-03-10 17:40:17.7469444]
+2025-03-10 17:40:17 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:17 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 17180 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:40:17 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:40:18 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:40:18 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2025-03-10 17:40:19 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:40:19 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:40:19 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:40:19 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 1.845 seconds (process running for 294.206)
+2025-03-10 17:40:19 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-03-10 17:40:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:40:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:40:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=c86d1406-cdce-4669-b03b-4df4a65e366f, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:17.2877177, dateEnded=2025-03-10 17:40:21.4477088]
+2025-03-10 17:40:21 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:22 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:40:22 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:40:22 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=TKTFees_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:17.7479488, dateEnded=2025-03-10 17:40:22.0091864]
+2025-03-10 17:40:22 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:22 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:25 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:40:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=c86d1406-cdce-4669-b03b-4df4a65e366f, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:21.4477088, dateEnded=2025-03-10 17:40:25.9680851]
+2025-03-10 17:40:25 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:29 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:40:29 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:40:29 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=ea8c11cc-c766-4330-a3ac-d432b5309f90, fileName=TktCouponEMD_20240521, numRecords=6065, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:22.0091864, dateEnded=2025-03-10 17:40:29.1733387]
+2025-03-10 17:40:29 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:40:30 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:40:30 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=c86d1406-cdce-4669-b03b-4df4a65e366f, fileName=TktPayment_20240521, numRecords=21992, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:40:25.9690852, dateEnded=2025-03-10 17:40:30.3441794]
+2025-03-10 17:40:30 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:45:51 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Starting Main using Java 17.0.12 with PID 21400 (C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3\target\classes started by Franco Russo in C:\Users\Franco Russo\eclipse-workspace\travel-data-batch-ingester-v3)
+2025-03-10 17:45:51 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - No active profile set, falling back to 1 default profile: "default"
+2025-03-10 17:45:51 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-10 17:45:51 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-10 17:45:56 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8443 (https)
+2025-03-10 17:45:56 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4693 ms
+2025-03-10 17:45:58 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-03-10 17:45:58 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-03-10 17:45:59 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8443 (https) with context path '/'
+2025-03-10 17:45:59 [restartedMain] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.Main - Started Main in 9.768 seconds (process running for 12.938)
+2025-03-10 17:45:59 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-10 17:45:59 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-03-10 17:46:06 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:46:48 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:47:03 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:47:03 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=ResSuspDocAgmt_20240521, numRecords=60530, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:46:06.0069357, dateEnded=2025-03-10 17:47:03.4555982]
+2025-03-10 17:47:03 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:04 [RMI TCP Connection(7)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-03-10 17:47:04 [RMI TCP Connection(7)-127.0.0.1] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-10 17:47:06 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-10 17:47:08 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:47:08 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:47:08 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=ResHotel_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:03.4630952, dateEnded=2025-03-10 17:47:08.0758588]
+2025-03-10 17:47:08 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:36 [RMI TCP Connection(7)-127.0.0.1] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Shutdown phase 1073741823 ends with 1 bean still running after timeout of 30000ms: [taskScheduler]
+2025-03-10 17:47:36 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.flushBuffer(PersistedLongArray.scala:114)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.reloadBuffer(PersistedLongArray.scala:198)
+	at org.mule.weave.v2.module.reader.PersistedLongArray.apply(PersistedLongArray.scala:173)
+	at org.mule.weave.v2.module.reader.DefaultLongArray.apply(DefaultLongArray.scala:56)
+	at org.mule.weave.v2.module.xml.reader.indexed.TokenArray.apply(TokenArray.scala:70)
+	at org.mule.weave.v2.module.csv.reader.parser.CsvTokenHelper$.getRecord(IndexedCSVRecord.scala:128)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.elementAt(IndexedCSVParser.scala:90)
+	at org.mule.weave.v2.module.csv.reader.parser.IndexedCSVParser.get(IndexedCSVParser.scala:31)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:94)
+	at org.mule.weave.v2.module.csv.reader.CSVIndexedArraySeq$$anon$1.next(CSVReader.scala:86)
+	at scala.collection.Iterator$$anon$10.next(Iterator.scala:459)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.doWriteValue(JavaWriter.scala:213)
+	at org.mule.weave.v2.module.writer.Writer.writeValue(Writer.scala:62)
+	at org.mule.weave.v2.module.writer.Writer.writeValue$(Writer.scala:48)
+	at org.mule.weave.v2.module.pojo.writer.JavaWriter.writeValue(JavaWriter.scala:40)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while writing Java at 
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.
+
+2106| fun map <T,R>(@StreamCapable items: Array<T>, mapper: (item: T, index: Number) -> R ): Array<R> = native("system::ArrayMapFunctionValue")
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace:
+  at dw::Core::main (line: 2106, column: 99)
+2025-03-10 17:47:36 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=ResSSR_20240521, numRecords=56383, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:08.0758588, dateEnded=2025-03-10 17:47:36.970424]
+2025-03-10 17:47:36 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:39 [scheduling-1] ERROR com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - java.nio.channels.ClosedByInterruptException - null
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:237)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFromDelegate(RandomAccessFileSeekableStream.scala:62)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer(DelegateSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.reloadBuffer$(DelegateSeekableStream.scala:28)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.reloadBuffer(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully(DelegateSeekableStream.scala:22)
+	at org.mule.weave.v2.io.DelegateSeekableStream.loadFully$(DelegateSeekableStream.scala:17)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.loadFully(RandomAccessFileSeekableStream.scala:31)
+	at org.mule.weave.v2.io.RandomAccessFileSeekableStream.size(RandomAccessFileSeekableStream.scala:141)
+	at org.mule.weave.v2.io.DefaultSeekableStream.size(DefaultSeekableStream.scala:103)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:27)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.doRead(TextPlainReader.scala:16)
+	at org.mule.weave.v2.module.reader.Reader.read(Reader.scala:35)
+	at org.mule.weave.v2.module.reader.Reader.read$(Reader.scala:33)
+	at org.mule.weave.v2.module.textplain.TextPlainReader.read(TextPlainReader.scala:16)
+	at org.mule.weave.v2.interpreted.ReaderValue.value(ReaderValue.scala:64)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate(DelegateValue.scala:22)
+	at org.mule.weave.v2.model.values.wrappers.DelegateValue.evaluate$(DelegateValue.scala:22)
+	at org.mule.weave.v2.interpreted.ReaderValue.evaluate(ReaderValue.scala:37)
+	at org.mule.weave.v2.model.types.StringType$.accepts(Type.scala:492)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1(Type.scala:358)
+	at org.mule.weave.v2.model.types.UnionType.$anonfun$accepts$1$adapted(Type.scala:358)
+	at scala.collection.LinearSeqOptimized.exists(LinearSeqOptimized.scala:95)
+	at scala.collection.LinearSeqOptimized.exists$(LinearSeqOptimized.scala:92)
+	at scala.collection.immutable.List.exists(List.scala:89)
+	at org.mule.weave.v2.model.types.UnionType.accepts(Type.scala:358)
+	at org.mule.weave.v2.interpreted.node.executors.TernaryFunctionExecutor.executeTernary(TernaryFunctionExecutor.scala:100)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.doExecute(FunctionCallNode.scala:102)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.TernaryFunctionCallNode.execute(FunctionCallNode.scala:95)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.executeArgs(FunctionCallNode.scala:34)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.doExecute(FunctionCallNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.DefaultFunctionCallNode.execute(FunctionCallNode.scala:23)
+	at org.mule.weave.v2.interpreted.node.UsingNode.$anonfun$doExecute$1(UsingNode.scala:17)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame(ExecutionContext.scala:184)
+	at org.mule.weave.v2.interpreted.ExecutionContext.runInNewFrame$(ExecutionContext.scala:181)
+	at org.mule.weave.v2.interpreted.DefaultExecutionContext.runInNewFrame(ExecutionContext.scala:364)
+	at org.mule.weave.v2.interpreted.node.UsingNode.doExecute(UsingNode.scala:12)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.UsingNode.execute(UsingNode.scala:9)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.doExecute(DocumentNode.scala:30)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute(ValueNode.scala:26)
+	at org.mule.weave.v2.interpreted.node.ValueNode.execute$(ValueNode.scala:21)
+	at org.mule.weave.v2.interpreted.node.structure.DocumentNode.execute(DocumentNode.scala:12)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.$anonfun$writeWith$3(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeValue(Writer.scala:162)
+	at org.mule.weave.v2.module.writer.WriterHelper$.writeAndGetResult(Writer.scala:140)
+	at org.mule.weave.v2.interpreted.InterpretedMappingExecutableWeave.writeWith(InterpreterMappingCompilerPhase.scala:271)
+	at org.mule.weave.v2.runtime.DataWeaveScript.doWrite(DataWeaveScriptingEngine.scala:783)
+	at org.mule.weave.v2.runtime.DataWeaveScript.write(DataWeaveScriptingEngine.scala:699)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.TransformationIntoPOJO.loadDatFileIntoPOJO(TransformationIntoPOJO.java:45)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo.LoadDatFile(LoadDatFileIntoPojo.java:66)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration.processDoneFiles(OneIteration.java:59)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.IterateOverDoneFileEntries.iterateOverDoneFile(IterateOverDoneFileEntries.java:51)
+	at com.kmmaltairlines.hip.tdbingester.poc_tdb.Main.scheduledFileProcessing(Main.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124)
+	at io.micrometer.observation.Observation.observe(Observation.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842), while reading `payload` as TextPlain.
+Trace:
+  at main (Unknown)
+2025-03-10 17:47:39 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=TktPayment_20240521, numRecords=21992, success=false, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:36.9724264, dateEnded=2025-03-10 17:47:39.7149924]
+2025-03-10 17:47:39 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:42 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:47:42 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - No records were present in the TDB file. Skipping.
+2025-03-10 17:47:42 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=TKTFees_20240521, numRecords=0, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:39.7159866, dateEnded=2025-03-10 17:47:42.0174447]
+2025-03-10 17:47:42 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:46 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:47:46 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:47:46 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=TktCouponEMD_20240521, numRecords=6065, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:42.0184484, dateEnded=2025-03-10 17:47:46.4186802]
+2025-03-10 17:47:46 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
+2025-03-10 17:47:51 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully transformed file into POJOs.
+2025-03-10 17:47:51 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Successfully persisted all records in the respective table.
+2025-03-10 17:47:51 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration - EXECUTION DETAILS------->TDB_Maintenance [runId=777fd87f-b2dd-4aae-bf69-4e12451e5111, fileName=ResPassenger_20240521, numRecords=15153, success=true, encFileName=km_batch_extract_20240521_dat.zip.gpg, dateStarted=2025-03-10 17:47:46.4195992, dateEnded=2025-03-10 17:47:51.9250585]
+2025-03-10 17:47:51 [scheduling-1] INFO  com.kmmaltairlines.hip.tdbingester.poc_tdb.LoadDatFileIntoPojo - Processing .dat file.
