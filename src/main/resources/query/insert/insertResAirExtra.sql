@@ -1,0 +1,31 @@
+INSERT INTO ResAirExtra (
+	ID,	PNRLocatorID, PNRCreateDate, FromDateTime, RFICode, 
+	CommercialName, SSIMCode, SSRCode, BoardPointAirportCode, OffPointAirportCode, 
+	OwningCarrierCode, FeeVendorCode, BookingMethodCode, FulfillTypeCode, EMDTypeCode, 
+	RefundReissueCode, FormOfRefundCode, FrequentTravelerTierLevel, BrandedFareId, TourCode, 
+	ServiceChargeCode, FeeApplicationCode, FirstTravelDate, LastTravelDate, HistoryActionCode, 
+	TTYConfirmationDateTime, PurchaseByDateTime, BookingSourceCode, EMDNbr, EMDCouponNbr, 
+	ETicketNbr, ETicketCouponNbr, SSRDirectFulfillCode,  NonEMDFormofPayment, FeeWaivedCode, 
+	AEBasePriceAmount, AEBaseCurrencyCode, AEEquivalentPaidAmount, AEEquivalentAmtCurrencyCd, ItemCount, 
+	AETotalPriceAmount, PassengerTypeCode, TaxIncludedCode, SegmentUseCode, SegmentBookedDate, 
+	SegmentBookedTime, NonEMDFOPCCCode, NonEMDFOPMaskedCCNbr, NonEMDFOPCCExpryDt, GroupCode, 
+	SimultaneousTicketPurchaseInd, CommissionInd, InterlineInd, FeeGuaranteedInd, EMDPaperInd, 
+	RFISubCode, RecordUpdateDate, RecordUpdateTime, IntraPNRSetNbr, PNRPassengerSeqId, 
+	AEFLight, AECurrentSegmentStatusCode, AEPreviousSegmentStatus, ACSCount, AssociatedSegmentCount, 
+	tdb_created_at) 
+VALUES (
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?,
+    ?
+);
