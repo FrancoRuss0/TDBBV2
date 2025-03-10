@@ -15,7 +15,7 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class EPR_KeywordSql {
 	@Autowired
-	Utility utility;
+	private Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -24,17 +24,15 @@ public class EPR_KeywordSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public void insert(List<EPR_Keyword> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<EPR_Keyword> flights,Connection connection) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/persistEPR_Keyword.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 
 			// Add the flight data to the batch for bulk insertion

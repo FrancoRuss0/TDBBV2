@@ -8,6 +8,8 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -23,7 +25,7 @@ import com.kmmaltairlines.hip.tdbingester.sftp.QuerySingleFileProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.kmmaltairlines.hip.tdbingester")
 @EnableScheduling
 public class Main {
 
@@ -32,6 +34,8 @@ public class Main {
 
 	@Autowired
 	private SqlProperty sqlProperty;
+	
+	@Autowired
 	private Utility utility;
 
 	public static void main(String[] args) throws Exception {
@@ -45,8 +49,6 @@ public class Main {
 	public void scheduledFileProcessing() throws Exception {
 	    String filePath = "C:\\tdb"; // Specify the folder path to monitor
 	    String destinationPath = "C:\\tdb1\\"; // Specify the folder path to move processed files
-	    boolean shouldBreak = false;
-	    String prova="a";
 	    File folder = new File(filePath);
 	    HashMap<String, String> filesUnzipped = new HashMap<>();
 	    char[] passPhrase = "ESBA1rmalta.".toCharArray(); // Encryption passphrase for decryption
@@ -61,7 +63,7 @@ public class Main {
 
 	                // If the file is a ".done" file, proceed with processing
 	                if (fileName.endsWith(".done")) {
-	                    // Read the contents of the ".done" file
+	                    // Read the contents of the ".done" file 
 	                    ArrayList<String> readedFile = utility.readFile(file);
 
 	                    // Create a list of DoneFileEntry objects from the read data

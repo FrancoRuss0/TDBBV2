@@ -9,14 +9,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxFlight;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSPaxFlightSql {
 	
-	@Autowired
-	Utility utility;
 	
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
@@ -25,22 +22,17 @@ public class ACSPaxFlightSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException 
 	 */
-	@SuppressWarnings("static-access")
-	public  void insert(List<ACSPaxFlight> flights,Connection connessione) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
+	public void insert(List<ACSPaxFlight> flights,Connection connection) throws SQLException, IOException {
+
 		PreparedStatement stmt = null;
-
+		Utility utility=new Utility();
 			// Read the SQL insert query from the file
-			String sql = utility.loadSqlFromFile("src/main/resources/query/InsertACSPaxFlight.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSPaxFlight.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
-			int cont=0;
 			// Add the flight data to the batch for bulk insertion
 			for (ACSPaxFlight ACSPaxFlight : flights) {
 			    stmt.setString(1, ACSPaxFlight.getSourceSystemID());
@@ -178,13 +170,10 @@ public class ACSPaxFlightSql {
 			    stmt.setObject(117, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			    
 			    stmt.addBatch();
-			    cont++;
 			}
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();

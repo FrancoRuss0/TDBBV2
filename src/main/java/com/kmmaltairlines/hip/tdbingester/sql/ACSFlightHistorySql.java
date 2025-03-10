@@ -14,8 +14,6 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSFlightHistorySql {
 	
-	@Autowired
-	Utility utility;
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -23,17 +21,15 @@ public class ACSFlightHistorySql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException 
 	 */
-	public void insert(List<ACSFlightHistory> acsFlightHistory,Connection connessione) throws SQLException, IOException {
+	public void insert(List<ACSFlightHistory> acsFlightHistory,Connection connection) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
 		PreparedStatement stmt = null;
-
+		Utility utility=new Utility();
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSFlightHistory.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 			// Disable auto-commit for batch processing
 

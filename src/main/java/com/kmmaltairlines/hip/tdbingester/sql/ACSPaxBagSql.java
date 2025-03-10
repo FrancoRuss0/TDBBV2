@@ -7,27 +7,21 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxBag;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSPaxBagSql {
-	@Autowired
-	Utility utility;
 	
-	@SuppressWarnings("static-access")
-	public void insert(List<ACSPaxBag> flights,Connection connessione) throws SQLException, IOException {
+	
+	public  void insert(List<ACSPaxBag> flights,Connection connection) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
-		PreparedStatement stmt = null;
-
+			PreparedStatement stmt = null;
+			Utility utility=new Utility();
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSPaxBag.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 
 			// Add the flight data to the batch for bulk insertion
@@ -143,10 +137,7 @@ public class ACSPaxBagSql {
 	        	
 	        	stmt.addBatch();
 			}
-
-			// Execute the batch insert
-			int[] results = stmt.executeBatch();
-
+			stmt.executeBatch();
 			stmt.close();
 	}
 }

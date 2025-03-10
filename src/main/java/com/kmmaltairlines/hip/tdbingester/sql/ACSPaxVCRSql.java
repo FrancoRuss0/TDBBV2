@@ -13,8 +13,7 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxVCR;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSPaxVCRSql {
-	@Autowired
-	Utility utility;
+
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -23,17 +22,16 @@ public class ACSPaxVCRSql {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("static-access")
-	public void insert(List<ACSPaxVCR> flights,Connection connessione) throws SQLException, IOException {
+	public void insert(List<ACSPaxVCR> flights,Connection connection) throws SQLException, IOException {
 
-		// Establish database connection
-		Connection conn = connessione;
+
 		PreparedStatement stmt = null;
-
+		Utility utility=new Utility();
 			// Read the SQL insert query from the file
-			String sql = utility.loadSqlFromFile("src/main/resources/query/insertACSPaxVCR.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSPaxVCR.sql");
 
 			// Create a PreparedStatement to execute the SQL query
-			stmt = conn.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 
 			// Add the flight data to the batch for bulk insertion
