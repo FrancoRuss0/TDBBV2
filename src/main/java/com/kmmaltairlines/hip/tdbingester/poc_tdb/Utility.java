@@ -27,7 +27,7 @@ public class Utility {
      * @param file - The file to be read.
      * @return An ArrayList of strings where each element is a line from the file.
      */
-    public static ArrayList<String> readFile(File file) {
+    public ArrayList<String> readFile(File file) {
         ArrayList<String> list = new ArrayList<String>();  // List to hold lines of the file
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {  // BufferedReader to read the file line by line
             String line;
@@ -48,7 +48,7 @@ public class Utility {
      * @param destinationPath - The new destination where the file should be moved.
      * @throws IOException - If an I/O error occurs during the file move operation.
      */
-    public static void moveFile(File originalPath, String destinationPath) throws IOException {
+    public void moveFile(File originalPath, String destinationPath) throws IOException {
         File destination = new File(destinationPath + originalPath.getName());  // Create a new file object for the destination
         Files.move(originalPath.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);  // Move the file to the new destination
     }
@@ -59,7 +59,7 @@ public class Utility {
      * @return InputStream - The InputStream for the GPG file.
      * @throws FileNotFoundException - If the GPG file is not found.
      */
-    public static InputStream readGpg(String string) throws FileNotFoundException {
+    public InputStream readGpg(String string) throws FileNotFoundException {
        BufferedReader br = new BufferedReader(new FileReader(string));  // BufferedReader to read the file
         return null;  // Currently, this method is incomplete and returns null
     }
@@ -69,7 +69,7 @@ public class Utility {
      * @param arrayString - An ArrayList of strings where each string is in the format "key=value".
      * @return An ArrayList of DoneFileEntry objects created from the strings.
      */
-    public static ArrayList<DoneFileEntry> createDoneFileEntry(ArrayList<String> arrayString) {
+    public ArrayList<DoneFileEntry> createDoneFileEntry(ArrayList<String> arrayString) {
         ArrayList<DoneFileEntry> doneFileEntryList = new ArrayList<>();
         for (String element : arrayString) {
             if (element.contains("=")) {  // Only process elements that contain an equal sign
@@ -89,7 +89,7 @@ public class Utility {
      * @param doneFileEntryList - The list of DoneFileEntry objects.
      * @return A DoneFile object populated with the provided data.
      */
-    public static DoneFile createDoneFile(String fileName, ArrayList<String> readedFile,
+    public DoneFile createDoneFile(String fileName, ArrayList<String> readedFile,
                                           ArrayList<DoneFileEntry> doneFileEntryList) {
         DoneFile doneFile = new DoneFile();
         doneFile.setFileName(fileName);  // Set the file name
@@ -107,7 +107,7 @@ public class Utility {
      * @return A boolean indicating whether all file entries are present.
      * @throws Exception If any file entries are missing, an exception is thrown.
      */
-    public static boolean compareFileEntries(ArrayList<DoneFileEntry> dotFiles, HashMap<String, String> doneFileEntries,
+    public boolean compareFileEntries(ArrayList<DoneFileEntry> dotFiles, HashMap<String, String> doneFileEntries,
                                               DoneFile doneFile) throws Exception {
     	String baseFilename;
         int count = 0;
@@ -146,7 +146,7 @@ public class Utility {
      * Returns the current UTC timestamp.
      * @return A Timestamp object representing the current UTC time.
      */
-    public static Timestamp nowUtcTimestamp() {
+    public Timestamp nowUtcTimestamp() {
         return Timestamp.from(Instant.now());  // Use Instant to get the current UTC timestamp
     }
 
@@ -155,7 +155,7 @@ public class Utility {
      * @param inputString - The input string to be processed.
      * @return A 2D array where each row is an array of strings representing columns.
      */
-    public static String[][] processInputString(String inputString) {
+    public String[][] processInputString(String inputString) {
         // Split the input string into rows based on newlines
         String[] rows = inputString.split("\n");
         String[][] result = new String[rows.length][];  // Initialize a 2D array to hold the result
@@ -192,7 +192,7 @@ public class Utility {
 	 * @return The content of the SQL file as a string
 	 * @throws IOException - If an error occurs while reading the file
 	 */
-	public static String loadSqlFromFile(String filePath) throws IOException {
+	public String loadSqlFromFile(String filePath) throws IOException {
 		// Reads the entire content of the SQL file
 		return new String(Files.readAllBytes(Paths.get(filePath)));
 	}

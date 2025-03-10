@@ -7,12 +7,15 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlight;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 public class ACSFlightSql {
-
+	
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts ACSFlight records into the database in bulk.
 	 * 
@@ -20,25 +23,23 @@ public class ACSFlightSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException - If an error occurs while reading SQL files
 	 */
-	@SuppressWarnings("static-access")
-	public static void insert(List<ACSFlight> flights,Connection connessione) throws SQLException, IOException {
-		Utility a = new Utility();
+	public void insert(List<ACSFlight> acsFlights,Connection connessione) throws SQLException, IOException {
+
 
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/InsertACSFlight.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSFlight.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
 
 			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
-			for (ACSFlight flight : flights) {
+			for (ACSFlight flight : acsFlights) {
 				stmt.setString(1, flight.getSourceSystemID());
 				stmt.setString(2, flight.getAirlineCode());
 				stmt.setString(3, flight.getFltNbr());
@@ -81,17 +82,16 @@ public class ACSFlightSql {
 				stmt.setObject(40, flight.getReservedFutureUse7(), Types.NUMERIC);
 				stmt.setObject(41, flight.getReservedFutureUse8(), Types.NUMERIC);
 				stmt.setObject(42, flight.getReservedFutureUse9(), Types.NUMERIC);
-				stmt.setObject(43, a.nowUtcTimestamp(), Types.TIMESTAMP);
+				stmt.setObject(43, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 				// Add the statement to the batch
 				stmt.addBatch();
 			}
 
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
-			// Commit the transaction
-			conn.commit();
+
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
-			stmt.close();
+	        stmt.close();
 	}
 }

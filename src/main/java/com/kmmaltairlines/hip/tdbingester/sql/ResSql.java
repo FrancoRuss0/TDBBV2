@@ -7,9 +7,14 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.Res;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 public class ResSql {
+	
+	@Autowired
+	Utility utility;
 	/**
 	 * Inserts Res records into the database in bulk.
 	 * 
@@ -17,22 +22,16 @@ public class ResSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException - If an error occurs while reading SQL files
 	 */
-	@SuppressWarnings("static-access")
-	public static void insert(List<Res> reservation,Connection connessione) throws SQLException, IOException {
-		Utility a = new Utility();
-
+	public void insert(List<Res> reservation,Connection connessione) throws SQLException, IOException {
 		// Establish database connection
 		Connection conn = connessione;
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = Utility.loadSqlFromFile("src/main/resources/query/InsertACSFlight.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertRes.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = conn.prepareStatement(sql);
-
-			// Disable auto-commit for batch processing
-			conn.setAutoCommit(false);
 
 			// Add the flight data to the batch for bulk insertion
 			for (Res res : reservation) {
@@ -67,7 +66,7 @@ public class ResSql {
 	                stmt.setString(29, res.getCreateHomeCityCode());
 	                stmt.setString(30, res.getCodeSharePNRInd());
 	                stmt.setString(31, res.getMCPCarrierInd());
-	                stmt.setObject(32, Utility.nowUtcTimestamp(), Types.TIMESTAMP);
+	                stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 	                // Add the statement to the batch
 	                stmt.addBatch();
 			}
@@ -75,7 +74,6 @@ public class ResSql {
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
 			// Commit the transaction
-			conn.commit();
 
 			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();

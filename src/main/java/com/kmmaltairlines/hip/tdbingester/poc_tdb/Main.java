@@ -32,6 +32,7 @@ public class Main {
 
 	@Autowired
 	private SqlProperty sqlProperty;
+	private Utility utility;
 
 	public static void main(String[] args) throws Exception {
 		// Start the Spring Boot application
@@ -61,13 +62,13 @@ public class Main {
 	                // If the file is a ".done" file, proceed with processing
 	                if (fileName.endsWith(".done")) {
 	                    // Read the contents of the ".done" file
-	                    ArrayList<String> readedFile = Utility.readFile(file);
+	                    ArrayList<String> readedFile = utility.readFile(file);
 
 	                    // Create a list of DoneFileEntry objects from the read data
-	                    ArrayList<DoneFileEntry> doneFileEntryList = Utility.createDoneFileEntry(readedFile);
+	                    ArrayList<DoneFileEntry> doneFileEntryList = utility.createDoneFileEntry(readedFile);
 
 	                    // Create a DoneFile object containing metadata and data from the ".done" file
-	                    DoneFile doneFile = Utility.createDoneFile(fileName, readedFile, doneFileEntryList);
+	                    DoneFile doneFile = utility.createDoneFile(fileName, readedFile, doneFileEntryList);
 
 	                    // Generate the name of the encrypted file associated with the ".done" file
 	                    String encFileName = doneFile.getFileName().substring(0, doneFile.getFileName().length() - 5)
@@ -93,7 +94,7 @@ public class Main {
 	                        	        filesUnzipped = unzip.unzipToMemory(decryptedFile);
 
 	                        	        // Validate the file content by comparing with entries from the ".done" file
-	                        	        if (Utility.compareFileEntries(doneFileEntryList, filesUnzipped, doneFile)) {
+	                        	        if (utility.compareFileEntries(doneFileEntryList, filesUnzipped, doneFile)) {
 	                        	            // Check if the file size matches the expected size from the ".done" file
 	                        	            if (countingInputStream.available() != doneFile.getNumberOfBytes()) {
 	                        	                throw new IOException("File size mismatch between the done file and the decrypted file.");
@@ -103,14 +104,14 @@ public class Main {
 	                        	                iterateOverDoneFile.iterateOverDoneFile(filesUnzipped, doneFileEntryList, encFileName);
 
 	                        	                // Move the processed file to the destination folder
-	                        	                Utility.moveFile(file, destinationPath);
+	                        	                utility.moveFile(file, destinationPath);
 	                        	            }
 	                        	        }
 	                        	    }
 	                        	} catch (IOException e) {
 	                        	    // Log any error during file processing, but continue processing the next file
 	                        	    logger.error("Error processing file " + file.getName() + ": " + e.getMessage());
-	                        	    Utility.moveFile(file, destinationPath);
+	                        	    utility.moveFile(file, destinationPath);
 	                        	    break;
 	                        	}
 
@@ -119,7 +120,7 @@ public class Main {
 	                } else {
 	                    // If the file is not a ".done" file, move it to the destination folder
 	                    System.out.println("File not .done " + file);
-	                    Utility.moveFile(file, destinationPath);
+	                    utility.moveFile(file, destinationPath);
 	                }
 	            }
 	            

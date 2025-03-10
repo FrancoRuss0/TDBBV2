@@ -34,7 +34,7 @@ public class OneIteration {
      * @return String - returns the result of the operation (as a string representation of the TDB_Maintenance object).
      */
     @SuppressWarnings("static-access")
-	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> dotFiles, String encFileName) {
+	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName) {
         
         // Create a utility object for timestamp and other utility methods
         Utility utility = new Utility();
@@ -56,13 +56,13 @@ public class OneIteration {
         LoadDatFileIntoPojo LoadFile = new LoadDatFileIntoPojo(sqlProperty);
         
         // Call the method to load the .dat file and process it
-        isExceptionThrown = LoadFile.LoadDatFile(baseFilename, doneFileContent, dotFiles);
+        isExceptionThrown = LoadFile.LoadDatFile(baseFilename, doneFileContent, doneFileEntry);
 
         // If no exception is thrown, populate the TDB_Maintenance object with success data
         if (isExceptionThrown == false) {
             tdbMaintenance.setRunId(run_id.toString());
             tdbMaintenance.setFileName(fileName);
-            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, dotFiles));  // Get number of records for the file
+            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records for the file
             tdbMaintenance.setSuccess(isExceptionThrown);  // Set success flag to false since no error occurred
             tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
             tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
@@ -71,7 +71,7 @@ public class OneIteration {
             // If an exception was thrown, log the failure data in TDB_Maintenance object
             tdbMaintenance.setRunId(run_id.toString());
             tdbMaintenance.setFileName(fileName);
-            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, dotFiles));  // Get number of records for the file
+            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records for the file
             tdbMaintenance.setSuccess(isExceptionThrown);  // Set success flag to true since an exception occurred
             tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
             tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
