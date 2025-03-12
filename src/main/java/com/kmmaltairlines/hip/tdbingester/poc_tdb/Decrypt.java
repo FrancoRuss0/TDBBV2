@@ -22,7 +22,9 @@ import org.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
 import org.bouncycastle.openpgp.operator.jcajce.JcaPGPDigestCalculatorProviderBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBEDataDecryptorFactoryBuilder;
 import org.bouncycastle.util.io.Streams;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Decrypt {
 
 	static PGPPublicKey readPublicKey(String fileName) throws IOException, PGPException {

@@ -1,62 +1,67 @@
 package com.kmmaltairlines.hip.tdbingester.poc_tdb;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
+import com.kmmaltairlines.hip.tdbingester.sql.ResSql;
 
+@Component
 public class PreprocessTdbBatchSubflow {
 
-    // Static list to hold parent models (Res and TktDocument files)
+	@Autowired
+	private Utility utility;
+
+	@Autowired
+	private OneIteration oneIteration;
+
+	@Autowired
+	private ResSql resSql;
+
+	// Static list to hold parent models (Res and TktDocument files)
 	static ArrayList<DoneFileEntry> parentModels = new ArrayList<>();
 
-    // Method to set the parent models based on the filenames (Res and TktDocument)
-	public static void setParentModel(ArrayList<DoneFileEntry> doneFileEntryList) {
-        // Iterate through the done file entries
-		for (DoneFileEntry entry : doneFileEntryList) {
-            // Check if the filename is "Res" and add it to the parentModels list
-			if (entry.getFilename().equals("Res")) {
-				parentModels.add(entry);
-            // Check if the filename is "TktDocument" and add it to the parentModels list
-			} else if (entry.getFilename().equals("TktDocument")) {
-				parentModels.add(entry);
+	// Main processing method to process the done file entry list
+	public HashMap<String, String> process(HashMap<String, String> doneFileEntryList, UUID run_id,
+			ArrayList<DoneFileEntry> dotFiles, String encFileName, Connection connection)
+			throws IOException, SQLException {
+
+		HashMap<String, String> doneFileModified = new HashMap<>();
+
+		parentModels = utility.loadParentModels(dotFiles);
+
+		// TODO Clear temporary tables
+		resSql.deleteTemp(connection);
+		// Stampa tutte le chiavi della mappa
+		
+		
+		for (String key : doneFileEntryList.keySet()) {
+			String baseFilename = key.split("_")[0];
+			if (baseFilename.equals("Res")) {
+				String result = oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
+						dotFiles, encFileName, connection);
 			}
+			
 		}
-        // Print out the parent models for debugging or verification
-		System.out.println(parentModels);
-	}
 
-    // Method to process "Res" entries (to be implemented in the future)
-	public static void processRes(ArrayList<DoneFileEntry> parentModels) {
-		// TODO: Implement logic for processing "Res" entries
-		// You could call a private method to handle each entry or flow.
-	}
-
-    // Method to process "TktDocument" entries (to be implemented in the future)
-	public static void processTktDocument(ArrayList<DoneFileEntry> parentModels) {
-		// TODO: Implement logic for processing "TktDocument" entries
-		// You could call a private method to handle each entry or flow.
-	}
-
-    // Main processing method to process the done file entry list
-	public ArrayList<DoneFileEntry> process(ArrayList<DoneFileEntry> doneFileEntryList) {
-        // Set the parent models (Res and TktDocument) from the done file entries
-		setParentModel(doneFileEntryList);
-        // Process the "Res" files
-		processRes(parentModels);
-        // Process the "TktDocument" files
-		processTktDocument(parentModels);
-        
-        // Create an iterator to remove "Res" and "TktDocument" files from the original list
-		Iterator<DoneFileEntry> iterator = doneFileEntryList.iterator();
-		while (iterator.hasNext()) {
-			DoneFileEntry entry = iterator.next();
-            // If the entry is "Res" or "TktDocument", remove it from the list
-			if (entry.getFilename().equals("Res") || entry.getFilename().equals("TktDocument")) {
-				iterator.remove();
-			}
+		for (String key : doneFileEntryList.keySet()) {
+		    // Verifica che la chiave non sia "Res" e che non contenga "TktDocument"
+		    if (!key.equals("Res") && !key.equals("TktDocument")) {
+		        doneFileModified.put(key, doneFileEntryList.get(key));  
+		    }
 		}
-        // Return the processed list without the "Res" and "TktDocument" entries
-		return doneFileEntryList;
+
+	
+
+		// System.out.println(doneFileModified);
+		// System.exit(0);
+		return doneFileModified;
 	}
 }

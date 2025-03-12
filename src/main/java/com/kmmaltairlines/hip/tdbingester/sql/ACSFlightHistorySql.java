@@ -5,15 +5,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.MethodInterface;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
-public class ACSFlightHistorySql {
+@Component
+public class ACSFlightHistorySql implements MethodInterface {
+	@Autowired
+	private Utility utility;
 	
+	private static final Logger logger = LogManager.getLogger(ACSFlightHistorySql.class);
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -21,10 +31,14 @@ public class ACSFlightHistorySql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException 
 	 */
-	public void insert(List<ACSFlightHistory> acsFlightHistory,Connection connection) throws SQLException, IOException {
-
+	@Override
+	public void insert(List<Object> flights, Connection connection) throws SQLException, IOException {
+		ArrayList<ACSFlightHistory> trasformACSFlightHistory = new ArrayList<ACSFlightHistory>();
+		for (Object flight : flights) {
+			trasformACSFlightHistory.add((ACSFlightHistory) flight);
+		}
 		PreparedStatement stmt = null;
-		Utility utility=new Utility();
+
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSFlightHistory.sql");
 
@@ -34,7 +48,7 @@ public class ACSFlightHistorySql {
 			// Disable auto-commit for batch processing
 
 			// Add the flight data to the batch for bulk insertion
-			for (ACSFlightHistory flightHistory : acsFlightHistory) {
+			for (ACSFlightHistory flightHistory : trasformACSFlightHistory) {
 	        	stmt.setString(1, flightHistory.getSourceSystemID());
 	            stmt.setObject(2, flightHistory.getACSFltSegDate(), Types.TIMESTAMP);  
 	            stmt.setString(3, flightHistory.getAirlineCode());
@@ -60,8 +74,15 @@ public class ACSFlightHistorySql {
 			int[] results = stmt.executeBatch();
 			// Commit the transaction
 
-			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
+			logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
 	        stmt.close();
+		
+	}
+	@Override
+	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
+		return null;
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -9,4 +9,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	Keyword : cast.toString(record[2]),
 	RecordStatus : cast.toString(record[3]),
 	EffectiveDate : cast.toDate(record[4],"yyyy-MM-dd")
-} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.EPR_keyword"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Keyword"}

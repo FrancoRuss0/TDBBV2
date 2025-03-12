@@ -295,4 +295,23 @@ public class Res extends PNRRecord {
 		return super.equals(obj);
 	}
 
+	@Override
+	public String toString() {
+		return "Res [ID=" + ID + ", CreateAAACityCode=" + CreateAAACityCode + ", CreationCountryCode="
+				+ CreationCountryCode + ", GrpBookingInd=" + GrpBookingInd + ", CorporateInd=" + CorporateInd
+				+ ", NbrinParty=" + NbrinParty + ", TTYAirlineCode=" + TTYAirlineCode + ", TTYRecordLocator="
+				+ TTYRecordLocator + ", TTYPosInformation=" + TTYPosInformation + ", SeatCount=" + SeatCount
+				+ ", SourceSystemId=" + SourceSystemId + ", PNRCreateTime=" + PNRCreateTime + ", CreateAgentSine="
+				+ CreateAgentSine + ", NumberOfInfants=" + NumberOfInfants + ", ClaimIndicator=" + ClaimIndicator
+				+ ", CreateIATANr=" + CreateIATANr + ", PurgeDate=" + PurgeDate + ", MaxIntraPNRSetNbr="
+				+ MaxIntraPNRSetNbr + ", DivideOrigPNRLocatorID=" + DivideOrigPNRLocatorID + ", OrigPNRCreateDate="
+				+ OrigPNRCreateDate + ", OrigPNRCreateTime=" + OrigPNRCreateTime + ", DivideImagePNRInd="
+				+ DivideImagePNRInd + ", CreateAAAOACCityCode=" + CreateAAAOACCityCode + ", CreateAAAOACAcctCode="
+				+ CreateAAAOACAcctCode + ", OACDefaultPartitionCode=" + OACDefaultPartitionCode + ", OACCityCode="
+				+ OACCityCode + ", OACAcctCode=" + OACAcctCode + ", OACStationNbr=" + OACStationNbr
+				+ ", CreateHomeCityCode=" + CreateHomeCityCode + ", CodeSharePNRInd=" + CodeSharePNRInd
+				+ ", MCPCarrierInd=" + MCPCarrierInd + "]";
+	}
+	
+	
 }

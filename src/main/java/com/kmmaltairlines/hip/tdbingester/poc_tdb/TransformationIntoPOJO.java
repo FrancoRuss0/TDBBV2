@@ -11,7 +11,9 @@ import org.mule.weave.v2.runtime.DataWeaveResult;
 import org.mule.weave.v2.runtime.DataWeaveScript;
 import org.mule.weave.v2.runtime.DataWeaveScriptingEngine;
 import org.mule.weave.v2.runtime.ScriptingBindings;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TransformationIntoPOJO {
 
     /**
@@ -25,9 +27,8 @@ public class TransformationIntoPOJO {
      * @throws ClassNotFoundException - If the dynamically loaded POJO class is not found.
      */
     @SuppressWarnings("unchecked")
-	public ArrayList<Object> loadDatFileIntoPOJO(String inputString, String filename)
+	public ArrayList<Object> loadDatFileIntoPOJO(String inputString, String baseFilename)
             throws IOException, ClassNotFoundException {
-        
         // Path to the DWL (DataWeave Language) script file
         String directory = "src\\main\\java\\transformations\\prova.dwl";
 
@@ -43,10 +44,10 @@ public class TransformationIntoPOJO {
         // Execute the DataWeave script with the provided bindings and capture the result
         DataWeaveResult result = compile
                 .write(new ScriptingBindings().addBinding("payload", inputString, "text/plain", new HashMap<>())
-                        .addBinding("filename", filename, "text/plain", new HashMap<>()));
+                        .addBinding("filename", baseFilename, "text/plain", new HashMap<>()));
 
         // Dynamically construct the class name based on the filename, assuming it's the name of a POJO class
-        String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + filename;
+        String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
 
         // Dynamically load the class corresponding to the filename
         Class<?> clazz = Class.forName(className);

@@ -5,17 +5,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.kmmaltairlines.hip.tdbingester.filepojos.ACSFlightHistory;
 import com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Header;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.MethodInterface;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
-public class EPR_headerSql {
+@Component
+public class EPR_HeaderSql implements MethodInterface{
 	@Autowired
 	private Utility utility;
+	
+	private static final Logger logger = LogManager.getLogger(EPR_HeaderSql.class);
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -23,21 +31,24 @@ public class EPR_headerSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException 
 	 */
-	@SuppressWarnings("static-access")
-	public void insert(List<EPR_Header> flights,Connection connection) throws SQLException, IOException {
-
+	@Override
+	public void insert(List<Object> flights, Connection connection) throws SQLException, IOException {
+		ArrayList<EPR_Header> trasformEPR_Header = new ArrayList<EPR_Header>();
+		for (Object flight : flights) {
+			trasformEPR_Header.add((EPR_Header) flight);
+		}
 
 		PreparedStatement stmt = null;
 
 			// Read the SQL insert query from the file
-			String sql = utility.loadSqlFromFile("src/main/resources/query/InsertEpr_header.sql");
+			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/InsertEpr_header.sql");
 
 			// Create a PreparedStatement to execute the SQL query
 			stmt = connection.prepareStatement(sql);
 
 
 			// Add the flight data to the batch for bulk insertion
-			for (EPR_Header EPR_header : flights) {
+			for (EPR_Header EPR_header : trasformEPR_Header) {
 				stmt.setString(1, EPR_header.getPCC_Cd()); // PCC_Cd
 				stmt.setString(2, EPR_header.getUser_Id()); // User_Id
 				stmt.setString(3, EPR_header.getAccount_Cd()); // Account_Cd
@@ -150,9 +161,14 @@ public class EPR_headerSql {
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
 
-
-			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
-			stmt.close();
+			logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
+	        stmt.close();
+	}
+	@Override
+	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
+		return null;
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

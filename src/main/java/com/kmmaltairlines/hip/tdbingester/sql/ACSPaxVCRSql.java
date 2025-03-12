@@ -5,15 +5,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxVCR;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.MethodInterface;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
-public class ACSPaxVCRSql {
-
+@Component
+public class ACSPaxVCRSql implements MethodInterface{
+	@Autowired
+	private Utility utility;
+	
+	private static final Logger logger = LogManager.getLogger(ACSPaxVCRSql.class);
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -21,12 +31,14 @@ public class ACSPaxVCRSql {
 	 * @throws SQLException - If an error occurs while executing the SQL query
 	 * @throws IOException 
 	 */
-	@SuppressWarnings("static-access")
-	public void insert(List<ACSPaxVCR> flights,Connection connection) throws SQLException, IOException {
 
-
+	public void insert(List<Object> flights, Connection connection) throws SQLException, IOException {
+		ArrayList<ACSPaxVCR> trasformACSPaxVCR = new ArrayList<ACSPaxVCR>();
+		for (Object flight : flights) {
+			trasformACSPaxVCR.add((ACSPaxVCR) flight);
+		}
+		
 		PreparedStatement stmt = null;
-		Utility utility=new Utility();
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSPaxVCR.sql");
 
@@ -35,7 +47,7 @@ public class ACSPaxVCRSql {
 
 
 			// Add the flight data to the batch for bulk insertion
-			for (ACSPaxVCR ACSPaxVCR : flights) {
+			for (ACSPaxVCR ACSPaxVCR : trasformACSPaxVCR) {
 	        	stmt.setString(1, ACSPaxVCR.getSourceSystemID());
 	            stmt.setString(2, ACSPaxVCR.getPNRLocatorId());  
 	            stmt.setObject(3, ACSPaxVCR.getPNRCreateDate(), Types.TIMESTAMP);
@@ -88,8 +100,13 @@ public class ACSPaxVCRSql {
 			// Execute the batch insert
 			int[] results = stmt.executeBatch();
 
-
-			System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
-			stmt.close();
+			logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
+	        stmt.close();
+	}
+	@Override
+	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
+		return null;
+		// TODO Auto-generated method stub
+		
 	}
 }

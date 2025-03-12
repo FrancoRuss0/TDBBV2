@@ -5,18 +5,34 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.kmmaltairlines.hip.tdbingester.filepojos.ACSPaxBag;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.MethodInterface;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
-public class ACSPaxBagSql {
+@Component
+public class ACSPaxBagSql implements MethodInterface{
+	@Autowired
+	private Utility utility;
 	
+	private static final Logger logger = LogManager.getLogger(ACSPaxBagSql.class);
 	
-	public  void insert(List<ACSPaxBag> flights,Connection connection) throws SQLException, IOException {
+	@Override
+	public void insert(List<Object> flights, Connection connection) throws SQLException, IOException {
+		ArrayList<ACSPaxBag> trasformACSPaxBag = new ArrayList<ACSPaxBag>();
+		for (Object flight : flights) {
+			trasformACSPaxBag.add((ACSPaxBag) flight);
+		}
 
 			PreparedStatement stmt = null;
-			Utility utility=new Utility();
 			// Read the SQL insert query from the file
 			String sql = utility.loadSqlFromFile("src/main/resources/query/insert/insertACSPaxBag.sql");
 
@@ -25,7 +41,7 @@ public class ACSPaxBagSql {
 
 
 			// Add the flight data to the batch for bulk insertion
-			for (ACSPaxBag ACSPaxBag : flights) {
+			for (ACSPaxBag ACSPaxBag : trasformACSPaxBag) {
 				 stmt.setString(1, ACSPaxBag.getSourceSystemID());
 			        stmt.setString(2, ACSPaxBag.getPNRLocatorId());
 			        stmt.setDate(3, ACSPaxBag.getPNRCreateDate());
@@ -137,7 +153,16 @@ public class ACSPaxBagSql {
 	        	
 	        	stmt.addBatch();
 			}
-			stmt.executeBatch();
+			int[] results = stmt.executeBatch();
+			
+			logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
 			stmt.close();
+	}
+
+	@Override
+	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
+		return null;
+		// TODO Auto-generated method stub
+		
 	}
 }

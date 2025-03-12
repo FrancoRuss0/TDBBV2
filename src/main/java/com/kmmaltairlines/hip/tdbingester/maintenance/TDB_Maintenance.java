@@ -2,6 +2,9 @@ package com.kmmaltairlines.hip.tdbingester.maintenance;
 
 import java.sql.Timestamp;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TDB_Maintenance {
 
 	private String runId;

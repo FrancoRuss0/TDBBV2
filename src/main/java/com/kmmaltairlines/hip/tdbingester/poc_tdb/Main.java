@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,6 +18,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import com.google.common.io.CountingInputStream;
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
@@ -31,13 +34,26 @@ public class Main {
 
 	// Logger to record events and errors
 	private static final Logger logger = LogManager.getLogger(Main.class);
-
-	@Autowired
-	private SqlProperty sqlProperty;
 	
 	@Autowired
 	private Utility utility;
-
+	@Autowired
+	private IterateOverDoneFileEntries iterateOverDoneFileEntries;
+	@Autowired
+	private Decrypt decrypt;
+	@Autowired
+	private Unzip unzip;
+	
+	
+	@Value("${storage.db.jdbcUrl}")
+	private String url;
+	@Value("${storage.db.user}")
+	private String username;
+	@Value("${storage.db.password}")
+	private String password;
+	@Value("${pgp.passphrase}")
+	private String passphrase;
+	
 	public static void main(String[] args) throws Exception {
 		// Start the Spring Boot application
 		SpringApplication.run(Main.class, args);
@@ -47,11 +63,14 @@ public class Main {
 	// intervals
 	@Scheduled(fixedRateString = "${sftp.pollingFrequency}")
 	public void scheduledFileProcessing() throws Exception {
-	    String filePath = "C:\\tdb"; // Specify the folder path to monitor
+		Connection connection =  null;
+		//TODO aggiungere try			
+	    connection = DriverManager.getConnection(url, username, password);
+		String filePath = "C:\\tdb"; // Specify the folder path to monitor
 	    String destinationPath = "C:\\tdb1\\"; // Specify the folder path to move processed files
 	    File folder = new File(filePath);
 	    HashMap<String, String> filesUnzipped = new HashMap<>();
-	    char[] passPhrase = "ESBA1rmalta.".toCharArray(); // Encryption passphrase for decryption
+	    char[] passPhrase = passphrase.toCharArray(); // Encryption passphrase for decryption
 
 	    if (folder.isDirectory()) { // Check if the specified folder exists and is a directory
 	        File[] fileList = folder.listFiles(); // List all files in the folder
@@ -81,7 +100,6 @@ public class Main {
 	                        if (fileEnc.getName().equals(encFileName)) {
 	                        	try {
 	                        	    // Decrypt the encrypted file using the passphrase
-	                        	    Decrypt decrypt = new Decrypt();
 	                        	    byte[] decryptedFile = decrypt.decryptFile(filePath.concat("\\" + encFileName), passPhrase);
 	                        	    
 	                        	    // Process the decrypted file (unzip and check validity)
@@ -92,7 +110,6 @@ public class Main {
 	                        	    try (InputStream inputStream = Files.newInputStream(path);
 	                        	         CountingInputStream countingInputStream = (CountingInputStream) querySingleFileProcessor.onCall(inputStream)) {
 	                        	        // Unzip the decrypted file into memory
-	                        	        Unzip unzip = new Unzip();
 	                        	        filesUnzipped = unzip.unzipToMemory(decryptedFile);
 
 	                        	        // Validate the file content by comparing with entries from the ".done" file
@@ -102,9 +119,7 @@ public class Main {
 	                        	                throw new IOException("File size mismatch between the done file and the decrypted file.");
 	                        	            } else {
 	                        	                // Process the unzipped files and insert into the database
-	                        	                IterateOverDoneFileEntries iterateOverDoneFile = new IterateOverDoneFileEntries(sqlProperty);
-	                        	                iterateOverDoneFile.iterateOverDoneFile(filesUnzipped, doneFileEntryList, encFileName);
-
+	                        	            	iterateOverDoneFileEntries.iterateOverDoneFile(filesUnzipped, doneFileEntryList, encFileName,connection);
 	                        	                // Move the processed file to the destination folder
 	                        	                utility.moveFile(file, destinationPath);
 	                        	            }
@@ -131,7 +146,7 @@ public class Main {
 	            System.out.println("The folder is empty.");
 	            logger.info("The folder is empty.");
 	        }
-	        
+	        connection.close();
 	    } else {
 	        // Log if the folder is not accessible
 	        logger.error("The folder is not accessible.");

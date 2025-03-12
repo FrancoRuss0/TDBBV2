@@ -407,6 +407,4 @@ public class ACSFlight {
 				+ ", ReservedFutureUse8=" + ReservedFutureUse8 + ", ReservedFutureUse9=" + ReservedFutureUse9 + "]";
 	}
 	
-	
-	
 }

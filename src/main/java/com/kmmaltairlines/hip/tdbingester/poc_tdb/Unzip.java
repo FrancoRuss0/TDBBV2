@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Unzip {
 
 	/**

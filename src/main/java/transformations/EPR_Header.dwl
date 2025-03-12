@@ -56,4 +56,4 @@ var cast = readUrl("classpath://CastingFunctions.dwl", "application/dw")
 	MCP_Partition_Code : cast.toString(record[49]),
 	Default_Ticketing_Carrier : cast.toString(record[50]),
 	Station_Code : cast.toString(record[51])
-} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.EPR_header"}
+} as Object {class: "com.kmmaltairlines.hip.tdbingester.filepojos.EPR_Header"}

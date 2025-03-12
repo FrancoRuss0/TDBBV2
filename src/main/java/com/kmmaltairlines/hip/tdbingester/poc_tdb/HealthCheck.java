@@ -8,8 +8,8 @@ public class HealthCheck {
 	
 	// This method will listen to GET requests at /health
     @GetMapping("/health")
-    public HealthResponse healthCheck() {
-        return new HealthResponse("ok");
+    public String healthCheck() {
+        return "ok";
     }
 	
 }

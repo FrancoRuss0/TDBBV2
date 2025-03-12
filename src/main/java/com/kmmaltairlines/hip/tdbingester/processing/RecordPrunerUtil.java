@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.PNRRecord;
 import com.kmmaltairlines.hip.tdbingester.filepojos.ResAirExtra;
@@ -14,9 +15,10 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.TktCoupon;
 import com.kmmaltairlines.hip.tdbingester.filepojos.TktDocument;
 import com.kmmaltairlines.hip.tdbingester.filepojos.VCRRecord;
 
+@Component
 public class RecordPrunerUtil {
-
 	private static final Logger log = LoggerFactory.getLogger(RecordPrunerUtil.class);
+
 
 	/**
 	 * This method is used to remove VCRs from the payload which are not present in
@@ -132,11 +134,11 @@ public class RecordPrunerUtil {
 	 *         set contains only records which are updated PNRs or entirely new
 	 *         ones. As such, these must be stored in the database.
 	 */
-	public static <T extends PNRRecord> List<T> prunePNRs(final List<T> payload,
+	public  List<Object> prunePNRs(final List<Object> payload,
 			final Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
-		// Don't bother pruning if the TDB file is empty, just return.
+// Don't bother pruning if the payload is empty, just return.
 		if (payload.isEmpty()) {
-			log.info("TDB file is empty. Skipping prune step since there's nothing to prune.");
+			log.info("Payload is empty. Skipping prune step since there's nothing to prune.");
 			return payload;
 		}
 
@@ -146,19 +148,29 @@ public class RecordPrunerUtil {
 
 		log.info("Scanning through {} {} records.", payload.size(), pnrClassType);
 
-		final Iterator<T> iterator = payload.iterator();
+		final Iterator<Object> iterator = payload.iterator();
 
 		while (iterator.hasNext()) {
-			PNRRecord pnr = iterator.next();
+			Object obj = iterator.next();
 
-			if (recordsToKeep.containsKey(pnr.getPNRLocatorID())) {
-				Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(pnr.getPNRLocatorID());
-				if (innerMap.containsKey(pnr.getPNRCreateDate())) {
-					log.debug("Keeping PNR record");
-				} else
+// Controlla che l'oggetto sia effettivamente un'istanza di PNRRecord
+			if (obj instanceof PNRRecord) {
+				PNRRecord pnr = (PNRRecord) obj;
+
+				if (recordsToKeep.containsKey(pnr.getPNRLocatorID())) {
+					Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(pnr.getPNRLocatorID());
+					if (innerMap.containsKey(pnr.getPNRCreateDate())) {
+						log.debug("Keeping PNR record");
+					} else {
+						iterator.remove();
+					}
+				} else {
 					iterator.remove();
-			} else
+				}
+			} else {
+// Se l'oggetto non è un'istanza di PNRRecord, rimuovilo dalla lista
 				iterator.remove();
+			}
 		}
 
 		int numRemovedRecords = initialPayloadSize - payload.size();

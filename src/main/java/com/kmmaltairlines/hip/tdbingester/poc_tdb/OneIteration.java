@@ -5,22 +5,22 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 
+import java.sql.Connection;
 import java.sql.Timestamp;
 
+@Component
 public class OneIteration {
-    
-    @Autowired
-    private SqlProperty sqlProperty;  // Injected SqlProperty object for DB configuration
-    
-    // Constructor for OneIteration class
-    public OneIteration(SqlProperty sqlProperty) {
-        this.sqlProperty = sqlProperty;
-    }
-    
+	
+	@Autowired
+	private LoadDatFileIntoPojo loadFile;
+	@Autowired
+	private TDB_Maintenance tdbMaintenance;
+	
     // Logger for this class to log messages
     private static final Logger logger = LogManager.getLogger(OneIteration.class);
 
@@ -33,8 +33,7 @@ public class OneIteration {
      * @param encFileName - the name of the encrypted file being processed.
      * @return String - returns the result of the operation (as a string representation of the TDB_Maintenance object).
      */
-    @SuppressWarnings("static-access")
-	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName) {
+	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection) {
         
         // Create a utility object for timestamp and other utility methods
         Utility utility = new Utility();
@@ -43,20 +42,21 @@ public class OneIteration {
         Timestamp currentIterationStartTime = utility.nowUtcTimestamp();
         
         // Extract base filename and the actual file name (without ".dat")
-        String baseFilename = doneFileName.split("_")[0];
+        String[] parts = doneFileName.split("_");
+        String baseFilename;
+    	if (parts.length < 3) {
+    		baseFilename=parts[0];
+    		
+        } else{
+        	baseFilename=parts[0] + "_" + parts[1]; 
+        }
         String fileName = doneFileName.split(".dat")[0];
         
         // Flag to check if an exception occurs during the processing
         boolean isExceptionThrown = false;
         
-        // Create a TDB_Maintenance object to log the processing results
-        TDB_Maintenance tdbMaintenance = new TDB_Maintenance();
-        
-        // Load the .dat file into POJOs (Plain Old Java Objects)
-        LoadDatFileIntoPojo LoadFile = new LoadDatFileIntoPojo(sqlProperty);
-        
         // Call the method to load the .dat file and process it
-        isExceptionThrown = LoadFile.LoadDatFile(baseFilename, doneFileContent, doneFileEntry);
+        isExceptionThrown = loadFile.loadDatFile(baseFilename, doneFileContent, doneFileEntry,connection);
 
         // If no exception is thrown, populate the TDB_Maintenance object with success data
         if (isExceptionThrown == false) {
@@ -79,7 +79,6 @@ public class OneIteration {
         }
 
         // Print the TDB_Maintenance object to the console for debugging/verification purposes
-        System.out.println("EXECUTION DETAILS------->" + tdbMaintenance.toString());
         logger.info("EXECUTION DETAILS------->" + tdbMaintenance.toString());
 
         // Return the string representation of the TDB_Maintenance object (including all details)
