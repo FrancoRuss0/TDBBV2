@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
+import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 import com.kmmaltairlines.hip.tdbingester.sql.ResSql;
 import com.kmmaltairlines.hip.tdbingester.sql.TktDocumentSql;
 
@@ -35,7 +36,7 @@ public class PreprocessTdbBatchSubflow {
 
 	// Main processing method to process the done file entry list
 	public HashMap<String, String> process(HashMap<String, String> doneFileEntryList, UUID run_id,
-			ArrayList<DoneFileEntry> dotFiles, String encFileName, Connection connection)
+			ArrayList<DoneFileEntry> dotFiles, String encFileName, Connection connection, ArrayList<TDB_Maintenance> report)
 			throws IOException, SQLException {
 
 		parentModels = utility.loadParentModels(dotFiles);
@@ -51,14 +52,14 @@ public class PreprocessTdbBatchSubflow {
 		    String baseFilename = key.split("_")[0];
 		    if (baseFilename.equals("Res")) {
 		        oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
-		                dotFiles, encFileName, connection);
+		                dotFiles, encFileName, connection,report);
 		        
 		        // Rimuovere il file dalla doneFileEntryList dopo il processamento
 		        iterator.remove();  // Rimuove in modo sicuro l'elemento corrente
 		    }
 		    if (baseFilename.equals("TktDocument")) {
 		        oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
-		                dotFiles, encFileName, connection);
+		                dotFiles, encFileName, connection,report);
 		        
 		        // Rimuovere il file dalla doneFileEntryList dopo il processamento
 		        iterator.remove();  // Rimuove in modo sicuro l'elemento corrente

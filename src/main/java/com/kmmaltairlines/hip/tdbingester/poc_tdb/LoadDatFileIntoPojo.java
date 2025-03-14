@@ -6,6 +6,10 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
+import com.kmmaltairlines.mail.EmailRequest;
+import com.kmmaltairlines.mail.MailService;
 
 @Component
 public class LoadDatFileIntoPojo {	
@@ -22,6 +28,10 @@ public class LoadDatFileIntoPojo {
 	private Utility utility;
 	@Autowired
 	private SqlQueries query;
+	@Autowired
+	private MailService mailService;
+	@Autowired
+	private EmailRequest emailRequest;
     // Logger to log messages
     private static final Logger logger = LogManager.getLogger(LoadDatFileIntoPojo.class);
 
@@ -33,7 +43,8 @@ public class LoadDatFileIntoPojo {
      * @param doneFileEntryList - The list of DoneFileEntry objects that relate to this file.
      * @return Boolean - Returns true if the file is successfully processed, otherwise false.
      */
-    public Boolean loadDatFile(String baseFilename, String doneFileEntryValue, ArrayList<DoneFileEntry> dotFiles,Connection connection) {
+    public Boolean loadDatFile(String baseFilename, String doneFileEntryValue, ArrayList<DoneFileEntry> dotFiles,Connection connection,String encFileName) {
+    	Map<String, Object> variables = new HashMap<>();
         // Construct the filename for the transformation script
         String filename = baseFilename + ".dwl";  // File name for the transformation script
         String directory = "src\\main\\java\\transformations";  // Directory path where transformation scripts are located
@@ -77,8 +88,21 @@ public class LoadDatFileIntoPojo {
                             + " lines");
                     return false;
                 }
-            } catch (Exception e) {
-                // If any exception occurs during processing, log the error and return false
+            }catch (Exception e) {
+                variables.put("exceptionCause", e.getMessage());
+                variables.put("donefileName", baseFilename);
+                variables.put("encFileName", encFileName);
+                variables.put("exceptionStackTrace", Arrays.toString(e.getStackTrace()));
+
+                try {
+                    emailRequest.setTemplateMessage("exception_email_template", variables);
+                    emailRequest.setSubject("Error in Travel Data Batch Ingester");
+                    mailService.sendEmail(emailRequest);
+                    logger.info("Email sent successfully.");
+                } catch (Exception emailException) {
+                    logger.error("Error sending email: " + emailException.getMessage());
+                }
+
                 logger.error(e.getMessage());
                 return false;
             }

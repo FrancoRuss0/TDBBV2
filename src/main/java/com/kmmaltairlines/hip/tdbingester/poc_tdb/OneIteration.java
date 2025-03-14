@@ -1,15 +1,20 @@
 package com.kmmaltairlines.hip.tdbingester.poc_tdb;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.mule.weave.v2.grammar.Variables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 import com.kmmaltairlines.hip.tdbingester.sql.TDB_MaintenanceSql;
+import com.kmmaltairlines.mail.EmailRequest;
+import com.kmmaltairlines.mail.MailService;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,10 +26,10 @@ public class OneIteration {
 	
 	@Autowired
 	private LoadDatFileIntoPojo loadFile;
-	@Autowired
-	private TDB_Maintenance tdbMaintenance;
+
 	@Autowired
 	private TDB_MaintenanceSql tdbSql;
+
 	
     // Logger for this class to log messages
     private static final Logger logger = LogManager.getLogger(OneIteration.class);
@@ -40,11 +45,10 @@ public class OneIteration {
      * @throws SQLException 
      * @throws IOException 
      */
-	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection) throws IOException, SQLException {
-        
+	public ArrayList<TDB_Maintenance> processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection,ArrayList<TDB_Maintenance> report) throws IOException, SQLException {
         // Create a utility object for timestamp and other utility methods
         Utility utility = new Utility();
-        
+        TDB_Maintenance tdbMaintenance = new TDB_Maintenance();
         // Get the start time of this iteration
         Timestamp currentIterationStartTime = utility.nowUtcTimestamp();
         
@@ -63,7 +67,7 @@ public class OneIteration {
         boolean isExceptionThrown = false;
         
         // Call the method to load the .dat file and process it
-        isExceptionThrown = loadFile.loadDatFile(baseFilename, doneFileContent, doneFileEntry,connection);
+        isExceptionThrown = loadFile.loadDatFile(baseFilename, doneFileContent, doneFileEntry,connection,encFileName);
 
         // If no exception is thrown, populate the TDB_Maintenance object with success data
         if (isExceptionThrown == false) {
@@ -74,6 +78,7 @@ public class OneIteration {
             tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
             tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
             tdbMaintenance.setDateStarted(currentIterationStartTime);  // Set the start time of the operation
+            report.add(tdbMaintenance);
         } else {
             // If an exception was thrown, log the failure data in TDB_Maintenance object
             tdbMaintenance.setRunId(run_id.toString());
@@ -83,14 +88,17 @@ public class OneIteration {
             tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
             tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
             tdbMaintenance.setDateStarted(currentIterationStartTime);  // Set the start time of the operation
+            report.add(tdbMaintenance);
         }
 
         // Print the TDB_Maintenance object to the console for debugging/verification purposes
         logger.info("EXECUTION DETAILS------->" + tdbMaintenance.toString());
         
+        
+        
         tdbSql.insert(tdbMaintenance,connection);
         
-        // Return the string representation of the TDB_Maintenance object (including all details)
-        return tdbMaintenance.toString();
+       
+        return report;
     }
 }

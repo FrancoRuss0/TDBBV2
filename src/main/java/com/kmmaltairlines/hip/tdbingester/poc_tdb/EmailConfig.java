@@ -1,30 +1,35 @@
 package com.kmmaltairlines.hip.tdbingester.poc_tdb;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.kmmaltairlines.mail.EmailRequest;
+
 @Configuration
-@ConfigurationProperties(prefix = "mail")
 public class EmailConfig {
-    
-    private String to;
-    private String sendUser;  // Aggiungi il campo per `send.user`
-
-    // Getter e setter per `to`
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
-
-    // Getter e setter per `send.user`
-    public String getSendUser() {
-        return sendUser;
-    }
-
-    public void setSendUser(String sendUser) {
-        this.sendUser = sendUser;
-    }
+ 
+ @Value("${mail.to}")
+ private String emailIncoming;
+ 
+ @Bean
+ public EmailRequest emailRequest() {
+  EmailRequest emailRequest = new EmailRequest();
+  emailRequest.setSubject("Subject");
+  emailRequest.setMessage("test");
+  
+  Set<String> recipientSet = Arrays.stream(emailIncoming.split(","))
+    .map(String::trim)
+    .collect(Collectors.toSet());
+  
+  emailRequest.setRecipients(recipientSet);
+  
+  return emailRequest;
+ }
+ 
 }
+ 

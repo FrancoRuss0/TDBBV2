@@ -100,19 +100,25 @@ public class SqlQueries {
 				connection.commit();
 
 			}else {
-				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
+				throw new SQLException("Simulated SQL error for testing email.");
+//				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
 
 				// Chiama il metodo insert
-				connection.setAutoCommit(false);
-				MethodInterface.insert(flights, connection); // Questo chiama insert() su ACSFlight
-				connection.commit();
+//				connection.setAutoCommit(false);
+//				MethodInterface.insert(flights, connection); // Questo chiama insert() su ACSFlight
+//				connection.commit();
 			}
 
 		} catch (SQLException ex) {
-			logger.error("Error processing file : " + ex.getMessage());
-			if (connection != null) {
-				connection.rollback(); // Rollback in case of an error
-			}
-		}
+	        logger.error("Error processing file : " + ex.getMessage());
+	        if (connection != null) {
+	            try {
+	                connection.rollback(); // Rollback prima di rilanciare l'eccezione
+	            } catch (SQLException rollbackEx) {
+	                logger.error("Error during rollback: " + rollbackEx.getMessage());
+	            }
+	        }
+	        throw ex;
+	    }
 	}
 }

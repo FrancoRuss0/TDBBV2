@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Error in Travel Data Batch Ingester</title>
+    <style>
+    		.boxed {
+  			border: 1px solid black ;
+  			background-color: lightgray;
+		}
+    </style>
+  </head>
+  <body>
+    <p>To Whom It May Concern,</p>
+    &nbsp;
+  	<p>Something went wrong when reading the .done file and its .enc file.</p>
+  	<p><b>Cause</b>: <span  th:text="${exceptionCause}"></span></p>
+  	<P><b>.done file name</b>: <span th:text="${donefileName}"></span></p>
+  	<p><b>.enc  file name</b>: <span th:text="${encFileName}"></span></p>
+ 	<p><b>Exception Stack Trace</b>:</p> 
+ 	<div class="boxed">
+ 		<i th:text="${exceptionStackTrace}"></i>
+ 	</div>
+ </body>
+</html>

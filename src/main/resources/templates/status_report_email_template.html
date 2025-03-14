@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body style="font-weight: bold;">
+    <table>
+      <tr>
+        <th>Files processed successfully</th>
+        <th>Files not processed</th>
+        <th>ID</th>
+      </tr>
+      <tr>
+        <td th:text="${numSuccessfullyProcessedDatFiles}"></td>
+        <td th:text="${numUnsuccessfullyProcessedDatFiles}"></td>
+        <td th:text="${run_id}"></td>
+      </tr>
+    </table>
+    &nbsp;
+    <div th:utext="${htmlTDBMaintenanceTable}"></div>
+  </body>
+</html>
