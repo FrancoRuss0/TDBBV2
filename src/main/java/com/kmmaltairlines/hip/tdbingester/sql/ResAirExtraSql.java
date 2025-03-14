@@ -47,68 +47,103 @@ public class ResAirExtraSql implements MethodInterface {
 		// Add the flight data to the batch for bulk insertion
 		for (ResAirExtra rae : resAirExtra) {
 			stmt.setString(1, rae.getID());
-			stmt.setString(2, rae.getRFICode());
-			stmt.setString(3, rae.getCommercialName());
-			stmt.setString(4, rae.getSSIMCode());
-			stmt.setString(5, rae.getSSRCode());
-			stmt.setString(6, rae.getBoardPointAirportCode());
-			stmt.setString(7, rae.getOffPointAirportCode());
-			stmt.setString(8, rae.getOwningCarrierCode());
-			stmt.setString(9, rae.getFeeVendorCode());
-			stmt.setString(10, rae.getBookingMethodCode());
-			stmt.setString(11, rae.getFulfillTypeCode());
-			stmt.setShort(12, rae.getEMDTypeCode());
-			stmt.setString(13, rae.getRefundReissueCode());
-			stmt.setString(14, rae.getFormOfRefundCode());
-			stmt.setString(15, rae.getFrequentTravelerTierLevel());
-			stmt.setString(16, rae.getBrandedFareId());
-			stmt.setString(17, rae.getTourCode());
-			stmt.setString(18, rae.getServiceChargeCode());
-			stmt.setString(19, rae.getFeeApplicationCode());
-			stmt.setDate(20, rae.getFirstTravelDate());
-			stmt.setDate(21, rae.getLastTravelDate());
-			stmt.setString(22, rae.getHistoryActionCode());
-			stmt.setTimestamp(23, rae.getTTYConfirmationDateTime());
-			stmt.setTimestamp(24, rae.getPurchaseByDateTime());
-			stmt.setString(25, rae.getBookingSourceCode());
-			stmt.setString(26, rae.getEMDNbr());
-			stmt.setShort(27, rae.getEMDCouponNbr());
-			stmt.setString(28, rae.getETicketNbr());
-			stmt.setShort(29, rae.getETicketCouponNbr());
-			stmt.setString(30, rae.getSSRDirectFulfillCode());
-			stmt.setString(31, rae.getNonEMDFormofPayment());
-			stmt.setString(32, rae.getFeeWaivedCode());
-			stmt.setBigDecimal(33, rae.getAEBasePriceAmount());
-			stmt.setString(34, rae.getAEBaseCurrencyCode());
-			stmt.setBigDecimal(35, rae.getAEEquivalentPaidAmount());
-			stmt.setString(36, rae.getAEEquivalentAmtCurrencyCd());
-			stmt.setShort(37, rae.getItemCount());
-			stmt.setBigDecimal(38, rae.getAETotalPriceAmount());
-			stmt.setString(39, rae.getPassengerTypeCode());
-			stmt.setString(40, rae.getTaxIncludedCode());
-			stmt.setString(41, rae.getSegmentUseCode());
-			stmt.setDate(42, rae.getSegmentBookedDate());
-			stmt.setTime(43, rae.getSegmentBookedTime());
-			stmt.setString(44, rae.getNonEMDFOPCCCode());
-			stmt.setString(45, rae.getNonEMDFOPMaskedCCNbr());
-			stmt.setString(46, rae.getNonEMDFOPCCExpryDt());
-			stmt.setString(47, rae.getGroupCode());
-			stmt.setString(48, rae.getSimultaneousTicketPurchaseInd());
-			stmt.setString(49, rae.getCommissionInd());
-			stmt.setString(50, rae.getInterlineInd());
-			stmt.setString(51, rae.getFeeGuaranteedInd());
-			stmt.setString(52, rae.getEMDPaperInd());
-			stmt.setString(53, rae.getRFISubCode());
-			stmt.setDate(54, rae.getRecordUpdateDate());
-			stmt.setTime(55, rae.getRecordUpdateTime());
-			stmt.setShort(56, rae.getIntraPNRSetNbr());
-			stmt.setShort(57, rae.getPNRPassengerSeqId());
-			stmt.setString(58, rae.getAEFLight());
-			stmt.setString(59, rae.getAECurrentSegmentStatusCode());
-			stmt.setString(60, rae.getAEPreviousSegmentStatus());
-			stmt.setShort(61, rae.getACSCount());
-			stmt.setShort(62, rae.getAssociatedSegmentCount());
-			stmt.setTimestamp(63, utility.nowUtcTimestamp());
+			stmt.setString(2, rae.getPNRLocatorID());
+			stmt.setDate(3, rae.getPNRCreateDate());
+			stmt.setTimestamp(4, rae.getFromDateTime());
+			stmt.setString(5, rae.getRFICode());
+			stmt.setString(6, rae.getCommercialName());
+			stmt.setString(7, rae.getSSIMCode());
+			stmt.setString(8, rae.getSSRCode());
+			stmt.setString(9, rae.getBoardPointAirportCode());
+			stmt.setString(10, rae.getOffPointAirportCode());
+			stmt.setString(11, rae.getOwningCarrierCode());
+			stmt.setString(12, rae.getFeeVendorCode());
+			stmt.setString(13, rae.getBookingMethodCode());
+			stmt.setString(14, rae.getFulfillTypeCode());
+			stmt.setShort(15, rae.getEMDTypeCode());
+			stmt.setString(16, rae.getRefundReissueCode());
+			stmt.setString(17, rae.getFormOfRefundCode());
+			stmt.setString(18, rae.getFrequentTravelerTierLevel());
+			stmt.setString(19, rae.getBrandedFareId());
+			stmt.setString(20, rae.getTourCode());
+			stmt.setString(21, rae.getServiceChargeCode());
+			stmt.setString(22, rae.getFeeApplicationCode());
+			stmt.setDate(23, rae.getFirstTravelDate());
+			stmt.setDate(24, rae.getLastTravelDate());
+			stmt.setString(25, rae.getHistoryActionCode());
+			stmt.setTimestamp(26, rae.getTTYConfirmationDateTime());
+			stmt.setTimestamp(27, rae.getPurchaseByDateTime());
+			stmt.setString(28, rae.getBookingSourceCode());
+			stmt.setString(29, rae.getEMDNbr());
+			if(rae.getEMDCouponNbr()==null) {
+		    	stmt.setNull(30, Types.NULL);
+		    }else{
+		    	stmt.setShort(30, rae.getEMDCouponNbr());
+		    }
+			stmt.setString(31, rae.getETicketNbr());
+			if(rae.getETicketCouponNbr()==null) {
+		    	stmt.setNull(32, Types.NULL);
+		    }else{
+		    	stmt.setShort(32, rae.getETicketCouponNbr());
+		    }
+			stmt.setString(33, rae.getSSRDirectFulfillCode());
+			stmt.setString(34, rae.getNonEMDFormofPayment());
+			stmt.setString(35, rae.getFeeWaivedCode());
+			stmt.setBigDecimal(36, rae.getAEBasePriceAmount());
+			stmt.setString(37, rae.getAEBaseCurrencyCode());
+			stmt.setBigDecimal(38, rae.getAEEquivalentPaidAmount());
+			stmt.setString(39, rae.getAEEquivalentAmtCurrencyCd());
+			if(rae.getItemCount()==null) {
+		    	stmt.setNull(40, Types.NULL);
+		    }else{
+		    	stmt.setShort(40, rae.getItemCount());
+		    }
+			
+			stmt.setBigDecimal(41, rae.getAETotalPriceAmount());
+			stmt.setString(42, rae.getPassengerTypeCode());
+			stmt.setString(43, rae.getTaxIncludedCode());
+			stmt.setString(44, rae.getSegmentUseCode());
+			stmt.setDate(45, rae.getSegmentBookedDate());
+			stmt.setTime(46, rae.getSegmentBookedTime());
+			stmt.setString(47, rae.getNonEMDFOPCCCode());
+			stmt.setString(48, rae.getNonEMDFOPMaskedCCNbr());
+			stmt.setString(49, rae.getNonEMDFOPCCExpryDt());
+			stmt.setString(50, rae.getGroupCode());
+			stmt.setString(51, rae.getSimultaneousTicketPurchaseInd());
+			stmt.setString(52, rae.getCommissionInd());
+			stmt.setString(53, rae.getInterlineInd());
+			stmt.setString(54, rae.getFeeGuaranteedInd());
+			stmt.setString(55, rae.getEMDPaperInd());
+			stmt.setString(56, rae.getRFISubCode());
+			stmt.setDate(57, rae.getRecordUpdateDate());
+			stmt.setTime(58, rae.getRecordUpdateTime());
+			if(rae.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(59, Types.NULL);
+		    }else{
+		    	stmt.setShort(59, rae.getIntraPNRSetNbr());
+		    }
+			
+			if(rae.getPNRPassengerSeqId()==null) {
+		    	stmt.setNull(60, Types.NULL);
+		    }else{
+		    	stmt.setShort(60, rae.getPNRPassengerSeqId());
+		    }
+			stmt.setString(61, rae.getAEFLight());
+			stmt.setString(62, rae.getAECurrentSegmentStatusCode());
+			stmt.setString(63, rae.getAEPreviousSegmentStatus());
+			if(rae.getPNRPassengerSeqId()==null) {
+		    	stmt.setNull(60, Types.NULL);
+		    }else{
+		    	stmt.setShort(60, rae.getPNRPassengerSeqId());
+		    }
+			stmt.setShort(64, rae.getACSCount());
+			if(rae.getAssociatedSegmentCount()==null) {
+		    	stmt.setNull(65, Types.NULL);
+		    }else{
+		    	stmt.setShort(65, rae.getAssociatedSegmentCount());
+		    }
+			
+			stmt.setTimestamp(66, utility.nowUtcTimestamp());
 			stmt.addBatch();
 		}
 

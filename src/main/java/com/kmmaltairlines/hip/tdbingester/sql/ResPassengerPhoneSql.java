@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,14 +54,18 @@ public class ResPassengerPhoneSql implements MethodInterface {
 		// Add the ResPassengerFT data to the batch for bulk insertion
 		for (ResPassengerPhone passengerPhone : resPassengerPhones) {
 			stmt.setString(1, passengerPhone.getID());
-			stmt.setShort(2, passengerPhone.getPNRPassengerPhoneSeqId());
-			stmt.setString(3, passengerPhone.getCityPhoneCode());
-			stmt.setString(4, passengerPhone.getPhoneNbrText());
-			stmt.setString(5, passengerPhone.getPhoneTypeCode());
-			stmt.setString(6, passengerPhone.getHistoryActionCodeId());
-			stmt.setDate(7, passengerPhone.getRecordUpdateDate());
-			stmt.setTime(8, passengerPhone.getRecordUpdateTime());
-			stmt.setShort(9, passengerPhone.getIntraPNRSetNbr());
+			stmt.setString(2, passengerPhone.getPNRLocatorID());
+			stmt.setDate(3, passengerPhone.getPNRCreateDate());
+			stmt.setTimestamp(4, passengerPhone.getFromDateTime());
+			stmt.setShort(5, passengerPhone.getPNRPassengerPhoneSeqId());
+			stmt.setString(6, passengerPhone.getCityPhoneCode());
+			stmt.setString(7, passengerPhone.getPhoneNbrText());
+			stmt.setString(8, passengerPhone.getPhoneTypeCode());
+			stmt.setString(9, passengerPhone.getHistoryActionCodeId());
+			stmt.setDate(10, passengerPhone.getRecordUpdateDate());
+			stmt.setTime(11, passengerPhone.getRecordUpdateTime());
+			stmt.setShort(12, passengerPhone.getIntraPNRSetNbr());
+			stmt.setObject(13, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Aggiunge il record al batch
 		}
 

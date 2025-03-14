@@ -56,7 +56,7 @@ public class ACSPaxVCRSql implements MethodInterface{
 	            stmt.setString(6, ACSPaxVCR.getFltNbr());
 	            stmt.setObject(7, ACSPaxVCR.getServiceStartDate());
 	            stmt.setString(8, ACSPaxVCR.getAirlineOrigAirport()); 
-	            stmt.setObject(8, ACSPaxVCR.getVCRCreateDate(), Types.TIMESTAMP);
+	            stmt.setObject(9, ACSPaxVCR.getVCRCreateDate(), Types.TIMESTAMP);
 	            stmt.setString(10, ACSPaxVCR.getAirlineAccountingCode());
 	            stmt.setString(11, ACSPaxVCR.getVCRSerialNbr()); 
 	            if(ACSPaxVCR.getVCRCouponSeqNbr()==null) {

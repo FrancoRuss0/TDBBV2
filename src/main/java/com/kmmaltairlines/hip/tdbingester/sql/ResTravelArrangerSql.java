@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,22 +54,26 @@ public class ResTravelArrangerSql implements MethodInterface {
 		// Add ResTravelArranger data to the batch for bulk insertion
 		for (ResTravelArranger arranger : resTravelArrangers) {
 			stmt.setString(1, arranger.getID());
-			stmt.setString(2, arranger.getSignatureType());
-			stmt.setString(3, arranger.getUpdateAAACityCode());
-			stmt.setString(4, arranger.getUpdateAgentDutyCode());
-			stmt.setString(5, arranger.getUpdateAgentSine());
-			stmt.setString(6, arranger.getUpdateBookingCRSCode());
-			stmt.setString(7, arranger.getUpdateHomeCityCode());
-			stmt.setDate(8, arranger.getRecordUpdateDate());
-			stmt.setTime(9, arranger.getRecordUpdateTime());
-			stmt.setShort(10, arranger.getIntraPNRSetNbr());
-			stmt.setString(11, arranger.getReceivedFrom());
-			stmt.setString(12, arranger.getUpdateAAAOACCityCode());
-			stmt.setString(13, arranger.getUpdateAAAOACAcctCode());
-			stmt.setString(14, arranger.getOACDefaultPartitionCode());
-			stmt.setString(15, arranger.getOACCityCode());
-			stmt.setString(16, arranger.getOACAcctCode());
-			stmt.setString(17, arranger.getOACStationNbr());
+			stmt.setString(2, arranger.getPNRLocatorID());
+			stmt.setDate(3, arranger.getPNRCreateDate());
+			stmt.setTimestamp(4, arranger.getFromDateTime());
+			stmt.setString(5, arranger.getSignatureType());
+			stmt.setString(6, arranger.getUpdateAAACityCode());
+			stmt.setString(7, arranger.getUpdateAgentDutyCode());
+			stmt.setString(8, arranger.getUpdateAgentSine());
+			stmt.setString(9, arranger.getUpdateBookingCRSCode());
+			stmt.setString(10, arranger.getUpdateHomeCityCode());
+			stmt.setDate(11, arranger.getRecordUpdateDate());
+			stmt.setTime(12, arranger.getRecordUpdateTime());
+			stmt.setShort(13, arranger.getIntraPNRSetNbr());
+			stmt.setString(14, arranger.getReceivedFrom());
+			stmt.setString(15, arranger.getUpdateAAAOACCityCode());
+			stmt.setString(16, arranger.getUpdateAAAOACAcctCode());
+			stmt.setString(17, arranger.getOACDefaultPartitionCode());
+			stmt.setString(18, arranger.getOACCityCode());
+			stmt.setString(19, arranger.getOACAcctCode());
+			stmt.setString(20, arranger.getOACStationNbr());
+			stmt.setObject(21, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch(); // Add this record to the batch
 		}
 

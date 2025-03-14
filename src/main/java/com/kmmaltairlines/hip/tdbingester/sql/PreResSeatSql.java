@@ -46,29 +46,55 @@ public class PreResSeatSql implements MethodInterface {
 		// Add the flight data to the batch for bulk insertion
 		for (PreResSeat prs : trasformPreResSeat) {
 			stmt.setString(1, prs.getID());
-			stmt.setShort(2, prs.getPNRPassengerSeqId());
-			stmt.setShort(3, prs.getPRSSeqNbr());
-			stmt.setString(4, prs.getVendorCode());
-			stmt.setString(5, prs.getPRSFlightNumber());
-			stmt.setShort(6, prs.getPRSCompartmentNbr());
-			stmt.setShort(7, prs.getPRSRowNbr());
-			stmt.setString(8, prs.getPRSLetter());
-			stmt.setString(9, prs.getPRSCurrentStatusCode());
-			stmt.setString(10, prs.getSmokingSeatIndicator());
-			stmt.setString(11, prs.getNonSmokingSeatIndicator());
-			stmt.setString(12, prs.getWindowSeatIndicator());
-			stmt.setString(13, prs.getAisleSeatIndicator());
-			stmt.setString(14, prs.getLeftSideSeatIndicator());
-			stmt.setString(15, prs.getExitSeatIndicator());
-			stmt.setString(16, prs.getRightSideSeatIndicator());
-			stmt.setString(17, prs.getBulkheadSeatIndicator());
-			stmt.setString(18, prs.getUpperCompartmentSeatIndicator());
-			stmt.setString(19, prs.getOverWingSeatIndicator());
-			stmt.setString(20, prs.getHistoryActionCodeId());
-			stmt.setObject(21, prs.getRecordUpdateDate(), Types.DATE);
-			stmt.setObject(22, prs.getRecordUpdateTime(), Types.TIME);
-			stmt.setShort(23, prs.getIntraPNRSetNbr());
-			stmt.setObject(24, utility.nowUtcTimestamp(), Types.TIMESTAMP);
+			stmt.setString(2, prs.getPNRLocatorID());
+			stmt.setDate(3, prs.getPNRCreateDate());
+			stmt.setTimestamp(4, prs.getFromDateTime());
+			if(prs.getPNRPassengerSeqId()==null) {
+		    	stmt.setNull(5, Types.NULL);
+		    }else{
+		    	stmt.setShort(5, prs.getPNRPassengerSeqId());
+		    }
+			if(prs.getPRSSeqNbr()==null) {
+		    	stmt.setNull(6, Types.NULL);
+		    }else{
+		    	stmt.setShort(6, prs.getPRSSeqNbr());
+		    }
+			
+			stmt.setString(7, prs.getVendorCode());
+			stmt.setString(8, prs.getPRSFlightNumber());
+			if(prs.getPRSCompartmentNbr()==null) {
+		    	stmt.setNull(9, Types.NULL);
+		    }else{
+		    	stmt.setShort(9, prs.getPRSCompartmentNbr());
+		    }
+			
+			if(prs.getPRSRowNbr()==null) {
+		    	stmt.setNull(10, Types.NULL);
+		    }else{
+		    	stmt.setShort(10, prs.getPRSRowNbr());
+		    }
+			stmt.setString(11, prs.getPRSLetter());
+			stmt.setString(12, prs.getPRSCurrentStatusCode());
+			stmt.setString(13, prs.getSmokingSeatIndicator());
+			stmt.setString(14, prs.getNonSmokingSeatIndicator());
+			stmt.setString(15, prs.getWindowSeatIndicator());
+			stmt.setString(16, prs.getAisleSeatIndicator());
+			stmt.setString(17, prs.getLeftSideSeatIndicator());
+			stmt.setString(18, prs.getExitSeatIndicator());
+			stmt.setString(19, prs.getRightSideSeatIndicator());
+			stmt.setString(20, prs.getBulkheadSeatIndicator());
+			stmt.setString(21, prs.getUpperCompartmentSeatIndicator());
+			stmt.setString(22, prs.getOverWingSeatIndicator());
+			stmt.setString(23, prs.getHistoryActionCodeId());
+			stmt.setObject(24, prs.getRecordUpdateDate(), Types.DATE);
+			stmt.setObject(25, prs.getRecordUpdateTime(), Types.TIME);
+			if(prs.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(26, Types.NULL);
+		    }else{
+		    	stmt.setShort(26, prs.getIntraPNRSetNbr());
+		    }
+			
+			stmt.setObject(27, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}
 
@@ -88,7 +114,7 @@ public class PreResSeatSql implements MethodInterface {
 		PreparedStatement stmt = null;
 
 		// Read the SQL insert query from the file
-		String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deletePreResSeat.sql.sql");
+		String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deletePreResSeat.sql");
 
 		// Create a PreparedStatement to execute the SQL query
 		stmt = connection.prepareStatement(sql);

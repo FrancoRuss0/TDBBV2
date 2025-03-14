@@ -29,12 +29,11 @@ import org.springframework.stereotype.Component;
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.filepojos.PNRRecord;
+import com.kmmaltairlines.hip.tdbingester.filepojos.VCRRecord;
 import com.kmmaltairlines.hip.tdbingester.processing.SabreDuplicateFileRecordPruner;
 
 @Component
 public class Utility {
-	@Autowired
-	private SabreDuplicateFileRecordPruner remove;
 
 	private static final Logger logger = LogManager.getLogger(Utility.class);
 
@@ -254,7 +253,7 @@ public class Utility {
 		return parentModels;
 	}
 
-	public static List<Object> removeDuplicates(List<Object> records, String baseFilename) throws Exception {
+	public static List<Object> removeDuplicatesPNR(List<Object> records, String baseFilename) throws Exception {
 		String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
 
 		// Carica la classe dinamicamente
@@ -281,6 +280,47 @@ public class Utility {
 
 				// Crea un identificatore unico combinato
 				String identifier = locatorID.toString() + createDate.toString() + fromDateTime.toString();
+
+				// Se l'identificatore è già stato visto, ignora il record
+				if (!seenIdentifiers.contains(identifier)) {
+					seenIdentifiers.add(identifier); // Aggiungi l'identificatore per il futuro controllo
+					uniqueRecords.add(record); // Aggiungi il record alla lista di record unici
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return uniqueRecords; // Restituisce la lista senza duplicati
+	}
+	
+	public static List<Object> removeDuplicatesVCR(List<Object> records, String baseFilename) throws Exception {
+		String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
+
+		// Carica la classe dinamicamente
+		Class<?> flightClass = Class.forName(className); // Es: "Res" o altre classi
+
+		// Ottieni i metodi "get" dinamicamente per PNRLocatorID, PNRCreateDate,
+		// FromDateTime
+		Method getPrimaryDocNbr = flightClass.getMethod("getPrimaryDocNbr");
+		Method getVCRCreateDate = flightClass.getMethod("getVCRCreateDate");
+		Method getTransactionDateTime = flightClass.getMethod("getTransactionDateTime");
+
+		// Utilizza un Set per tenere traccia dei record unici (con un identificatore
+		// combinato)
+		Set<String> seenIdentifiers = new HashSet<>();
+
+		// Filtra i duplicati
+		List<Object> uniqueRecords = new ArrayList<>();
+		for (Object record : records) {
+			try {
+				// Ottieni i valori per ogni record
+				Object PrimaryDocNbr = getPrimaryDocNbr.invoke(record);
+				Object VCRCreateDate = getVCRCreateDate.invoke(record);
+				Object TransactionDateTime = getTransactionDateTime.invoke(record);
+
+				// Crea un identificatore unico combinato
+				String identifier = PrimaryDocNbr.toString() + VCRCreateDate.toString() + TransactionDateTime.toString();
 
 				// Se l'identificatore è già stato visto, ignora il record
 				if (!seenIdentifiers.contains(identifier)) {
@@ -326,7 +366,7 @@ public class Utility {
 		return grouped;
 	}
 
-	public static List<Object> filterRecords(List<Object> flights,
+	public static List<Object> filterRecordsPNR(List<Object> flights,
 			Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
 		List<Object> filteredFlights = new ArrayList<>();
 
@@ -347,6 +387,46 @@ public class Utility {
 					Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(pnrLocatorID);
 					if (recordsForLocator != null) {
 						List<Map<String, Object>> recordsForDate = recordsForLocator.get(pnrCreateDate);
+						if (recordsForDate != null) {
+							// If there is a match, keep this flight record
+							filteredFlights.add(flight);
+						} 
+					} 
+				}
+			} catch (Exception e) {
+				// Log dell'errore
+				logger.error("Error processing flight record: " + flight + ", Error: " + e.getMessage());
+				e.printStackTrace();
+			}
+		}
+
+		// Log quando il filtraggio è completato
+		logger.info("Filtering completed. " + filteredFlights.size() + " records matched.");
+
+		return filteredFlights; // Return the filtered list of flights
+	}
+	
+	public static List<Object> filterRecordsVCR(List<Object> flights,
+			Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
+		List<Object> filteredFlights = new ArrayList<>();
+
+		// Log l'inizio del processo
+		logger.info("Start filtering records");
+
+		// Iterating over the flights list
+		for (Object flight : flights) {
+			try {
+
+				// Assuming each flight is a PNRRecord or its subclass
+				if (flight instanceof VCRRecord) {
+					VCRRecord record = (VCRRecord) flight;
+					String PrimaryDocNbr = record.getPrimaryDocNbr();
+					Date VCRCreateDate = record.getVCRCreateDate();
+
+					// Check if this PNRRecord exists in recordsToKeep
+					Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(PrimaryDocNbr);
+					if (recordsForLocator != null) {
+						List<Map<String, Object>> recordsForDate = recordsForLocator.get(VCRCreateDate);
 						if (recordsForDate != null) {
 							// If there is a match, keep this flight record
 							filteredFlights.add(flight);

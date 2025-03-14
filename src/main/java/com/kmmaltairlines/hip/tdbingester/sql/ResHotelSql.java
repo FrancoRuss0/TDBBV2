@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,32 +53,70 @@ public class ResHotelSql implements MethodInterface {
 		// Add the ResHotel data to the batch for bulk insertion
 		for (ResHotel hotel : resHotels) {
 			stmt.setString(1, hotel.getID());
-			stmt.setShort(2, hotel.getSegmentNbr());
-			stmt.setString(3, hotel.getServiceCityCode());
-			stmt.setDate(4, hotel.getServiceStartDate());
-			stmt.setShort(5, hotel.getNbrofNightsCount());
-			stmt.setShort(6, hotel.getUnitsBookedCount());
-			stmt.setString(7, hotel.getCurrentSegmentStatusCode());
-			stmt.setShort(8, hotel.getSegmentTypeCode());
-			stmt.setString(9, hotel.getPropertyCode());
-			stmt.setString(10, hotel.getPropertyName());
-			stmt.setString(11, hotel.getVendorHotelCode());
-			stmt.setString(12, hotel.getHotelRoomTypeCode());
-			stmt.setString(13, hotel.getHotelRoomRate());
-			stmt.setString(14, hotel.getHotelRateCode());
-			stmt.setString(15, hotel.getCurrencyCode());
-			stmt.setString(16, hotel.getHotelProductCode());
-			stmt.setString(17, hotel.getConfirmationNbr());
-			stmt.setString(18, hotel.getHotelReserveUnderName());
-			stmt.setString(19, hotel.getHotelCorporateDiscountNbr());
-			stmt.setString(20, hotel.getHotelExtraPersonRateAmount());
-			stmt.setShort(21, hotel.getHotelExtraPersonCount());
-			stmt.setShort(22, hotel.getNumberOfAdults());
-			stmt.setString(23, hotel.getHistoryActionCodeId());
-			stmt.setDate(24, hotel.getRecordUpdateDate());
-			stmt.setTime(25, hotel.getRecordUpdateTime());
-			stmt.setShort(26, hotel.getIntraPNRSetNbr());
-
+			stmt.setString(2, hotel.getPNRLocatorID());
+			stmt.setDate(3, hotel.getPNRCreateDate());
+			stmt.setTimestamp(4, hotel.getFromDateTime());
+			 if(hotel.getSegmentNbr()==null) {
+			    	stmt.setNull(5, Types.NULL);
+			    }else{
+			    	stmt.setShort(5, hotel.getSegmentNbr());
+			    }
+			
+			stmt.setString(6, hotel.getServiceCityCode());
+			stmt.setDate(7, hotel.getServiceStartDate());
+			if(hotel.getNbrofNightsCount()==null) {
+		    	stmt.setNull(8, Types.NULL);
+		    }else{
+		    	stmt.setShort(8, hotel.getNbrofNightsCount());
+		    }
+			
+			if(hotel.getUnitsBookedCount()==null) {
+		    	stmt.setNull(9, Types.NULL);
+		    }else{
+		    	stmt.setShort(9, hotel.getUnitsBookedCount());
+		    }
+			
+			stmt.setString(10, hotel.getCurrentSegmentStatusCode());
+			if(hotel.getSegmentTypeCode()==null) {
+		    	stmt.setNull(11, Types.NULL);
+		    }else{
+		    	stmt.setShort(11, hotel.getSegmentTypeCode());
+		    }
+			
+			stmt.setString(12, hotel.getPropertyCode());
+			stmt.setString(13, hotel.getPropertyName());
+			stmt.setString(14, hotel.getVendorHotelCode());
+			stmt.setString(15, hotel.getHotelRoomTypeCode());
+			stmt.setString(16, hotel.getHotelRoomRate());
+			stmt.setString(17, hotel.getHotelRateCode());
+			stmt.setString(18, hotel.getCurrencyCode());
+			stmt.setString(19, hotel.getHotelProductCode());
+			stmt.setString(20, hotel.getConfirmationNbr());
+			stmt.setString(21, hotel.getHotelReserveUnderName());
+			stmt.setString(22, hotel.getHotelCorporateDiscountNbr());
+			stmt.setString(23, hotel.getHotelExtraPersonRateAmount());
+			if(hotel.getHotelExtraPersonCount()==null) {
+		    	stmt.setNull(24, Types.NULL);
+		    }else{
+		    	stmt.setShort(24, hotel.getHotelExtraPersonCount());
+		    }
+			
+			if(hotel.getNumberOfAdults()==null) {
+		    	stmt.setNull(25, Types.NULL);
+		    }else{
+		    	stmt.setShort(25, hotel.getNumberOfAdults());
+		    }
+			
+			stmt.setString(26, hotel.getHistoryActionCodeId());
+			stmt.setDate(27, hotel.getRecordUpdateDate());
+			stmt.setTime(28, hotel.getRecordUpdateTime());
+			if(hotel.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(29, Types.NULL);
+		    }else{
+		    	stmt.setShort(29, hotel.getIntraPNRSetNbr());
+		    }
+			
+			stmt.setObject(30, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			// Add to batch
 			stmt.addBatch();
 		}

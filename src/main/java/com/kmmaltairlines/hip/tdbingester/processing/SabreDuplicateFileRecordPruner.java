@@ -64,7 +64,6 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.Main;
 public class SabreDuplicateFileRecordPruner {
 
 	private static final int DESCENDING = -1;
-	private static final Logger logger = LogManager.getLogger(Main.class);
 	/*
 	 * Removes duplicate VCR records based on the equals() method defined in each
 	 * VCR file class. Amongst the duplicate records, the one with the latest

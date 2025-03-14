@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
+import com.kmmaltairlines.hip.tdbingester.sql.TDB_MaintenanceSql;
 
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 @Component
@@ -20,6 +23,8 @@ public class OneIteration {
 	private LoadDatFileIntoPojo loadFile;
 	@Autowired
 	private TDB_Maintenance tdbMaintenance;
+	@Autowired
+	private TDB_MaintenanceSql tdbSql;
 	
     // Logger for this class to log messages
     private static final Logger logger = LogManager.getLogger(OneIteration.class);
@@ -32,8 +37,10 @@ public class OneIteration {
      * @param doneFileEntryListA - the list of `DoneFileEntry` objects.
      * @param encFileName - the name of the encrypted file being processed.
      * @return String - returns the result of the operation (as a string representation of the TDB_Maintenance object).
+     * @throws SQLException 
+     * @throws IOException 
      */
-	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection) {
+	public String processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection) throws IOException, SQLException {
         
         // Create a utility object for timestamp and other utility methods
         Utility utility = new Utility();
@@ -80,7 +87,9 @@ public class OneIteration {
 
         // Print the TDB_Maintenance object to the console for debugging/verification purposes
         logger.info("EXECUTION DETAILS------->" + tdbMaintenance.toString());
-
+        
+        tdbSql.insert(tdbMaintenance,connection);
+        
         // Return the string representation of the TDB_Maintenance object (including all details)
         return tdbMaintenance.toString();
     }

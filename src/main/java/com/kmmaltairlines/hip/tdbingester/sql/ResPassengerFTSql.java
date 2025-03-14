@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,25 +54,45 @@ public class ResPassengerFTSql implements MethodInterface {
 		// Add the ResPassengerFT data to the batch for bulk insertion
 		for (ResPassengerFT passengerFT : resPassengerFTs) {
 			stmt.setString(1, passengerFT.getID());
-			stmt.setShort(2, passengerFT.getPNRPassengerFTSeqId());
-			stmt.setShort(3, passengerFT.getPNRPassengerSeqId());
-			stmt.setString(4, passengerFT.getSourceTypeCode());
-			stmt.setString(5, passengerFT.getClassOfService());
-			stmt.setString(6, passengerFT.getFrequentTravelerNbr());
-			stmt.setString(7, passengerFT.getFTText());
-			stmt.setString(8, passengerFT.getFTCurrentStatusCode());
-			stmt.setString(9, passengerFT.getFTFlightNumber());
-			stmt.setString(10, passengerFT.getReceivingCarrierCode());
-			stmt.setString(11, passengerFT.getServiceStartCityCode());
-			stmt.setString(12, passengerFT.getServiceEndCityCode());
-			stmt.setString(13, passengerFT.getSSRCode());
-			stmt.setString(14, passengerFT.getSSRIdTypeCode());
-			stmt.setShort(15, passengerFT.getSSRNbrInParty());
-			stmt.setString(16, passengerFT.getVendorCode());
-			stmt.setString(17, passengerFT.getHistoryActionCodeId());
-			stmt.setDate(18, passengerFT.getRecordUpdateDate());
-			stmt.setTime(19, passengerFT.getRecordUpdateTime());
-			stmt.setShort(20, passengerFT.getIntraPNRSetNbr());
+			stmt.setString(2, passengerFT.getPNRLocatorID());
+			stmt.setDate(3, passengerFT.getPNRCreateDate());
+			stmt.setTimestamp(4, passengerFT.getFromDateTime());
+			if(passengerFT.getPNRPassengerFTSeqId()==null) {
+		    	stmt.setNull(5, Types.NULL);
+		    }else{
+		    	stmt.setShort(5, passengerFT.getPNRPassengerFTSeqId());
+		    }
+			if(passengerFT.getPNRPassengerSeqId()==null) {
+		    	stmt.setNull(6, Types.NULL);
+		    }else{
+		    	stmt.setShort(6, passengerFT.getPNRPassengerSeqId());
+		    }
+			stmt.setString(7, passengerFT.getSourceTypeCode());
+			stmt.setString(8, passengerFT.getClassOfService());
+			stmt.setString(9, passengerFT.getFrequentTravelerNbr());
+			stmt.setString(10, passengerFT.getFTText());
+			stmt.setString(11, passengerFT.getFTCurrentStatusCode());
+			stmt.setString(12, passengerFT.getFTFlightNumber());
+			stmt.setString(13, passengerFT.getReceivingCarrierCode());
+			stmt.setString(14, passengerFT.getServiceStartCityCode());
+			stmt.setString(15, passengerFT.getServiceEndCityCode());
+			stmt.setString(16, passengerFT.getSSRCode());
+			stmt.setString(17, passengerFT.getSSRIdTypeCode());
+			if(passengerFT.getSSRNbrInParty()==null) {
+		    	stmt.setNull(18, Types.NULL);
+		    }else{
+		    	stmt.setShort(18, passengerFT.getSSRNbrInParty());
+		    }
+			stmt.setString(19, passengerFT.getVendorCode());
+			stmt.setString(20, passengerFT.getHistoryActionCodeId());
+			stmt.setDate(21, passengerFT.getRecordUpdateDate());
+			stmt.setTime(22, passengerFT.getRecordUpdateTime());
+			if(passengerFT.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(23, Types.NULL);
+		    }else{
+		    	stmt.setShort(23, passengerFT.getIntraPNRSetNbr());
+		    }
+			stmt.setObject(24, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch(); // Add this record to the batch
 		}
 

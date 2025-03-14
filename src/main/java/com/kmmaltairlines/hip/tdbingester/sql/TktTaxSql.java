@@ -3,21 +3,39 @@ package com.kmmaltairlines.hip.tdbingester.sql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.kmmaltairlines.hip.tdbingester.filepojos.TktDocument;
 import com.kmmaltairlines.hip.tdbingester.filepojos.TktTax;
+import com.kmmaltairlines.hip.tdbingester.poc_tdb.MethodInterface;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
-public class TktTaxSql {
+@Component("TktTaxSql")
+public class TktTaxSql implements MethodInterface{
 
-    @Autowired
-    Utility utility;
+	@Autowired
+	Utility utility;
+
+	private static final Logger logger = LogManager.getLogger(TktTaxSql.class);
     
-    public void insert(List<TktTax> tktTaxes, Connection connection) throws SQLException, IOException {
-
+	@Override
+	@Transactional
+    public void insert(List<Object> flights, Connection connection) throws SQLException, IOException {
+		
+		ArrayList<TktTax> tktTaxes = new ArrayList<TktTax>();
+		for (Object flight : flights) {
+			tktTaxes.add((TktTax) flight);
+		}
+		
         PreparedStatement stmt = null;
 
         // Read the SQL insert query from the file
@@ -31,20 +49,55 @@ public class TktTaxSql {
         	stmt.setString(1, tax.getID());
         	stmt.setString(2, tax.getPNRLocatorID());
         	stmt.setDate(3, tax.getPNRCreateDate());
-        	stmt.setByte(4, tax.getTaxSeqNbr());
-        	stmt.setBigDecimal(5, tax.getTaxAmt());
-        	stmt.setString(6, tax.getTaxCode());
-        	stmt.setString(7, tax.getTaxTypeCode());
-        	stmt.setString(8, tax.getTaxCategoryCode());
-        	stmt.setString(9, tax.getTaxCurrCode());
+        	stmt.setString(4, tax.getPrimaryDocNbr());
+        	stmt.setDate(5, tax.getVCRCreateDate());
+        	stmt.setTimestamp(6, tax.getTransactionDateTime());
+        	stmt.setByte(7, tax.getTaxSeqNbr());
+        	stmt.setBigDecimal(8, tax.getTaxAmt());
+        	stmt.setString(9, tax.getTaxCode());
+        	stmt.setString(10, tax.getTaxTypeCode());
+        	stmt.setString(11, tax.getTaxCategoryCode());
+        	stmt.setString(12, tax.getTaxCurrCode());
+        	stmt.setObject(13, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 
             stmt.addBatch(); // Add this record to the batch
         }
 
-        // Execute the batch insert
-        int[] results = stmt.executeBatch();
+     // Execute the batch insert
+     		int[] results = stmt.executeBatch();
 
-        System.out.println("Bulk insert completed successfully. " + results.length + " records inserted.");
-        stmt.close();
-    }
+     		logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
+     		stmt.close();
+     	}
+
+     	@Override
+     	@Transactional
+     	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
+     		ArrayList<TktTax> tktTaxes = new ArrayList<TktTax>();
+    		for (Object flight : flights) {
+    			tktTaxes.add((TktTax) flight);
+    		}
+     		PreparedStatement stmt = null;
+
+     		// Read the SQL insert query from the file
+     		String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deleteTktTax.sql");
+
+     		// Create a PreparedStatement to execute the SQL query
+     		stmt = connection.prepareStatement(sql);
+
+     		// Add the flight data to the batch for bulk insertion
+     		for (TktTax res : tktTaxes) {
+     			stmt.setString(1, res.getPrimaryDocNbr());
+     			stmt.setDate(2, res.getVCRCreateDate());
+     			// Add the statement to the batch
+     			stmt.addBatch();
+     		}
+
+     		// Execute the batch insert
+     		int[] results = stmt.executeBatch();
+     		String back = stmt.executeBatch().toString();
+     		logger.info("Delete completed successfully. " + results.length + " records deleted.");
+     		stmt.close();
+     		return back;
+     	}
 }

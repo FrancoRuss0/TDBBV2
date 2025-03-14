@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,13 +54,17 @@ public class ResPassengerEmailSql implements MethodInterface {
 		// Add the ResPassengerEmail data to the batch for bulk insertion
 		for (ResPassengerEmail passengerEmail : resPassengerEmails) {
 			stmt.setString(1, passengerEmail.getID());
-			stmt.setShort(2, passengerEmail.getPNRPassengerEMailSeqId());
-			stmt.setString(3, passengerEmail.getEMailAddress());
-			stmt.setString(4, passengerEmail.getHistoryActionCodeId());
-			stmt.setDate(5, passengerEmail.getRecordUpdateDate());
-			stmt.setTime(6, passengerEmail.getRecordUpdateTime());
-			stmt.setShort(7, passengerEmail.getIntraPNRSetNbr());
-			stmt.setShort(8, passengerEmail.getPNRPassengerSeqID());
+			stmt.setString(2, passengerEmail.getPNRLocatorID());
+			stmt.setDate(3, passengerEmail.getPNRCreateDate());
+			stmt.setTimestamp(4, passengerEmail.getFromDateTime());
+			stmt.setShort(5, passengerEmail.getPNRPassengerEMailSeqId());
+			stmt.setString(6, passengerEmail.getEMailAddress());
+			stmt.setString(7, passengerEmail.getHistoryActionCodeId());
+			stmt.setDate(8, passengerEmail.getRecordUpdateDate());
+			stmt.setTime(9, passengerEmail.getRecordUpdateTime());
+			stmt.setShort(10, passengerEmail.getIntraPNRSetNbr());
+			stmt.setShort(11, passengerEmail.getPNRPassengerSeqID());
+			stmt.setObject(12, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add this record to the batch
 		}
 
@@ -74,10 +79,10 @@ public class ResPassengerEmailSql implements MethodInterface {
 	@Transactional
 	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
 		// Establish database connection
-				ArrayList<ResPassengerEmail> resPassengerEmails = new ArrayList<ResPassengerEmail>();
-				for (Object flight : flights) {
-					resPassengerEmails.add((ResPassengerEmail) flight);
-				}
+		ArrayList<ResPassengerEmail> resPassengerEmails = new ArrayList<ResPassengerEmail>();
+		for (Object flight : flights) {
+			resPassengerEmails.add((ResPassengerEmail) flight);
+		}
 		PreparedStatement stmt = null;
 
 		// Read the SQL insert query from the file

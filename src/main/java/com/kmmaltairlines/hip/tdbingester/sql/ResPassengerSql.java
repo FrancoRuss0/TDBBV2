@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,15 +54,19 @@ public class ResPassengerSql implements MethodInterface{
         // Add the ResPassenger data to the batch for bulk insertion
         for (ResPassenger passenger : resPassengers) {
             stmt.setString(1, passenger.getID());
-            stmt.setShort(2, passenger.getPNRPassengerSeqId());
-            stmt.setString(3, passenger.getNameFirst());
-            stmt.setString(4, passenger.getNameLast());
-            stmt.setString(5, passenger.getNameComment());
-            stmt.setString(6, passenger.getRelativePassengerNbr());
-            stmt.setString(7, passenger.getHistoryActionCodeId());
-            stmt.setDate(8, passenger.getRecordUpdateDate());
-            stmt.setTime(9, passenger.getRecordUpdateTime());
-            stmt.setShort(10, passenger.getIntraPNRSetNbr());
+            stmt.setString(2, passenger.getPNRLocatorID());
+			stmt.setDate(3, passenger.getPNRCreateDate());
+			stmt.setTimestamp(4, passenger.getFromDateTime());
+            stmt.setShort(5, passenger.getPNRPassengerSeqId());
+            stmt.setString(6, passenger.getNameFirst());
+            stmt.setString(7, passenger.getNameLast());
+            stmt.setString(8, passenger.getNameComment());
+            stmt.setString(9, passenger.getRelativePassengerNbr());
+            stmt.setString(10, passenger.getHistoryActionCodeId());
+            stmt.setDate(11, passenger.getRecordUpdateDate());
+            stmt.setTime(12, passenger.getRecordUpdateTime());
+            stmt.setShort(13, passenger.getIntraPNRSetNbr());
+            stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
             stmt.addBatch();  // Add this record to the batch
         }
 

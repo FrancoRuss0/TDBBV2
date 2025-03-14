@@ -1,2 +1,2 @@
-DELETE FROM ResPassengerFT
+DELETE FROM ResFlight
 WHERE PNRLocatorID = ? AND PNRCreateDate = ?;

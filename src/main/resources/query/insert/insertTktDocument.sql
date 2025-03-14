@@ -17,7 +17,7 @@ INSERT INTO TktDocument (
 	AddCollectCurrCode, AddCollectAmt, OACDefaultPartitionCode, OACCityCode, OACAcctCode, 
 	NonRefFeeCurrCode, NonRefFeeAmt, OBFeeDescText, OBFeePricingCode, OBFeeWaiverCode, 
 	OBFeeTotalCurrCode, OBFeeTotal, OBFeeTotalUSD, PricedPassengerType, tdb_created_at
-	)
+)
 VALUES
  (
 	?, ?, ?, ?, ?, 
@@ -37,6 +37,6 @@ VALUES
 	?, ?, ?, ?, ?, 
 	?, ?, ?, ?, ?, 
 	?, ?, ?, ?, ?, 
-	?, ?, ?, ?, ?, 
-	);
+	?, ?, ?, ?, ? 
+);
  

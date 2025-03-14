@@ -47,24 +47,27 @@ public class ResAddressSql implements MethodInterface {
 		// Add the flight data to the batch for bulk insertion
 		for (ResAddress address : trasformResAddress) {
 			stmt.setString(1, address.getID());
-			stmt.setString(2, address.getAddressLine1());
-			stmt.setString(3, address.getAddressLineType_1());
-			stmt.setString(4, address.getAddressLine2());
-			stmt.setString(5, address.getAddressLineType_2());
-			stmt.setString(6, address.getAddressLine3());
-			stmt.setString(7, address.getAddressLineType_3());
-			stmt.setString(8, address.getAddressLine4());
-			stmt.setString(9, address.getAddressLineType_4());
-			stmt.setString(10, address.getAddressLine5());
-			stmt.setString(11, address.getAddressLineType_5());
-			stmt.setString(12, address.getAddressLine6());
-			stmt.setString(13, address.getAddressLineType_6());
-			stmt.setObject(14, address.getRecordUpdateDate(), Types.DATE);
-			stmt.setObject(15, address.getRecordUpdateTime(), Types.TIME);
-			stmt.setString(16, address.getHistoryActionCodeId());
-			stmt.setInt(17, address.getResAddressSeqID());
-			stmt.setShort(18, address.getIntraPNRSetNbr());
-			stmt.setObject(19, utility.nowUtcTimestamp(), Types.TIMESTAMP);
+			stmt.setString(2, address.getPNRLocatorID());
+			stmt.setDate(3, address.getPNRCreateDate());
+			stmt.setTimestamp(4, address.getFromDateTime());
+			stmt.setString(5, address.getAddressLine1());
+			stmt.setString(6, address.getAddressLineType_1());
+			stmt.setString(7, address.getAddressLine2());
+			stmt.setString(8, address.getAddressLineType_2());
+			stmt.setString(9, address.getAddressLine3());
+			stmt.setString(10, address.getAddressLineType_3());
+			stmt.setString(11, address.getAddressLine4());
+			stmt.setString(12, address.getAddressLineType_4());
+			stmt.setString(13, address.getAddressLine5());
+			stmt.setString(14, address.getAddressLineType_5());
+			stmt.setString(15, address.getAddressLine6());
+			stmt.setString(16, address.getAddressLineType_6());
+			stmt.setObject(17, address.getRecordUpdateDate(), Types.DATE);
+			stmt.setObject(18, address.getRecordUpdateTime(), Types.TIME);
+			stmt.setString(19, address.getHistoryActionCodeId());
+			stmt.setInt(20, address.getResAddressSeqID());
+			stmt.setShort(21, address.getIntraPNRSetNbr());
+			stmt.setObject(22, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 
 			stmt.addBatch();
 		}

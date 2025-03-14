@@ -31,14 +31,14 @@ public class IterateOverDoneFileEntries {
 		ArrayList<String> executionStatuses = new ArrayList<String>(); // List to store execution statuses
 
         // Check if the done file contains "batch" (indicating batch processing is required)
-		if (doneFileEntryList.toString().toLowerCase().contains("batch")) {
+		if (encFileName.contains("batch")) {
             // If batch processing is needed, call the preprocess method to handle batch files
 			doneFileEntryList=tdbBatch.process(doneFileEntryList, run_id, dotFiles, encFileName,connection);
 		} else {
             // If not a batch file, log and skip preprocessing
 			logger.info("Skip preprocessing for non BATCH files");
 		}
-
+		
         // Iterate through each entry in the done file entry list and process it
 		for (String key : doneFileEntryList.keySet()) {
             // Call the `oneIterationOverDoneFile` method for each file entry to process it

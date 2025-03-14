@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,33 +55,37 @@ public class ResPaxDocSql implements MethodInterface {
 		// Add each ResPaxDoc record to the batch
 		for (ResPaxDoc paxDoc : resPaxDocs) {
 			stmt.setString(1, paxDoc.getID());
-			stmt.setShort(2, paxDoc.getPassengerDocSeqId());
-			stmt.setShort(3, paxDoc.getPNRPassengerSeqId());
-			stmt.setDate(4, paxDoc.getDocBirthdate());
-			stmt.setString(5, paxDoc.getDocNumber());
-			stmt.setString(6, paxDoc.getDocTypeCode());
-			stmt.setString(7, paxDoc.getGenderCode());
-			stmt.setString(8, paxDoc.getInfantInd());
-			stmt.setString(9, paxDoc.getIssueCountryCode());
-			stmt.setString(10, paxDoc.getPassengerFirstName());
-			stmt.setString(11, paxDoc.getPassengerSecondName());
-			stmt.setString(12, paxDoc.getPassengerLastName());
-			stmt.setString(13, paxDoc.getPrimaryDocHolderInd());
-			stmt.setString(14, paxDoc.getPrimaryDocHolderFirstName());
-			stmt.setString(15, paxDoc.getPrimaryDocHolderLastName());
-			stmt.setString(16, paxDoc.getSourceTypeCode());
-			stmt.setString(17, paxDoc.getSSRCode());
-			stmt.setString(18, paxDoc.getSSRIdTypeCode());
-			stmt.setShort(19, paxDoc.getSSRNumberInParty());
-			stmt.setString(20, paxDoc.getSSRStatusCode());
-			stmt.setString(21, paxDoc.getSSRText());
-			stmt.setString(22, paxDoc.getVendorCode());
-			stmt.setString(23, paxDoc.getHistoryActionCodeId());
-			stmt.setDate(24, paxDoc.getRecordUpdateDate());
-			stmt.setTime(25, paxDoc.getRecordUpdateTime());
-			stmt.setShort(26, paxDoc.getIntraPNRSetNbr());
-			stmt.setDate(27, paxDoc.getDocIssueDate());
-			stmt.setDate(28, paxDoc.getDocExpDate());
+			stmt.setString(2, paxDoc.getPNRLocatorID());
+			stmt.setDate(3, paxDoc.getPNRCreateDate());
+			stmt.setTimestamp(4, paxDoc.getFromDateTime());
+			stmt.setShort(5, paxDoc.getPassengerDocSeqId());
+			stmt.setShort(6, paxDoc.getPNRPassengerSeqId());
+			stmt.setDate(7, paxDoc.getDocBirthdate());
+			stmt.setString(8, paxDoc.getDocNumber());
+			stmt.setString(9, paxDoc.getDocTypeCode());
+			stmt.setString(10, paxDoc.getGenderCode());
+			stmt.setString(11, paxDoc.getInfantInd());
+			stmt.setString(12, paxDoc.getIssueCountryCode());
+			stmt.setString(13, paxDoc.getPassengerFirstName());
+			stmt.setString(14, paxDoc.getPassengerSecondName());
+			stmt.setString(15, paxDoc.getPassengerLastName());
+			stmt.setString(16, paxDoc.getPrimaryDocHolderInd());
+			stmt.setString(17, paxDoc.getPrimaryDocHolderFirstName());
+			stmt.setString(18, paxDoc.getPrimaryDocHolderLastName());
+			stmt.setString(19, paxDoc.getSourceTypeCode());
+			stmt.setString(20, paxDoc.getSSRCode());
+			stmt.setString(21, paxDoc.getSSRIdTypeCode());
+			stmt.setShort(22, paxDoc.getSSRNumberInParty());
+			stmt.setString(23, paxDoc.getSSRStatusCode());
+			stmt.setString(24, paxDoc.getSSRText());
+			stmt.setString(25, paxDoc.getVendorCode());
+			stmt.setString(26, paxDoc.getHistoryActionCodeId());
+			stmt.setDate(27, paxDoc.getRecordUpdateDate());
+			stmt.setTime(28, paxDoc.getRecordUpdateTime());
+			stmt.setShort(29, paxDoc.getIntraPNRSetNbr());
+			stmt.setDate(30, paxDoc.getDocIssueDate());
+			stmt.setDate(31, paxDoc.getDocExpDate());
+			stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch(); // Add to batch
 		}
 

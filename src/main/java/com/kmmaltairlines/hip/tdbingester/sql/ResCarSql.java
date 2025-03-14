@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,33 +54,57 @@ public class ResCarSql implements MethodInterface {
 		// Add the ResCar data to the batch for bulk insertion
 		for (ResCar car : resCar) {
 			stmt.setString(1, car.getID());
-			stmt.setShort(2, car.getSegmentNbr());
-			stmt.setString(3, car.getCarClassificationCode());
-			stmt.setString(4, car.getCarCorporateDiscountNbr());
-			stmt.setString(5, car.getCarDropoffChargeAmount());
-			stmt.setString(6, car.getCarDropOffCurCode());
-			stmt.setString(7, car.getCarExtraDayRateAmount());
-			stmt.setString(8, car.getCarExtraHourRateAmount());
-			stmt.setString(9, car.getCarMileageLimit());
-			stmt.setString(10, car.getCarReserveUnderName());
-			stmt.setString(11, car.getCarTypeCode());
-			stmt.setString(12, car.getConfirmationNbr());
-			stmt.setString(13, car.getServiceStartCity());
-			stmt.setDate(14, car.getServiceStartDate());
-			stmt.setTime(15, car.getServiceStartTime());
-			stmt.setString(16, car.getCurrentSegmentStatusCode());
-			stmt.setShort(17, car.getUnitsBookedCount());
-			stmt.setShort(18, car.getDaysRentedCount());
-			stmt.setString(19, car.getVendorCarCode());
-			stmt.setString(20, car.getRentalRate());
-			stmt.setString(21, car.getCurrencyCode());
-			stmt.setString(22, car.getRatePlanCode());
-			stmt.setString(23, car.getNonAirportLocationDescript());
-			stmt.setString(24, car.getProductNonstdEndLocationText());
-			stmt.setString(25, car.getHistoryActionCodeId());
-			stmt.setDate(26, car.getRecordUpdateDate());
-			stmt.setTime(27, car.getRecordUpdateTime());
-			stmt.setShort(28, car.getIntraPNRSetNbr());
+			stmt.setString(2, car.getPNRLocatorID());
+			stmt.setDate(3, car.getPNRCreateDate());
+			stmt.setTimestamp(4, car.getFromDateTime());
+			if(car.getSegmentNbr()==null) {
+		    	stmt.setNull(5, Types.NULL);
+		    }else{
+		    	stmt.setShort(5, car.getSegmentNbr());
+		    }
+			
+			stmt.setString(6, car.getCarClassificationCode());
+			stmt.setString(7, car.getCarCorporateDiscountNbr());
+			stmt.setString(8, car.getCarDropoffChargeAmount());
+			stmt.setString(9, car.getCarDropOffCurCode());
+			stmt.setString(10, car.getCarExtraDayRateAmount());
+			stmt.setString(11, car.getCarExtraHourRateAmount());
+			stmt.setString(12, car.getCarMileageLimit());
+			stmt.setString(13, car.getCarReserveUnderName());
+			stmt.setString(14, car.getCarTypeCode());
+			stmt.setString(15, car.getConfirmationNbr());
+			stmt.setString(16, car.getServiceStartCity());
+			stmt.setDate(17, car.getServiceStartDate());
+			stmt.setTime(18, car.getServiceStartTime());
+			stmt.setString(19, car.getCurrentSegmentStatusCode());
+			if(car.getUnitsBookedCount()==null) {
+		    	stmt.setNull(20, Types.NULL);
+		    }else{
+		    	stmt.setShort(20, car.getUnitsBookedCount());
+		    }
+			
+			if(car.getDaysRentedCount()==null) {
+		    	stmt.setNull(21, Types.NULL);
+		    }else{
+		    	stmt.setShort(21, car.getDaysRentedCount());
+		    }
+			
+			stmt.setString(22, car.getVendorCarCode());
+			stmt.setString(23, car.getRentalRate());
+			stmt.setString(24, car.getCurrencyCode());
+			stmt.setString(25, car.getRatePlanCode());
+			stmt.setString(26, car.getNonAirportLocationDescript());
+			stmt.setString(27, car.getProductNonstdEndLocationText());
+			stmt.setString(28, car.getHistoryActionCodeId());
+			stmt.setDate(29, car.getRecordUpdateDate());
+			stmt.setTime(30, car.getRecordUpdateTime());
+			if(car.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(31, Types.NULL);
+		    }else{
+		    	stmt.setShort(31, car.getIntraPNRSetNbr());
+		    }
+			
+			stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}
 

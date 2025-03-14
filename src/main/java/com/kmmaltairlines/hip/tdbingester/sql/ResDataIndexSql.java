@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,15 +54,19 @@ public class ResDataIndexSql implements MethodInterface {
 		// Add the ResDataIndex data to the batch for bulk insertion
 		for (ResDataIndex dataIndex : resDataIndex) {
 			stmt.setString(1, dataIndex.getID());
-			stmt.setShort(2, dataIndex.getNameAssociationID());
-			stmt.setString(3, dataIndex.getProfileType());
-			stmt.setString(4, dataIndex.getProfileValue());
-			stmt.setString(5, dataIndex.getSourceSystemId());
-			stmt.setDate(6, dataIndex.getRecordUpdateDate());
-			stmt.setTime(7, dataIndex.getRecordUpdateTime());
-			stmt.setShort(8, dataIndex.getIntraPNRSetNbr());
-			stmt.setShort(9, dataIndex.getCDISeqNbr());
-			stmt.setString(10, dataIndex.getResActivityCode());
+			stmt.setString(2, dataIndex.getPNRLocatorID());
+			stmt.setDate(3, dataIndex.getPNRCreateDate());
+			stmt.setTimestamp(4, dataIndex.getFromDateTime());
+			stmt.setShort(5, dataIndex.getNameAssociationID());
+			stmt.setString(6, dataIndex.getProfileType());
+			stmt.setString(7, dataIndex.getProfileValue());
+			stmt.setString(8, dataIndex.getSourceSystemId());
+			stmt.setDate(9, dataIndex.getRecordUpdateDate());
+			stmt.setTime(10, dataIndex.getRecordUpdateTime());
+			stmt.setShort(11, dataIndex.getIntraPNRSetNbr());
+			stmt.setShort(12, dataIndex.getCDISeqNbr());
+			stmt.setString(13, dataIndex.getResActivityCode());
+			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch();
 		}
 

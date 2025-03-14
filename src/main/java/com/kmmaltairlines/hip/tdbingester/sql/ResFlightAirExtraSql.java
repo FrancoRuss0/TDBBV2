@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,13 +54,16 @@ public class ResFlightAirExtraSql implements MethodInterface {
 		// Add the ResFlightAirExtra data to the batch for bulk insertion
 		for (ResFlightAirExtra flightAirExtra : resFlightAirExtras) {
 			stmt.setString(1, flightAirExtra.getID());
-			stmt.setShort(2, flightAirExtra.getSegmentNbr());
-			stmt.setShort(3, flightAirExtra.getPNRPassengerSeqId());
-			stmt.setString(4, flightAirExtra.getRFISubCode());
-			stmt.setDate(5, flightAirExtra.getRecordUpdateDate());
-			stmt.setTime(6, flightAirExtra.getRecordUpdateTime());
-			stmt.setShort(7, flightAirExtra.getIntraPNRSetNbr());
-
+			stmt.setString(2, flightAirExtra.getPNRLocatorID());
+			stmt.setDate(3, flightAirExtra.getPNRCreateDate());
+			stmt.setTimestamp(4, flightAirExtra.getFromDateTime());
+			stmt.setShort(5, flightAirExtra.getSegmentNbr());
+			stmt.setShort(6, flightAirExtra.getPNRPassengerSeqId());
+			stmt.setString(7, flightAirExtra.getRFISubCode());
+			stmt.setDate(8, flightAirExtra.getRecordUpdateDate());
+			stmt.setTime(9, flightAirExtra.getRecordUpdateTime());
+			stmt.setShort(10, flightAirExtra.getIntraPNRSetNbr());
+			stmt.setObject(11, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			// Add to batch
 			stmt.addBatch();
 		}

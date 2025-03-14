@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,13 +54,17 @@ public class ResRemarksSql implements MethodInterface{
         // Add ResRemarks data to the batch for bulk insertion
         for (ResRemarks remark : resRemarks) {
             stmt.setString(1, remark.getID());
-            stmt.setShort(2, remark.getResRemarkSeqId());
-            stmt.setString(3, remark.getRemarkText());
-            stmt.setShort(4, remark.getRemarkType());
-            stmt.setString(5, remark.getHistoryActionCodeId());
-            stmt.setDate(6, remark.getRecordUpdateDate());
-            stmt.setTime(7, remark.getRecordUpdateTime());
-            stmt.setShort(8, remark.getIntraPNRSetNbr());
+            stmt.setString(2, remark.getPNRLocatorID());
+			stmt.setDate(3, remark.getPNRCreateDate());
+			stmt.setTimestamp(4, remark.getFromDateTime());
+            stmt.setShort(5, remark.getResRemarkSeqId());
+            stmt.setString(6, remark.getRemarkText());
+            stmt.setShort(7, remark.getRemarkType());
+            stmt.setString(8, remark.getHistoryActionCodeId());
+            stmt.setDate(9, remark.getRecordUpdateDate());
+            stmt.setTime(10, remark.getRecordUpdateTime());
+            stmt.setShort(11, remark.getIntraPNRSetNbr());
+            stmt.setObject(12, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
             stmt.addBatch(); // Add this record to the batch
         }
 

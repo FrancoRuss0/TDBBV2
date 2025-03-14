@@ -62,7 +62,6 @@ public class LoadDatFileIntoPojo {
                         // Persist the records into the database using SQL queries
                     	// Retrieve connection properties from sqlProperty
                 		// Create and return a connection to the database
-                			System.out.println(baseFilename);
                     		query.sql(listTransformation, baseFilename,connection);
                         // Log success message after data persistence
                         logger.info("Successfully persisted all records in the respective table.");

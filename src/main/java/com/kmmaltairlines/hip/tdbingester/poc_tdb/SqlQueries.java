@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.kmmaltairlines.hip.tdbingester.processing.RecordPrunerUtil;
 import com.kmmaltairlines.hip.tdbingester.processing.SabreDuplicateFileRecordPruner;
 import com.kmmaltairlines.hip.tdbingester.sql.GetUpdPNR;
+import com.kmmaltairlines.hip.tdbingester.sql.GetUpdVCR;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -28,9 +29,11 @@ public class SqlQueries {
 	@Autowired
 	private GetUpdPNR getUpdPNR;
 	@Autowired
-	private RecordPrunerUtil prune;
+	private GetUpdVCR getUpdVCR;
+
 	
 	Map<String, Map<Date, List<Map<String, Object>>>> updatedPNRRecords;
+	Map<String, Map<Date, List<Map<String, Object>>>> updatedVCRRecords;
 	
 	private static final Logger logger = LogManager.getLogger(SqlQueries.class);
 
@@ -48,9 +51,8 @@ public class SqlQueries {
 		try {
 			
 			if(baseFilename.contains("Res")) {
-				flights=utility.removeDuplicates(flights, baseFilename);
+				flights=utility.removeDuplicatesPNR(flights, baseFilename);
 				if(baseFilename.equals("Res")) {
-					System.out.println("SOLO RES: "+baseFilename);
 					connection.setAutoCommit(false);
 					int[] resultUpdPNR= getUpdPNR.insert(flights, connection);
 					connection.commit();
@@ -58,7 +60,33 @@ public class SqlQueries {
 					updatedPNRRecords=utility.groupData(updatedPNRRecords);
 				}
 				
-				flights = utility.filterRecords(flights, updatedPNRRecords);
+				flights = utility.filterRecordsPNR(flights, updatedPNRRecords);
+				
+				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
+
+				// Chiama il metodo insert
+				connection.setAutoCommit(false);
+				String deleteResult= MethodInterface.delete(flights, connection); 
+				connection.commit();
+				
+				connection.setAutoCommit(false);
+				MethodInterface.insert(flights, connection); 
+				connection.commit();
+
+			}else if(baseFilename.contains("Tkt")) {
+				System.out.println("PRIMA "+flights.size());
+				flights=utility.removeDuplicatesVCR(flights, baseFilename);
+				System.out.println("DOPO "+flights.size());
+				if(baseFilename.equals("TktDocument")) {
+					connection.setAutoCommit(false);
+					int[] resultUpdPNR= getUpdVCR.insert(flights, connection);
+					
+					connection.commit();
+					updatedVCRRecords= getUpdVCR.select(connection);
+					updatedVCRRecords=utility.groupData(updatedVCRRecords);
+				}
+				
+				flights = utility.filterRecordsVCR(flights, updatedVCRRecords);
 				
 				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
 

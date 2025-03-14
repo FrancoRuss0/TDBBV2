@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,26 +54,38 @@ public class ResAirExtraPortionofTravelSql implements MethodInterface {
 		for (ResAirExtraPortionofTravel airExtraPortion : resAirExtraPortionofTravel) {
 
 			stmt.setString(1, airExtraPortion.getID());
-			stmt.setInt(2, airExtraPortion.getIntraPNRSetNbr());
-			stmt.setTimestamp(3, airExtraPortion.getTransmissionDateTime());
-			stmt.setInt(4, airExtraPortion.getUniqueComponentID());
-			stmt.setByte(5, airExtraPortion.getAEPortionSeqNbr());
-			stmt.setInt(6, airExtraPortion.getPNRPassengerSeqID());
-			stmt.setString(7, airExtraPortion.getAirlineCode());
-			stmt.setString(8, airExtraPortion.getFlightNbr());
-			stmt.setString(9, airExtraPortion.getClassofService());
-			stmt.setDate(10, airExtraPortion.getServiceStartDate());
-			stmt.setString(11, airExtraPortion.getServiceStartCity());
-			stmt.setString(12, airExtraPortion.getServiceEndCity());
-			stmt.setString(13, airExtraPortion.getEMDNbr());
-			stmt.setShort(14, airExtraPortion.getEmdCouponNbr());
-			stmt.setString(15, airExtraPortion.getETicketNbr());
-			stmt.setShort(16, airExtraPortion.getETicketCpnNbr());
-			stmt.setDate(17, airExtraPortion.getRecordUpdateDate());
-			stmt.setTimestamp(18, airExtraPortion.getRecordUpdateDateTime());
-			stmt.setString(19, airExtraPortion.getMarketingCarrierCode());
-			stmt.setString(20, airExtraPortion.getOpertatingCarrierCode());
-			stmt.setString(21, airExtraPortion.getSourceSystemID());
+			stmt.setString(2, airExtraPortion.getPNRLocatorID());
+			stmt.setDate(3, airExtraPortion.getPNRCreateDate());
+			stmt.setInt(4, airExtraPortion.getIntraPNRSetNbr());
+			stmt.setTimestamp(5, airExtraPortion.getFromDateTime());
+			stmt.setTimestamp(6, airExtraPortion.getTransmissionDateTime());
+			stmt.setInt(7, airExtraPortion.getUniqueComponentID());
+			stmt.setByte(8, airExtraPortion.getAEPortionSeqNbr());
+			stmt.setInt(9, airExtraPortion.getPNRPassengerSeqID());
+			stmt.setString(10, airExtraPortion.getAirlineCode());
+			stmt.setString(11, airExtraPortion.getFlightNbr());
+			stmt.setString(12, airExtraPortion.getClassofService());
+			stmt.setDate(13, airExtraPortion.getServiceStartDate());
+			stmt.setString(14, airExtraPortion.getServiceStartCity());
+			stmt.setString(15, airExtraPortion.getServiceEndCity());
+			stmt.setString(16, airExtraPortion.getEMDNbr());
+			if (airExtraPortion.getEmdCouponNbr() == null) {
+				stmt.setNull(17, Types.NULL);
+			} else {
+				stmt.setShort(17, airExtraPortion.getEmdCouponNbr());
+			}
+			stmt.setString(18, airExtraPortion.getETicketNbr());
+			if (airExtraPortion.getETicketCpnNbr() == null) {
+				stmt.setNull(19, Types.NULL);
+			} else {
+				stmt.setShort(19, airExtraPortion.getETicketCpnNbr());
+			}
+			stmt.setDate(20, airExtraPortion.getRecordUpdateDate());
+			stmt.setTimestamp(21, airExtraPortion.getRecordUpdateDateTime());
+			stmt.setString(22, airExtraPortion.getMarketingCarrierCode());
+			stmt.setString(23, airExtraPortion.getOpertatingCarrierCode());
+			stmt.setString(24, airExtraPortion.getSourceSystemID());
+			stmt.setObject(25, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.executeUpdate();
 		}
 

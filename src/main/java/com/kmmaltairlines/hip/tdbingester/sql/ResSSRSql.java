@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,24 +54,28 @@ public class ResSSRSql implements MethodInterface {
 		// Add ResSSR data to the batch for bulk insertion
 		for (ResSSR ssr : resSSRs) {
 			stmt.setString(1, ssr.getID());
-			stmt.setShort(2, ssr.getResSSRSeqId());
-			stmt.setShort(3, ssr.getPNRPassengerSeqId());
-			stmt.setString(4, ssr.getSourceTypeCode());
-			stmt.setString(5, ssr.getSSRIdTypeCode());
-			stmt.setString(6, ssr.getSSRStatusCode());
-			stmt.setString(7, ssr.getSSRFlightNumber());
-			stmt.setShort(8, ssr.getSSRNbrInParty());
-			stmt.setDate(9, ssr.getSSRStartDate());
-			stmt.setString(10, ssr.getVendorCode());
-			stmt.setString(11, ssr.getSSRCode());
-			stmt.setString(12, ssr.getSSRText());
-			stmt.setString(13, ssr.getClassOfService());
-			stmt.setString(14, ssr.getServiceStartCityCode());
-			stmt.setString(15, ssr.getServiceEndCityCode());
-			stmt.setString(16, ssr.getHistoryActionCodeId());
-			stmt.setDate(17, ssr.getRecordUpdateDate());
-			stmt.setTime(18, ssr.getRecordUpdateTime());
-			stmt.setShort(19, ssr.getIntraPNRSetNbr());
+			stmt.setString(2, ssr.getPNRLocatorID());
+			stmt.setDate(3, ssr.getPNRCreateDate());
+			stmt.setTimestamp(4, ssr.getFromDateTime());
+			stmt.setShort(5, ssr.getResSSRSeqId());
+			stmt.setShort(6, ssr.getPNRPassengerSeqId());
+			stmt.setString(7, ssr.getSourceTypeCode());
+			stmt.setString(8, ssr.getSSRIdTypeCode());
+			stmt.setString(9, ssr.getSSRStatusCode());
+			stmt.setString(10, ssr.getSSRFlightNumber());
+			stmt.setShort(11, ssr.getSSRNbrInParty());
+			stmt.setDate(12, ssr.getSSRStartDate());
+			stmt.setString(13, ssr.getVendorCode());
+			stmt.setString(14, ssr.getSSRCode());
+			stmt.setString(15, ssr.getSSRText());
+			stmt.setString(16, ssr.getClassOfService());
+			stmt.setString(17, ssr.getServiceStartCityCode());
+			stmt.setString(18, ssr.getServiceEndCityCode());
+			stmt.setString(19, ssr.getHistoryActionCodeId());
+			stmt.setDate(20, ssr.getRecordUpdateDate());
+			stmt.setTime(21, ssr.getRecordUpdateTime());
+			stmt.setShort(22, ssr.getIntraPNRSetNbr());
+			stmt.setObject(23, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch(); // Add this record to the batch
 		}
 

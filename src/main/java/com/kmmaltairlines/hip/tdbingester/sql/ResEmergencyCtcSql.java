@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,21 +54,25 @@ public class ResEmergencyCtcSql implements MethodInterface {
 		// Add the ResEmergencyCtc data to the batch for bulk insertion
 		for (ResEmergencyCtc emergencyCtc : resEmergencyCtc) {
 			stmt.setString(1, emergencyCtc.getID());
-			stmt.setShort(2, emergencyCtc.getPNRPassengerSeqId());
-			stmt.setString(3, emergencyCtc.getSourceTypeCode());
-			stmt.setString(4, emergencyCtc.getSSRIdTypeCode());
-			stmt.setString(5, emergencyCtc.getSSRStatusCode());
-			stmt.setString(6, emergencyCtc.getSSRCode());
-			stmt.setShort(7, emergencyCtc.getEmergencyContactSeqId());
-			stmt.setString(8, emergencyCtc.getEmergencyPhoneNumber());
-			stmt.setString(9, emergencyCtc.getEmergencyContactName());
-			stmt.setString(10, emergencyCtc.getCountryCode());
-			stmt.setString(11, emergencyCtc.getVendorCode());
-			stmt.setString(12, emergencyCtc.getSSRText());
-			stmt.setString(13, emergencyCtc.getHistoryActionCodeId());
-			stmt.setDate(14, emergencyCtc.getRecordUpdateDate());
-			stmt.setTime(15, emergencyCtc.getRecordUpdateTime());
-			stmt.setShort(16, emergencyCtc.getIntraPNRSetNbr());
+			stmt.setString(2, emergencyCtc.getPNRLocatorID());
+			stmt.setDate(3, emergencyCtc.getPNRCreateDate());
+			stmt.setTimestamp(4, emergencyCtc.getFromDateTime());
+			stmt.setShort(5, emergencyCtc.getPNRPassengerSeqId());
+			stmt.setString(6, emergencyCtc.getSourceTypeCode());
+			stmt.setString(7, emergencyCtc.getSSRIdTypeCode());
+			stmt.setString(8, emergencyCtc.getSSRStatusCode());
+			stmt.setString(9, emergencyCtc.getSSRCode());
+			stmt.setShort(10, emergencyCtc.getEmergencyContactSeqId());
+			stmt.setString(11, emergencyCtc.getEmergencyPhoneNumber());
+			stmt.setString(12, emergencyCtc.getEmergencyContactName());
+			stmt.setString(13, emergencyCtc.getCountryCode());
+			stmt.setString(14, emergencyCtc.getVendorCode());
+			stmt.setString(15, emergencyCtc.getSSRText());
+			stmt.setString(16, emergencyCtc.getHistoryActionCodeId());
+			stmt.setDate(17, emergencyCtc.getRecordUpdateDate());
+			stmt.setTime(18, emergencyCtc.getRecordUpdateTime());
+			stmt.setShort(19, emergencyCtc.getIntraPNRSetNbr());
+			stmt.setObject(20, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch();
 		}
 

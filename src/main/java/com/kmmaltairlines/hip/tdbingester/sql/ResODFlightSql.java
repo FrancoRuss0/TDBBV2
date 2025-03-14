@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,15 +54,19 @@ public class ResODFlightSql implements MethodInterface {
 		// Add the ResODFlight data to the batch for bulk insertion
 		for (ResODFlight odFlight : resODFlights) {
 			stmt.setString(1, odFlight.getID());
-			stmt.setShort(2, odFlight.getSegmentNbr());
-			stmt.setString(3, odFlight.getAirlineOrigTerminal());
-			stmt.setString(4, odFlight.getAirlineDestTerminal());
-			stmt.setString(5, odFlight.getTravelerOrigTerminal());
-			stmt.setString(6, odFlight.getTravelerDestTerminal());
-			stmt.setString(7, odFlight.getAirlineOrigCntry());
-			stmt.setString(8, odFlight.getAirlineDestCntry());
-			stmt.setString(9, odFlight.getTravelerOrigCntry());
-			stmt.setString(10, odFlight.getTravelerDestCntry());
+			stmt.setString(2, odFlight.getPNRLocatorID());
+			stmt.setDate(3, odFlight.getPNRCreateDate());
+			stmt.setTimestamp(4, odFlight.getFromDateTime());
+			stmt.setShort(5, odFlight.getSegmentNbr());
+			stmt.setString(6, odFlight.getAirlineOrigTerminal());
+			stmt.setString(7, odFlight.getAirlineDestTerminal());
+			stmt.setString(8, odFlight.getTravelerOrigTerminal());
+			stmt.setString(9, odFlight.getTravelerDestTerminal());
+			stmt.setString(10, odFlight.getAirlineOrigCntry());
+			stmt.setString(11, odFlight.getAirlineDestCntry());
+			stmt.setString(12, odFlight.getTravelerOrigCntry());
+			stmt.setString(13, odFlight.getTravelerDestCntry());
+			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
 			stmt.addBatch(); // Add this record to the batch
 		}
 

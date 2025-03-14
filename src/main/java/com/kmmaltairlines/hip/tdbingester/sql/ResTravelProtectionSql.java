@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,29 +54,48 @@ public class ResTravelProtectionSql implements MethodInterface{
         // Add ResTravelProtection data to the batch for bulk insertion
         for (ResTravelProtection protection : resTravelProtections) {
             stmt.setString(1, protection.getID());
-            stmt.setShort(2, protection.getSegmentNbr());
-            stmt.setString(3, protection.getPlanTypeCode());
-            stmt.setString(4, protection.getVendorCode());
-            stmt.setDate(5, protection.getPurchaseDate());
-            stmt.setShort(6, protection.getSegmentType());
-            stmt.setString(7, protection.getConfirmationNbr());
-            stmt.setString(8, protection.getCurrentSegmentStatusCode());
-            stmt.setDate(9, protection.getServiceStartDate());
-            stmt.setDate(10, protection.getServiceEndDate());
-            stmt.setString(11, protection.getServiceStartCityCode());
-            stmt.setString(12, protection.getServiceEndCityCode());
-            stmt.setString(13, protection.getFOPCode());
-            stmt.setString(14, protection.getPaymentCreditCardCode());
-            stmt.setString(15, protection.getPaymentCreditCardNbr());
-            stmt.setDate(16, protection.getPaymentCreditCardExpDate());
-            stmt.setString(17, protection.getCurrCode());
-            stmt.setString(18, protection.getPremiumValue());
-            stmt.setBigDecimal(19, protection.getPremiumAmt());
-            stmt.setBigDecimal(20, protection.getPremiumAmtUSD());
-            stmt.setDate(21, protection.getRecordUpdateDate());
-            stmt.setTime(22, protection.getRecordUpdateTime());
-            stmt.setString(23, protection.getHistoryActionCodeID());
-            stmt.setShort(24, protection.getIntraPNRSetNbr());
+            stmt.setString(2, protection.getPNRLocatorID());
+			stmt.setDate(3, protection.getPNRCreateDate());
+			stmt.setTimestamp(4, protection.getFromDateTime());
+			if(protection.getSegmentNbr()==null) {
+		    	stmt.setNull(5, Types.NULL);
+		    }else{
+		    	stmt.setShort(5, protection.getSegmentNbr());
+		    }
+            
+            stmt.setString(6, protection.getPlanTypeCode());
+            stmt.setString(7, protection.getVendorCode());
+            stmt.setDate(8, protection.getPurchaseDate());
+            if(protection.getSegmentType()==null) {
+		    	stmt.setNull(9, Types.NULL);
+		    }else{
+		    	stmt.setShort(9, protection.getSegmentType());
+		    }
+            
+            stmt.setString(10, protection.getConfirmationNbr());
+            stmt.setString(11, protection.getCurrentSegmentStatusCode());
+            stmt.setDate(12, protection.getServiceStartDate());
+            stmt.setDate(13, protection.getServiceEndDate());
+            stmt.setString(14, protection.getServiceStartCityCode());
+            stmt.setString(15, protection.getServiceEndCityCode());
+            stmt.setString(16, protection.getFOPCode());
+            stmt.setString(17, protection.getPaymentCreditCardCode());
+            stmt.setString(18, protection.getPaymentCreditCardNbr());
+            stmt.setDate(19, protection.getPaymentCreditCardExpDate());
+            stmt.setString(20, protection.getCurrCode());
+            stmt.setString(21, protection.getPremiumValue());
+            stmt.setBigDecimal(22, protection.getPremiumAmt());
+            stmt.setBigDecimal(23, protection.getPremiumAmtUSD());
+            stmt.setDate(24, protection.getRecordUpdateDate());
+            stmt.setTime(25, protection.getRecordUpdateTime());
+            stmt.setString(26, protection.getHistoryActionCodeID());
+            if(protection.getIntraPNRSetNbr()==null) {
+		    	stmt.setNull(27, Types.NULL);
+		    }else{
+		    	stmt.setShort(27, protection.getIntraPNRSetNbr());
+		    }
+            
+            stmt.setObject(28, utility.nowUtcTimestamp(), Types.TIMESTAMP);
             stmt.addBatch(); // Add this record to the batch
         }
 
