@@ -100,13 +100,13 @@ public class SqlQueries {
 				connection.commit();
 
 			}else {
-				throw new SQLException("Simulated SQL error for testing email.");
-//				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
+				
+				MethodInterface MethodInterface = (MethodInterface) context.getBean(baseFilename + "Sql");
 
 				// Chiama il metodo insert
-//				connection.setAutoCommit(false);
-//				MethodInterface.insert(flights, connection); // Questo chiama insert() su ACSFlight
-//				connection.commit();
+				connection.setAutoCommit(false);
+				MethodInterface.insert(flights, connection); // Questo chiama insert() su ACSFlight
+				connection.commit();
 			}
 
 		} catch (SQLException ex) {
