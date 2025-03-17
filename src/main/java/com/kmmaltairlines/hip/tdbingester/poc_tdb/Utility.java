@@ -16,21 +16,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFile;
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.filepojos.PNRRecord;
 import com.kmmaltairlines.hip.tdbingester.filepojos.VCRRecord;
-import com.kmmaltairlines.hip.tdbingester.processing.SabreDuplicateFileRecordPruner;
 
 @Component
 public class Utility {
@@ -83,7 +80,7 @@ public class Utility {
 	 * @throws FileNotFoundException - If the GPG file is not found.
 	 */
 	public InputStream readGpg(String string) throws FileNotFoundException {
-		BufferedReader br = new BufferedReader(new FileReader(string)); // BufferedReader to read the file
+		//BufferedReader br = new BufferedReader(new FileReader(string)); // BufferedReader to read the file
 		return null; // Currently, this method is incomplete and returns null
 	}
 
@@ -152,7 +149,7 @@ public class Utility {
 				baseFilename = parts[0];
 
 			} else {
-				baseFilename = parts[0] + "_" + parts[1]; // Se non ci sono underscore, restituiamo l'intero nome
+				baseFilename = parts[0] + "_" + parts[1]; // If no underscore, return the whole name
 			}
 			// String baseFilename = key.substring(0, underscoreIndex); // Extract the base
 			// filename from the key
@@ -206,8 +203,24 @@ public class Utility {
 		return result; // Return the processed 2D array
 	}
 
+	/**
+	 * Checks if the given value is "Res" (case-insensitive).
+	 * 
+	 * @param value - The value to check.
+	 * @return true if the value is "Res", false otherwise.
+	 */
 	public boolean isRes(String value) {
 		return value.equalsIgnoreCase("Res");
+	}
+
+	/**
+	 * Checks if the given value is "TktDocument" (case-insensitive).
+	 * 
+	 * @param value - The value to check.
+	 * @return true if the value is "TktDocument", false otherwise.
+	 */
+	public boolean isTktDocument(String value) {
+		return value.equalsIgnoreCase("TktDocument");
 	}
 
 	/**
@@ -228,7 +241,7 @@ public class Utility {
 		// If the filename is not found, return -1
 		return -1; // Or throw an exception if appropriate
 	}
-
+	
 	/**
 	 * Loads the SQL query from a file.
 	 * 
@@ -237,212 +250,246 @@ public class Utility {
 	 * @throws IOException - If an error occurs while reading the file
 	 */
 	public String loadSqlFromFile(String filePath) throws IOException {
-		// Reads the entire content of the SQL file
-		return new String(Files.readAllBytes(Paths.get(filePath)));
+	    // Reads the entire content of the SQL file and returns it as a string
+	    return new String(Files.readAllBytes(Paths.get(filePath)));
 	}
 
+	/**
+	 * Loads parent models (Res and TktDocument) from the given DoneFileEntry list.
+	 * 
+	 * @param doneFileEntryList - List of DoneFileEntry objects
+	 * @return A list of DoneFileEntry objects that correspond to parent models
+	 */
 	public ArrayList<DoneFileEntry> loadParentModels(ArrayList<DoneFileEntry> doneFileEntryList) {
-		ArrayList<DoneFileEntry> parentModels = new ArrayList<>();
-		for (DoneFileEntry key : doneFileEntryList) {
-			if (key.getFilename().equals("Res")) {
-				parentModels.add(key);
-			} else if (key.getFilename().equals("TktDocument")) {
-				parentModels.add(key);
-			}
-		}
-		return parentModels;
+	    ArrayList<DoneFileEntry> parentModels = new ArrayList<>();
+	    // Iterate over the DoneFileEntry list and add "Res" and "TktDocument" entries
+	    for (DoneFileEntry key : doneFileEntryList) {
+	        if (key.getFilename().equals("Res") || key.getFilename().equals("TktDocument")) {
+	            parentModels.add(key);
+	        }
+	    }
+	    return parentModels;
 	}
 
-	public static List<Object> removeDuplicatesPNR(List<Object> records, String baseFilename) throws Exception {
-		String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
+	/**
+	 * Removes duplicate PNR records based on a combination of PNRLocatorID, PNRCreateDate, and FromDateTime.
+	 * 
+	 * @param records - The list of PNR records
+	 * @param baseFilename - The base filename representing the class name (e.g., "Res")
+	 * @return A list of unique PNR records
+	 * @throws Exception If any error occurs during reflection or processing
+	 */
+	public List<Object> removeDuplicatesPNR(List<Object> records, String baseFilename) throws Exception {
+	    String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
 
-		// Carica la classe dinamicamente
-		Class<?> flightClass = Class.forName(className); // Es: "Res" o altre classi
+	    // Load the class dynamically
+	    Class<?> flightClass = Class.forName(className);
 
-		// Ottieni i metodi "get" dinamicamente per PNRLocatorID, PNRCreateDate,
-		// FromDateTime
-		Method getPNRLocatorID = flightClass.getMethod("getPNRLocatorID");
-		Method getPNRCreateDate = flightClass.getMethod("getPNRCreateDate");
-		Method getFromDateTime = flightClass.getMethod("getFromDateTime");
+	    // Get methods for PNRLocatorID, PNRCreateDate, and FromDateTime dynamically
+	    Method getPNRLocatorID = flightClass.getMethod("getPNRLocatorID");
+	    Method getPNRCreateDate = flightClass.getMethod("getPNRCreateDate");
+	    Method getFromDateTime = flightClass.getMethod("getFromDateTime");
 
-		// Utilizza un Set per tenere traccia dei record unici (con un identificatore
-		// combinato)
-		Set<String> seenIdentifiers = new HashSet<>();
+	    // Use a Set to track unique identifiers
+	    Set<String> seenIdentifiers = new HashSet<>();
 
-		// Filtra i duplicati
-		List<Object> uniqueRecords = new ArrayList<>();
-		for (Object record : records) {
-			try {
-				// Ottieni i valori per ogni record
-				Object locatorID = getPNRLocatorID.invoke(record);
-				Object createDate = getPNRCreateDate.invoke(record);
-				Object fromDateTime = getFromDateTime.invoke(record);
+	    // Filter duplicates based on the combination of values
+	    List<Object> uniqueRecords = new ArrayList<>();
+	    for (Object record : records) {
+	        try {
+	            // Get the values for the identifiers
+	            Object locatorID = getPNRLocatorID.invoke(record);
+	            Object createDate = getPNRCreateDate.invoke(record);
+	            Object fromDateTime = getFromDateTime.invoke(record);
 
-				// Crea un identificatore unico combinato
-				String identifier = locatorID.toString() + createDate.toString() + fromDateTime.toString();
+	            // Create a unique identifier
+	            String identifier = locatorID.toString() + createDate.toString() + fromDateTime.toString();
 
-				// Se l'identificatore è già stato visto, ignora il record
-				if (!seenIdentifiers.contains(identifier)) {
-					seenIdentifiers.add(identifier); // Aggiungi l'identificatore per il futuro controllo
-					uniqueRecords.add(record); // Aggiungi il record alla lista di record unici
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	            // If the identifier has not been seen before, add the record
+	            if (!seenIdentifiers.contains(identifier)) {
+	                seenIdentifiers.add(identifier);
+	                uniqueRecords.add(record);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
 
-		return uniqueRecords; // Restituisce la lista senza duplicati
-	}
-	
-	public static List<Object> removeDuplicatesVCR(List<Object> records, String baseFilename) throws Exception {
-		String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
-
-		// Carica la classe dinamicamente
-		Class<?> flightClass = Class.forName(className); // Es: "Res" o altre classi
-
-		// Ottieni i metodi "get" dinamicamente per PNRLocatorID, PNRCreateDate,
-		// FromDateTime
-		Method getPrimaryDocNbr = flightClass.getMethod("getPrimaryDocNbr");
-		Method getVCRCreateDate = flightClass.getMethod("getVCRCreateDate");
-		Method getTransactionDateTime = flightClass.getMethod("getTransactionDateTime");
-
-		// Utilizza un Set per tenere traccia dei record unici (con un identificatore
-		// combinato)
-		Set<String> seenIdentifiers = new HashSet<>();
-
-		// Filtra i duplicati
-		List<Object> uniqueRecords = new ArrayList<>();
-		for (Object record : records) {
-			try {
-				// Ottieni i valori per ogni record
-				Object PrimaryDocNbr = getPrimaryDocNbr.invoke(record);
-				Object VCRCreateDate = getVCRCreateDate.invoke(record);
-				Object TransactionDateTime = getTransactionDateTime.invoke(record);
-
-				// Crea un identificatore unico combinato
-				String identifier = PrimaryDocNbr.toString() + VCRCreateDate.toString() + TransactionDateTime.toString();
-
-				// Se l'identificatore è già stato visto, ignora il record
-				if (!seenIdentifiers.contains(identifier)) {
-					seenIdentifiers.add(identifier); // Aggiungi l'identificatore per il futuro controllo
-					uniqueRecords.add(record); // Aggiungi il record alla lista di record unici
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		return uniqueRecords; // Restituisce la lista senza duplicati
+	    return uniqueRecords; // Return the list of unique records
 	}
 
+	/**
+	 * Removes duplicate VCR records based on a combination of PrimaryDocNbr, VCRCreateDate, and TransactionDateTime.
+	 * 
+	 * @param records - The list of VCR records
+	 * @param baseFilename - The base filename representing the class name (e.g., "VCR")
+	 * @return A list of unique VCR records
+	 * @throws Exception If any error occurs during reflection or processing
+	 */
+	public List<Object> removeDuplicatesVCR(List<Object> records, String baseFilename) throws Exception {
+	    String className = "com.kmmaltairlines.hip.tdbingester.filepojos." + baseFilename;
+
+	    // Load the class dynamically
+	    Class<?> flightClass = Class.forName(className);
+
+	    // Get methods for PrimaryDocNbr, VCRCreateDate, and TransactionDateTime dynamically
+	    Method getPrimaryDocNbr = flightClass.getMethod("getPrimaryDocNbr");
+	    Method getVCRCreateDate = flightClass.getMethod("getVCRCreateDate");
+	    Method getTransactionDateTime = flightClass.getMethod("getTransactionDateTime");
+
+	    // Use a Set to track unique identifiers
+	    Set<String> seenIdentifiers = new HashSet<>();
+
+	    // Filter duplicates based on the combination of values
+	    List<Object> uniqueRecords = new ArrayList<>();
+	    for (Object record : records) {
+	        try {
+	            // Get the values for the identifiers
+	            Object primaryDocNbr = getPrimaryDocNbr.invoke(record);
+	            Object vcrCreateDate = getVCRCreateDate.invoke(record);
+	            Object transactionDateTime = getTransactionDateTime.invoke(record);
+
+	            // Create a unique identifier
+	            String identifier = primaryDocNbr.toString() + vcrCreateDate.toString() + transactionDateTime.toString();
+
+	            // If the identifier has not been seen before, add the record
+	            if (!seenIdentifiers.contains(identifier)) {
+	                seenIdentifiers.add(identifier);
+	                uniqueRecords.add(record);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return uniqueRecords; // Return the list of unique records
+	}
+
+	/**
+	 * Groups data by locatorId and PNRCreateDate.
+	 * 
+	 * @param originalData - The original data to be grouped
+	 * @return A map where the first level is locatorId and the second level is PNRCreateDate
+	 */
 	public Map<String, Map<Date, List<Map<String, Object>>>> groupData(
-			Map<String, Map<Date, List<Map<String, Object>>>> originalData) {
-		Map<String, Map<Date, List<Map<String, Object>>>> grouped = new HashMap<>();
+	        Map<String, Map<Date, List<Map<String, Object>>>> originalData) {
+	    Map<String, Map<Date, List<Map<String, Object>>>> grouped = new HashMap<>();
 
-		for (Map.Entry<String, Map<Date, List<Map<String, Object>>>> entry : originalData.entrySet()) {
-			String locatorId = entry.getKey(); // PNRLocatorID
+	    // Iterate through the original data and group by locatorId and PNRCreateDate
+	    for (Map.Entry<String, Map<Date, List<Map<String, Object>>>> entry : originalData.entrySet()) {
+	        String locatorId = entry.getKey();
 
-			// All'interno del locatorId, raggruppiamo per PNRCreateDate
-			Map<Date, List<Map<String, Object>>> createDateGroup = entry.getValue();
+	        // Inside each locatorId, group by PNRCreateDate
+	        Map<Date, List<Map<String, Object>>> createDateGroup = entry.getValue();
 
-			// Se non esiste già una mappa per questo locatorId, creiamo una nuova
-			if (!grouped.containsKey(locatorId)) {
-				grouped.put(locatorId, new HashMap<>());
-			}
+	        if (!grouped.containsKey(locatorId)) {
+	            grouped.put(locatorId, new HashMap<>());
+	        }
 
-			// Per ogni PNRCreateDate, aggiungiamo i dati al gruppo
-			for (Map.Entry<Date, List<Map<String, Object>>> dateEntry : createDateGroup.entrySet()) {
-				Date createDate = dateEntry.getKey(); // PNRCreateDate
-				List<Map<String, Object>> records = dateEntry.getValue();
+	        // For each PNRCreateDate, add the data to the group
+	        for (Map.Entry<Date, List<Map<String, Object>>> dateEntry : createDateGroup.entrySet()) {
+	            Date createDate = dateEntry.getKey();
+	            List<Map<String, Object>> records = dateEntry.getValue();
 
-				// Aggiungiamo i dati a questa data, creando una lista se non esiste già
-				Map<Date, List<Map<String, Object>>> locatorData = grouped.get(locatorId);
-				if (!locatorData.containsKey(createDate)) {
-					locatorData.put(createDate, new ArrayList<>());
-				}
-				locatorData.get(createDate).addAll(records);
-			}
-		}
-		return grouped;
+	            // Add the records to the group for the given date
+	            Map<Date, List<Map<String, Object>>> locatorData = grouped.get(locatorId);
+	            if (!locatorData.containsKey(createDate)) {
+	                locatorData.put(createDate, new ArrayList<>());
+	            }
+	            locatorData.get(createDate).addAll(records);
+	        }
+	    }
+
+	    return grouped; // Return the grouped data
 	}
 
-	public static List<Object> filterRecordsPNR(List<Object> flights,
-			Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
-		List<Object> filteredFlights = new ArrayList<>();
+	/**
+	 * Filters PNR records to keep only the ones that match the given data in recordsToKeep.
+	 * 
+	 * @param flights - The list of PNR records to filter
+	 * @param recordsToKeep - The records to retain
+	 * @return A list of PNR records that match the criteria
+	 */
+	public List<Object> filterRecordsPNR(List<Object> flights,
+	        Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
+	    List<Object> filteredFlights = new ArrayList<>();
 
-		// Log l'inizio del processo
-		logger.info("Start filtering records");
+	    // Log the start of filtering
+	    logger.info("Start filtering records");
 
-		// Iterating over the flights list
-		for (Object flight : flights) {
-			try {
+	    // Iterate over the flights list and filter based on matching PNRLocatorID and PNRCreateDate
+	    for (Object flight : flights) {
+	        try {
+	            if (flight instanceof PNRRecord) {
+	                PNRRecord record = (PNRRecord) flight;
+	                String pnrLocatorID = record.getPNRLocatorID();
+	                Date pnrCreateDate = record.getPNRCreateDate();
 
-				// Assuming each flight is a PNRRecord or its subclass
-				if (flight instanceof PNRRecord) {
-					PNRRecord record = (PNRRecord) flight;
-					String pnrLocatorID = record.getPNRLocatorID();
-					Date pnrCreateDate = record.getPNRCreateDate();
+	                // Check if the PNRRecord exists in recordsToKeep
+	                Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(pnrLocatorID);
+	                if (recordsForLocator != null) {
+	                    List<Map<String, Object>> recordsForDate = recordsForLocator.get(pnrCreateDate);
+	                    if (recordsForDate != null) {
+	                        // If there is a match, keep this flight record
+	                        filteredFlights.add(flight);
+	                    }
+	                }
+	            }
+	        } catch (Exception e) {
+	            // Log any error encountered
+	            logger.error("Error processing flight record: " + flight + ", Error: " + e.getMessage());
+	            e.printStackTrace();
+	        }
+	    }
 
-					// Check if this PNRRecord exists in recordsToKeep
-					Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(pnrLocatorID);
-					if (recordsForLocator != null) {
-						List<Map<String, Object>> recordsForDate = recordsForLocator.get(pnrCreateDate);
-						if (recordsForDate != null) {
-							// If there is a match, keep this flight record
-							filteredFlights.add(flight);
-						} 
-					} 
-				}
-			} catch (Exception e) {
-				// Log dell'errore
-				logger.error("Error processing flight record: " + flight + ", Error: " + e.getMessage());
-				e.printStackTrace();
-			}
-		}
+	    // Log the end of filtering
+	    logger.info("Filtering completed. " + filteredFlights.size() + " records matched.");
 
-		// Log quando il filtraggio è completato
-		logger.info("Filtering completed. " + filteredFlights.size() + " records matched.");
-
-		return filteredFlights; // Return the filtered list of flights
+	    return filteredFlights; // Return the filtered list of flights
 	}
-	
-	public static List<Object> filterRecordsVCR(List<Object> flights,
-			Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
-		List<Object> filteredFlights = new ArrayList<>();
 
-		// Log l'inizio del processo
-		logger.info("Start filtering records");
+	/**
+	 * Filters VCR records to keep only the ones that match the given data in recordsToKeep.
+	 * 
+	 * @param flights - The list of VCR records to filter
+	 * @param recordsToKeep - The records to retain
+	 * @return A list of VCR records that match the criteria
+	 */
+	public List<Object> filterRecordsVCR(List<Object> flights,
+	        Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
+	    List<Object> filteredFlights = new ArrayList<>();
 
-		// Iterating over the flights list
-		for (Object flight : flights) {
-			try {
+	    // Log the start of filtering
+	    logger.info("Start filtering records");
 
-				// Assuming each flight is a PNRRecord or its subclass
-				if (flight instanceof VCRRecord) {
-					VCRRecord record = (VCRRecord) flight;
-					String PrimaryDocNbr = record.getPrimaryDocNbr();
-					Date VCRCreateDate = record.getVCRCreateDate();
+	    // Iterate over the flights list and filter based on matching PrimaryDocNbr and VCRCreateDate
+	    for (Object flight : flights) {
+	        try {
+	            if (flight instanceof VCRRecord) {
+	                VCRRecord record = (VCRRecord) flight;
+	                String primaryDocNbr = record.getPrimaryDocNbr();
+	                Date vcrCreateDate = record.getVCRCreateDate();
 
-					// Check if this PNRRecord exists in recordsToKeep
-					Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(PrimaryDocNbr);
-					if (recordsForLocator != null) {
-						List<Map<String, Object>> recordsForDate = recordsForLocator.get(VCRCreateDate);
-						if (recordsForDate != null) {
-							// If there is a match, keep this flight record
-							filteredFlights.add(flight);
-						} 
-					} 
-				}
-			} catch (Exception e) {
-				// Log dell'errore
-				logger.error("Error processing flight record: " + flight + ", Error: " + e.getMessage());
-				e.printStackTrace();
-			}
-		}
+	                // Check if the VCRRecord exists in recordsToKeep
+	                Map<Date, List<Map<String, Object>>> recordsForLocator = recordsToKeep.get(primaryDocNbr);
+	                if (recordsForLocator != null) {
+	                    List<Map<String, Object>> recordsForDate = recordsForLocator.get(vcrCreateDate);
+	                    if (recordsForDate != null) {
+	                        // If there is a match, keep this flight record
+	                        filteredFlights.add(flight);
+	                    }
+	                }
+	            }
+	        } catch (Exception e) {
+	            // Log any error encountered
+	            logger.error("Error processing flight record: " + flight + ", Error: " + e.getMessage());
+	            e.printStackTrace();
+	        }
+	    }
 
-		// Log quando il filtraggio è completato
-		logger.info("Filtering completed. " + filteredFlights.size() + " records matched.");
+	    // Log the end of filtering
+	    logger.info("Filtering completed. " + filteredFlights.size() + " records matched.");
 
-		return filteredFlights; // Return the filtered list of flights
+	    return filteredFlights; // Return the filtered list of flights
 	}
 }

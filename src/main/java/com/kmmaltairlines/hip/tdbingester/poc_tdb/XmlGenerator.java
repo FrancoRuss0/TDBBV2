@@ -9,7 +9,7 @@ import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 @Component
 public class XmlGenerator {
 
-    public static String generateXml(List<TDB_Maintenance> report) {
+    public String generateXml(List<TDB_Maintenance> report) {
         StringBuilder xmlBuilder = new StringBuilder();
 
         xmlBuilder.append("<table>");

@@ -115,11 +115,11 @@ public class Decrypt {
 		throw new IllegalArgumentException("Can't find signing key in key ring.");
 	}
 
-	public byte[] decryptFile(String inputFileName, char[] passPhrase) throws IOException, PGPException {
-		InputStream in = new BufferedInputStream(new FileInputStream(inputFileName));
-		byte[] prova = decryptFile(in, passPhrase);
-		in.close();
-		return prova;
+	public byte[] decryptFile(byte[] encryptedBytes, char[] passPhrase) throws IOException, PGPException {
+		InputStream in = new BufferedInputStream(new ByteArrayInputStream(encryptedBytes));
+        byte[] decrypt = decryptFile(in, passPhrase);
+        in.close();
+        return decrypt;
 
 	}
 

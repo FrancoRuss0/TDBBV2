@@ -1,104 +1,105 @@
 package com.kmmaltairlines.hip.tdbingester.poc_tdb;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.mule.weave.v2.grammar.Variables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kmmaltairlines.hip.tdbingester.filepojos.DoneFileEntry;
 import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 import com.kmmaltairlines.hip.tdbingester.sql.TDB_MaintenanceSql;
-import com.kmmaltairlines.mail.EmailRequest;
-import com.kmmaltairlines.mail.MailService;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-@Component
+@Component  // Marks this class as a Spring-managed bean
 public class OneIteration {
-	
-	@Autowired
-	private LoadDatFileIntoPojo loadFile;
 
-	@Autowired
-	private TDB_MaintenanceSql tdbSql;
+    // Autowired dependencies for other services and classes
+    @Autowired
+    private LoadDatFileIntoPojo loadFile;  // Service to load and process .dat files into POJOs
 
-	
-    // Logger for this class to log messages
+    @Autowired
+    private TDB_MaintenanceSql tdbSql;  // SQL service for interacting with TDB_Maintenance data
+
+    // Logger to log messages for this class
     private static final Logger logger = LogManager.getLogger(OneIteration.class);
 
     /**
      * This method processes each entry in the done file and performs the necessary operations.
+     * It processes the file by loading its content, performing maintenance operations, and logging the results.
      * @param doneFileName - the list of entries in the done file.
      * @param doneFileContent - the specific entry value from the done file.
      * @param run_id - unique run identifier for the current execution.
      * @param doneFileEntryListA - the list of `DoneFileEntry` objects.
      * @param encFileName - the name of the encrypted file being processed.
-     * @return String - returns the result of the operation (as a string representation of the TDB_Maintenance object).
-     * @throws SQLException 
-     * @throws IOException 
+     * @param connection - the database connection used for SQL operations.
+     * @param report - the list to hold the processed maintenance reports.
+     * @return ArrayList<TDB_Maintenance> - the updated report after processing the file.
+     * @throws SQLException - if a database error occurs during processing.
+     * @throws IOException - if there is an error loading the file content.
      */
-	public ArrayList<TDB_Maintenance> processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, ArrayList<DoneFileEntry> doneFileEntry, String encFileName,Connection connection,ArrayList<TDB_Maintenance> report) throws IOException, SQLException {
-        // Create a utility object for timestamp and other utility methods
+    public ArrayList<TDB_Maintenance> processDoneFiles(String doneFileName, String doneFileContent, UUID run_id, 
+                                                       ArrayList<DoneFileEntry> doneFileEntry, String encFileName, 
+                                                       Connection connection, ArrayList<TDB_Maintenance> report) 
+                                                       throws IOException, SQLException {
+
+        // Create a utility object for handling timestamps and other utilities
         Utility utility = new Utility();
-        TDB_Maintenance tdbMaintenance = new TDB_Maintenance();
-        // Get the start time of this iteration
-        Timestamp currentIterationStartTime = utility.nowUtcTimestamp();
-        
-        // Extract base filename and the actual file name (without ".dat")
+        TDB_Maintenance tdbMaintenance = new TDB_Maintenance();  // Object to store maintenance info
+        Timestamp currentIterationStartTime = utility.nowUtcTimestamp();  // Capture the start time for this operation
+
+        // Extract base filename and the actual filename without ".dat" extension
         String[] parts = doneFileName.split("_");
         String baseFilename;
-    	if (parts.length < 3) {
-    		baseFilename=parts[0];
-    		
-        } else{
-        	baseFilename=parts[0] + "_" + parts[1]; 
-        }
-        String fileName = doneFileName.split(".dat")[0];
-        
-        // Flag to check if an exception occurs during the processing
-        boolean isExceptionThrown = false;
-        
-        // Call the method to load the .dat file and process it
-        isExceptionThrown = loadFile.loadDatFile(baseFilename, doneFileContent, doneFileEntry,connection,encFileName);
-
-        // If no exception is thrown, populate the TDB_Maintenance object with success data
-        if (isExceptionThrown == false) {
-            tdbMaintenance.setRunId(run_id.toString());
-            tdbMaintenance.setFileName(fileName);
-            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records for the file
-            tdbMaintenance.setSuccess(isExceptionThrown);  // Set success flag to false since no error occurred
-            tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
-            tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
-            tdbMaintenance.setDateStarted(currentIterationStartTime);  // Set the start time of the operation
-            report.add(tdbMaintenance);
+        // If the filename does not have enough parts, use the first part as the base filename
+        if (parts.length < 3) {
+            baseFilename = parts[0];
         } else {
-            // If an exception was thrown, log the failure data in TDB_Maintenance object
+            // If the filename has more parts, use the first two parts as the base filename
+            baseFilename = parts[0] + "_" + parts[1];
+        }
+
+        // Flag to track if any exceptions are thrown during the file processing
+        boolean isExceptionThrown = false;
+
+        // Call method to load the .dat file and process its content
+        isExceptionThrown = loadFile.loadDatFile(baseFilename, doneFileContent, doneFileEntry, connection, encFileName);
+
+        // If no exception was thrown during processing, log success details
+        if (isExceptionThrown == false) {
+            // Set the properties of the TDB_Maintenance object for successful processing
             tdbMaintenance.setRunId(run_id.toString());
-            tdbMaintenance.setFileName(fileName);
-            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records for the file
-            tdbMaintenance.setSuccess(isExceptionThrown);  // Set success flag to true since an exception occurred
+            tdbMaintenance.setFileName(doneFileName);  // Set the file name being processed
+            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records processed
+            tdbMaintenance.setSuccess(isExceptionThrown);  // Success flag (false means successful processing)
             tdbMaintenance.setEncFileName(encFileName);  // Set the encrypted file name
             tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());  // Set the end time of the operation
             tdbMaintenance.setDateStarted(currentIterationStartTime);  // Set the start time of the operation
-            report.add(tdbMaintenance);
+            report.add(tdbMaintenance);  // Add the maintenance object to the report list
+        } else {
+            // If an exception was thrown during processing, log failure details
+            tdbMaintenance.setRunId(run_id.toString());
+            tdbMaintenance.setFileName(doneFileName);
+            tdbMaintenance.setNumRecords(utility.getRecordsByFilename(baseFilename, doneFileEntry));  // Get number of records for the failed file
+            tdbMaintenance.setSuccess(isExceptionThrown);  // Success flag (true means there was an exception)
+            tdbMaintenance.setEncFileName(encFileName);
+            tdbMaintenance.setDateEnded(utility.nowUtcTimestamp());
+            tdbMaintenance.setDateStarted(currentIterationStartTime);
+            report.add(tdbMaintenance);  // Add the failure maintenance object to the report list
         }
 
-        // Print the TDB_Maintenance object to the console for debugging/verification purposes
+        // Log the details of the TDB_Maintenance object for debugging or verification
         logger.info("EXECUTION DETAILS------->" + tdbMaintenance.toString());
-        
-        
-        
-        tdbSql.insert(tdbMaintenance,connection);
-        
-       
+
+        // Insert the TDB_Maintenance object into the database
+        tdbSql.insert(tdbMaintenance, connection);
+
+        // Return the updated report containing the processed maintenance entries
         return report;
     }
 }

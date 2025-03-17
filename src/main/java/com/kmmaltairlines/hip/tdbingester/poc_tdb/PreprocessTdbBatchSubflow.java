@@ -16,55 +16,63 @@ import com.kmmaltairlines.hip.tdbingester.maintenance.TDB_Maintenance;
 import com.kmmaltairlines.hip.tdbingester.sql.ResSql;
 import com.kmmaltairlines.hip.tdbingester.sql.TktDocumentSql;
 
-@Component
+@Component  // Marks this class as a Spring-managed component
 public class PreprocessTdbBatchSubflow {
 
-	@Autowired
-	private Utility utility;
+    // Autowired dependencies are injected automatically by Spring
+    @Autowired
+    private Utility utility;  // Utility class for general utility functions
+    @Autowired
+    private OneIteration oneIteration;  // Service to process individual file entries
+    @Autowired
+    private ResSql resSql;  // SQL service for handling operations related to Res (reservation) data
+    @Autowired
+    private TktDocumentSql tktDocumentSql;  // SQL service for handling operations related to TktDocument data
 
-	@Autowired
-	private OneIteration oneIteration;
+    // Static list to hold the parent models (Res and TktDocument files)
+    static ArrayList<DoneFileEntry> parentModels = new ArrayList<>();
 
-	@Autowired
-	private ResSql resSql;
-	
-	@Autowired
-	private TktDocumentSql tktDocumentSql;
+    // Main processing method to handle the done file entry list
+    public HashMap<String, String> process(HashMap<String, String> doneFileEntryList, UUID run_id,
+                                           ArrayList<DoneFileEntry> dotFiles, String encFileName, 
+                                           Connection connection, ArrayList<TDB_Maintenance> report)
+            throws IOException, SQLException {
 
-	// Static list to hold parent models (Res and TktDocument files)
-	static ArrayList<DoneFileEntry> parentModels = new ArrayList<>();
+        // Load parent models (Res and TktDocument files) using a utility method
+        parentModels = utility.loadParentModels(dotFiles);
 
-	// Main processing method to process the done file entry list
-	public HashMap<String, String> process(HashMap<String, String> doneFileEntryList, UUID run_id,
-			ArrayList<DoneFileEntry> dotFiles, String encFileName, Connection connection, ArrayList<TDB_Maintenance> report)
-			throws IOException, SQLException {
+        // TODO: Clear temporary tables before processing the data
+        resSql.deleteTemp(connection);  // Delete temporary data related to Res
+        tktDocumentSql.deleteTemp(connection);  // Delete temporary data related to TktDocument
+        
+        // Iterate over the done file entries to process each one
+        Iterator<String> iterator = doneFileEntryList.keySet().iterator();
+        while (iterator.hasNext()) {
+            // Get the current entry key
+            String key = iterator.next();
+            // Extract the base filename (before the underscore)
+            String baseFilename = key.split("_")[0];
 
-		parentModels = utility.loadParentModels(dotFiles);
+            // If the base filename is of Res, process it using oneIteration
+            if (utility.isRes(baseFilename)) {
+                oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
+                        dotFiles, encFileName, connection, report);
 
-		// TODO Clear temporary tables
-		resSql.deleteTemp(connection);
-		// Stampa tutte le chiavi della mappa
-		tktDocumentSql.deleteTemp(connection);
-		
-		Iterator<String> iterator = doneFileEntryList.keySet().iterator();
-		while (iterator.hasNext()) {
-		    String key = iterator.next();
-		    String baseFilename = key.split("_")[0];
-		    if (baseFilename.equals("Res")) {
-		        oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
-		                dotFiles, encFileName, connection,report);
-		        
-		        // Rimuovere il file dalla doneFileEntryList dopo il processamento
-		        iterator.remove();  // Rimuove in modo sicuro l'elemento corrente
-		    }
-		    if (baseFilename.equals("TktDocument")) {
-		        oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
-		                dotFiles, encFileName, connection,report);
-		        
-		        // Rimuovere il file dalla doneFileEntryList dopo il processamento
-		        iterator.remove();  // Rimuove in modo sicuro l'elemento corrente
-		    }
-		}
-		return doneFileEntryList;
-	}
+                // After processing, remove the file from the doneFileEntryList
+                iterator.remove();  // Safely remove the current element from the list
+            }
+
+            // If the base filename is of TktDocument, process it similarly
+            if (utility.isTktDocument(baseFilename)) {
+                oneIteration.processDoneFiles(baseFilename, doneFileEntryList.get(key), run_id,
+                        dotFiles, encFileName, connection, report);
+
+                // After processing, remove the file from the doneFileEntryList
+                iterator.remove();  // Safely remove the current element from the list
+            }
+        }
+
+        // Return the updated doneFileEntryList after processing
+        return doneFileEntryList;
+    }
 }
