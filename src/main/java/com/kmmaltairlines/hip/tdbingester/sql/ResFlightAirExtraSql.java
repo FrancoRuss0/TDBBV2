@@ -63,7 +63,7 @@ public class ResFlightAirExtraSql implements MethodInterface {
 			stmt.setDate(8, flightAirExtra.getRecordUpdateDate());
 			stmt.setTime(9, flightAirExtra.getRecordUpdateTime());
 			stmt.setShort(10, flightAirExtra.getIntraPNRSetNbr());
-			stmt.setObject(11, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(11, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			// Add to batch
 			stmt.addBatch();
 		}

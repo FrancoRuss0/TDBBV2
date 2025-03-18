@@ -49,30 +49,30 @@ public class PreResSeatSql implements MethodInterface {
 			stmt.setString(2, prs.getPNRLocatorID());
 			stmt.setDate(3, prs.getPNRCreateDate());
 			stmt.setTimestamp(4, prs.getFromDateTime());
-			if(prs.getPNRPassengerSeqId()==null) {
-		    	stmt.setNull(5, Types.NULL);
-		    }else{
-		    	stmt.setShort(5, prs.getPNRPassengerSeqId());
-		    }
-			if(prs.getPRSSeqNbr()==null) {
-		    	stmt.setNull(6, Types.NULL);
-		    }else{
-		    	stmt.setShort(6, prs.getPRSSeqNbr());
-		    }
-			
+			if (prs.getPNRPassengerSeqId() == null) {
+				stmt.setNull(5, Types.NULL);
+			} else {
+				stmt.setShort(5, prs.getPNRPassengerSeqId());
+			}
+			if (prs.getPRSSeqNbr() == null) {
+				stmt.setNull(6, Types.NULL);
+			} else {
+				stmt.setShort(6, prs.getPRSSeqNbr());
+			}
+
 			stmt.setString(7, prs.getVendorCode());
 			stmt.setString(8, prs.getPRSFlightNumber());
-			if(prs.getPRSCompartmentNbr()==null) {
-		    	stmt.setNull(9, Types.NULL);
-		    }else{
-		    	stmt.setShort(9, prs.getPRSCompartmentNbr());
-		    }
-			
-			if(prs.getPRSRowNbr()==null) {
-		    	stmt.setNull(10, Types.NULL);
-		    }else{
-		    	stmt.setShort(10, prs.getPRSRowNbr());
-		    }
+			if (prs.getPRSCompartmentNbr() == null) {
+				stmt.setNull(9, Types.NULL);
+			} else {
+				stmt.setShort(9, prs.getPRSCompartmentNbr());
+			}
+
+			if (prs.getPRSRowNbr() == null) {
+				stmt.setNull(10, Types.NULL);
+			} else {
+				stmt.setShort(10, prs.getPRSRowNbr());
+			}
 			stmt.setString(11, prs.getPRSLetter());
 			stmt.setString(12, prs.getPRSCurrentStatusCode());
 			stmt.setString(13, prs.getSmokingSeatIndicator());
@@ -88,12 +88,12 @@ public class PreResSeatSql implements MethodInterface {
 			stmt.setString(23, prs.getHistoryActionCodeId());
 			stmt.setObject(24, prs.getRecordUpdateDate(), Types.DATE);
 			stmt.setObject(25, prs.getRecordUpdateTime(), Types.TIME);
-			if(prs.getIntraPNRSetNbr()==null) {
-		    	stmt.setNull(26, Types.NULL);
-		    }else{
-		    	stmt.setShort(26, prs.getIntraPNRSetNbr());
-		    }
-			
+			if (prs.getIntraPNRSetNbr() == null) {
+				stmt.setNull(26, Types.NULL);
+			} else {
+				stmt.setShort(26, prs.getIntraPNRSetNbr());
+			}
+
 			stmt.setObject(27, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}

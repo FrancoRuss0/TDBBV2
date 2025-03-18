@@ -75,7 +75,7 @@ public class ResSSRSql implements MethodInterface {
 			stmt.setDate(20, ssr.getRecordUpdateDate());
 			stmt.setTime(21, ssr.getRecordUpdateTime());
 			stmt.setShort(22, ssr.getIntraPNRSetNbr());
-			stmt.setObject(23, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(23, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add this record to the batch
 		}
 

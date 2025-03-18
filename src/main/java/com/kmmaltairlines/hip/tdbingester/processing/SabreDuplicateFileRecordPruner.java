@@ -64,6 +64,7 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.Main;
 public class SabreDuplicateFileRecordPruner {
 
 	private static final int DESCENDING = -1;
+
 	/*
 	 * Removes duplicate VCR records based on the equals() method defined in each
 	 * VCR file class. Amongst the duplicate records, the one with the latest
@@ -105,37 +106,35 @@ public class SabreDuplicateFileRecordPruner {
 	 * PNR file class. Amongst the duplicate records, the one with the latest
 	 * FromDateTime is kept.
 	 */
-public static Set<? extends PNRRecord> removeDuplicatePNRRecords(List<PNRRecord> pnrRecords) {
-    	
-        final Set<PNRRecord> uniqueRecords = new HashSet<>();
-        
-        pnrRecords.stream()
-            .sorted(new Comparator<PNRRecord>() {
-                @Override
-                public int compare(PNRRecord lhs, PNRRecord rhs) {
-                    // most up to date is top of the list
-                    // this is important because it is the first element that is
-                    // added to the 'uniques' set
-                    if (lhs.getPNRLocatorID().compareTo(rhs.getPNRLocatorID()) == 0) {
-                        if (lhs.getPNRCreateDate().compareTo(rhs.getPNRCreateDate()) == 0) {
-                            return DESCENDING * (lhs.getFromDateTime().compareTo(rhs.getFromDateTime()));
-                        }
-                        else return DESCENDING * (lhs.getPNRCreateDate().compareTo(rhs.getPNRCreateDate()));
-                    }
-                    else return DESCENDING * (lhs.getPNRLocatorID().compareTo(rhs.getPNRLocatorID()));
-                }
-            })
-            .forEachOrdered(record -> {
-                // Attempt to add the record to the set of unique records,
-                // as defined by its equals() and hashcode() implementation.
-                // If the record cannot be added, then the file does not adhere
-                // to Sabre's 'unique record' specifications
-                
-                uniqueRecords.add(record);
+	public static Set<? extends PNRRecord> removeDuplicatePNRRecords(List<PNRRecord> pnrRecords) {
 
-            });
-                  
-         return uniqueRecords;
-    }
+		final Set<PNRRecord> uniqueRecords = new HashSet<>();
+
+		pnrRecords.stream().sorted(new Comparator<PNRRecord>() {
+			@Override
+			public int compare(PNRRecord lhs, PNRRecord rhs) {
+				// most up to date is top of the list
+				// this is important because it is the first element that is
+				// added to the 'uniques' set
+				if (lhs.getPNRLocatorID().compareTo(rhs.getPNRLocatorID()) == 0) {
+					if (lhs.getPNRCreateDate().compareTo(rhs.getPNRCreateDate()) == 0) {
+						return DESCENDING * (lhs.getFromDateTime().compareTo(rhs.getFromDateTime()));
+					} else
+						return DESCENDING * (lhs.getPNRCreateDate().compareTo(rhs.getPNRCreateDate()));
+				} else
+					return DESCENDING * (lhs.getPNRLocatorID().compareTo(rhs.getPNRLocatorID()));
+			}
+		}).forEachOrdered(record -> {
+			// Attempt to add the record to the set of unique records,
+			// as defined by its equals() and hashcode() implementation.
+			// If the record cannot be added, then the file does not adhere
+			// to Sabre's 'unique record' specifications
+
+			uniqueRecords.add(record);
+
+		});
+
+		return uniqueRecords;
+	}
 
 }

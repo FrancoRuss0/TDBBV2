@@ -117,9 +117,9 @@ public class Decrypt {
 
 	public byte[] decryptFile(byte[] encryptedBytes, char[] passPhrase) throws IOException, PGPException {
 		InputStream in = new BufferedInputStream(new ByteArrayInputStream(encryptedBytes));
-        byte[] decrypt = decryptFile(in, passPhrase);
-        in.close();
-        return decrypt;
+		byte[] decrypt = decryptFile(in, passPhrase);
+		in.close();
+		return decrypt;
 
 	}
 

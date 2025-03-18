@@ -57,12 +57,12 @@ public class ResCarSql implements MethodInterface {
 			stmt.setString(2, car.getPNRLocatorID());
 			stmt.setDate(3, car.getPNRCreateDate());
 			stmt.setTimestamp(4, car.getFromDateTime());
-			if(car.getSegmentNbr()==null) {
-		    	stmt.setNull(5, Types.NULL);
-		    }else{
-		    	stmt.setShort(5, car.getSegmentNbr());
-		    }
-			
+			if (car.getSegmentNbr() == null) {
+				stmt.setNull(5, Types.NULL);
+			} else {
+				stmt.setShort(5, car.getSegmentNbr());
+			}
+
 			stmt.setString(6, car.getCarClassificationCode());
 			stmt.setString(7, car.getCarCorporateDiscountNbr());
 			stmt.setString(8, car.getCarDropoffChargeAmount());
@@ -77,18 +77,18 @@ public class ResCarSql implements MethodInterface {
 			stmt.setDate(17, car.getServiceStartDate());
 			stmt.setTime(18, car.getServiceStartTime());
 			stmt.setString(19, car.getCurrentSegmentStatusCode());
-			if(car.getUnitsBookedCount()==null) {
-		    	stmt.setNull(20, Types.NULL);
-		    }else{
-		    	stmt.setShort(20, car.getUnitsBookedCount());
-		    }
-			
-			if(car.getDaysRentedCount()==null) {
-		    	stmt.setNull(21, Types.NULL);
-		    }else{
-		    	stmt.setShort(21, car.getDaysRentedCount());
-		    }
-			
+			if (car.getUnitsBookedCount() == null) {
+				stmt.setNull(20, Types.NULL);
+			} else {
+				stmt.setShort(20, car.getUnitsBookedCount());
+			}
+
+			if (car.getDaysRentedCount() == null) {
+				stmt.setNull(21, Types.NULL);
+			} else {
+				stmt.setShort(21, car.getDaysRentedCount());
+			}
+
 			stmt.setString(22, car.getVendorCarCode());
 			stmt.setString(23, car.getRentalRate());
 			stmt.setString(24, car.getCurrencyCode());
@@ -98,12 +98,12 @@ public class ResCarSql implements MethodInterface {
 			stmt.setString(28, car.getHistoryActionCodeId());
 			stmt.setDate(29, car.getRecordUpdateDate());
 			stmt.setTime(30, car.getRecordUpdateTime());
-			if(car.getIntraPNRSetNbr()==null) {
-		    	stmt.setNull(31, Types.NULL);
-		    }else{
-		    	stmt.setShort(31, car.getIntraPNRSetNbr());
-		    }
-			
+			if (car.getIntraPNRSetNbr() == null) {
+				stmt.setNull(31, Types.NULL);
+			} else {
+				stmt.setShort(31, car.getIntraPNRSetNbr());
+			}
+
 			stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}

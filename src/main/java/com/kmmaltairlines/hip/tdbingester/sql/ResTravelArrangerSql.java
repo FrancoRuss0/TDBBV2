@@ -73,7 +73,7 @@ public class ResTravelArrangerSql implements MethodInterface {
 			stmt.setString(18, arranger.getOACCityCode());
 			stmt.setString(19, arranger.getOACAcctCode());
 			stmt.setString(20, arranger.getOACStationNbr());
-			stmt.setObject(21, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(21, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add this record to the batch
 		}
 

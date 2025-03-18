@@ -85,7 +85,7 @@ public class ResPaxDocSql implements MethodInterface {
 			stmt.setShort(29, paxDoc.getIntraPNRSetNbr());
 			stmt.setDate(30, paxDoc.getDocIssueDate());
 			stmt.setDate(31, paxDoc.getDocExpDate());
-			stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(32, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add to batch
 		}
 

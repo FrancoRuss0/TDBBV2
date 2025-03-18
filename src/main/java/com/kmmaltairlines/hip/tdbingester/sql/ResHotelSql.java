@@ -56,33 +56,33 @@ public class ResHotelSql implements MethodInterface {
 			stmt.setString(2, hotel.getPNRLocatorID());
 			stmt.setDate(3, hotel.getPNRCreateDate());
 			stmt.setTimestamp(4, hotel.getFromDateTime());
-			 if(hotel.getSegmentNbr()==null) {
-			    	stmt.setNull(5, Types.NULL);
-			    }else{
-			    	stmt.setShort(5, hotel.getSegmentNbr());
-			    }
-			
+			if (hotel.getSegmentNbr() == null) {
+				stmt.setNull(5, Types.NULL);
+			} else {
+				stmt.setShort(5, hotel.getSegmentNbr());
+			}
+
 			stmt.setString(6, hotel.getServiceCityCode());
 			stmt.setDate(7, hotel.getServiceStartDate());
-			if(hotel.getNbrofNightsCount()==null) {
-		    	stmt.setNull(8, Types.NULL);
-		    }else{
-		    	stmt.setShort(8, hotel.getNbrofNightsCount());
-		    }
-			
-			if(hotel.getUnitsBookedCount()==null) {
-		    	stmt.setNull(9, Types.NULL);
-		    }else{
-		    	stmt.setShort(9, hotel.getUnitsBookedCount());
-		    }
-			
+			if (hotel.getNbrofNightsCount() == null) {
+				stmt.setNull(8, Types.NULL);
+			} else {
+				stmt.setShort(8, hotel.getNbrofNightsCount());
+			}
+
+			if (hotel.getUnitsBookedCount() == null) {
+				stmt.setNull(9, Types.NULL);
+			} else {
+				stmt.setShort(9, hotel.getUnitsBookedCount());
+			}
+
 			stmt.setString(10, hotel.getCurrentSegmentStatusCode());
-			if(hotel.getSegmentTypeCode()==null) {
-		    	stmt.setNull(11, Types.NULL);
-		    }else{
-		    	stmt.setShort(11, hotel.getSegmentTypeCode());
-		    }
-			
+			if (hotel.getSegmentTypeCode() == null) {
+				stmt.setNull(11, Types.NULL);
+			} else {
+				stmt.setShort(11, hotel.getSegmentTypeCode());
+			}
+
 			stmt.setString(12, hotel.getPropertyCode());
 			stmt.setString(13, hotel.getPropertyName());
 			stmt.setString(14, hotel.getVendorHotelCode());
@@ -95,27 +95,27 @@ public class ResHotelSql implements MethodInterface {
 			stmt.setString(21, hotel.getHotelReserveUnderName());
 			stmt.setString(22, hotel.getHotelCorporateDiscountNbr());
 			stmt.setString(23, hotel.getHotelExtraPersonRateAmount());
-			if(hotel.getHotelExtraPersonCount()==null) {
-		    	stmt.setNull(24, Types.NULL);
-		    }else{
-		    	stmt.setShort(24, hotel.getHotelExtraPersonCount());
-		    }
-			
-			if(hotel.getNumberOfAdults()==null) {
-		    	stmt.setNull(25, Types.NULL);
-		    }else{
-		    	stmt.setShort(25, hotel.getNumberOfAdults());
-		    }
-			
+			if (hotel.getHotelExtraPersonCount() == null) {
+				stmt.setNull(24, Types.NULL);
+			} else {
+				stmt.setShort(24, hotel.getHotelExtraPersonCount());
+			}
+
+			if (hotel.getNumberOfAdults() == null) {
+				stmt.setNull(25, Types.NULL);
+			} else {
+				stmt.setShort(25, hotel.getNumberOfAdults());
+			}
+
 			stmt.setString(26, hotel.getHistoryActionCodeId());
 			stmt.setDate(27, hotel.getRecordUpdateDate());
 			stmt.setTime(28, hotel.getRecordUpdateTime());
-			if(hotel.getIntraPNRSetNbr()==null) {
-		    	stmt.setNull(29, Types.NULL);
-		    }else{
-		    	stmt.setShort(29, hotel.getIntraPNRSetNbr());
-		    }
-			
+			if (hotel.getIntraPNRSetNbr() == null) {
+				stmt.setNull(29, Types.NULL);
+			} else {
+				stmt.setShort(29, hotel.getIntraPNRSetNbr());
+			}
+
 			stmt.setObject(30, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			// Add to batch
 			stmt.addBatch();
@@ -127,7 +127,7 @@ public class ResHotelSql implements MethodInterface {
 		logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
 		stmt.close();
 	}
-	
+
 	@Override
 	@Transactional
 	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
@@ -137,25 +137,25 @@ public class ResHotelSql implements MethodInterface {
 		}
 		PreparedStatement stmt = null;
 
-			// Read the SQL insert query from the file
-			String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deleteResHotel.sql");
+		// Read the SQL insert query from the file
+		String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deleteResHotel.sql");
 
-			// Create a PreparedStatement to execute the SQL query
-			stmt = connection.prepareStatement(sql);
+		// Create a PreparedStatement to execute the SQL query
+		stmt = connection.prepareStatement(sql);
 
-			// Add the flight data to the batch for bulk insertion
-			for (ResHotel res : resHotels) {
-				 	stmt.setString(1, res.getPNRLocatorID());
-				 	stmt.setDate(2, res.getPNRCreateDate());
-	                // Add the statement to the batch
-	                stmt.addBatch();
-			}
+		// Add the flight data to the batch for bulk insertion
+		for (ResHotel res : resHotels) {
+			stmt.setString(1, res.getPNRLocatorID());
+			stmt.setDate(2, res.getPNRCreateDate());
+			// Add the statement to the batch
+			stmt.addBatch();
+		}
 
-			// Execute the batch insert
-			int[] results = stmt.executeBatch();
-			String back=stmt.executeBatch().toString();
-			logger.info("Delete completed successfully. " + results.length + " records deleted.");
-	        stmt.close();
+		// Execute the batch insert
+		int[] results = stmt.executeBatch();
+		String back = stmt.executeBatch().toString();
+		logger.info("Delete completed successfully. " + results.length + " records deleted.");
+		stmt.close();
 		return back;
 	}
 }

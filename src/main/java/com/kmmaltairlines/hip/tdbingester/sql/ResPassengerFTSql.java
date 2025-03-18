@@ -57,16 +57,16 @@ public class ResPassengerFTSql implements MethodInterface {
 			stmt.setString(2, passengerFT.getPNRLocatorID());
 			stmt.setDate(3, passengerFT.getPNRCreateDate());
 			stmt.setTimestamp(4, passengerFT.getFromDateTime());
-			if(passengerFT.getPNRPassengerFTSeqId()==null) {
-		    	stmt.setNull(5, Types.NULL);
-		    }else{
-		    	stmt.setShort(5, passengerFT.getPNRPassengerFTSeqId());
-		    }
-			if(passengerFT.getPNRPassengerSeqId()==null) {
-		    	stmt.setNull(6, Types.NULL);
-		    }else{
-		    	stmt.setShort(6, passengerFT.getPNRPassengerSeqId());
-		    }
+			if (passengerFT.getPNRPassengerFTSeqId() == null) {
+				stmt.setNull(5, Types.NULL);
+			} else {
+				stmt.setShort(5, passengerFT.getPNRPassengerFTSeqId());
+			}
+			if (passengerFT.getPNRPassengerSeqId() == null) {
+				stmt.setNull(6, Types.NULL);
+			} else {
+				stmt.setShort(6, passengerFT.getPNRPassengerSeqId());
+			}
 			stmt.setString(7, passengerFT.getSourceTypeCode());
 			stmt.setString(8, passengerFT.getClassOfService());
 			stmt.setString(9, passengerFT.getFrequentTravelerNbr());
@@ -78,21 +78,21 @@ public class ResPassengerFTSql implements MethodInterface {
 			stmt.setString(15, passengerFT.getServiceEndCityCode());
 			stmt.setString(16, passengerFT.getSSRCode());
 			stmt.setString(17, passengerFT.getSSRIdTypeCode());
-			if(passengerFT.getSSRNbrInParty()==null) {
-		    	stmt.setNull(18, Types.NULL);
-		    }else{
-		    	stmt.setShort(18, passengerFT.getSSRNbrInParty());
-		    }
+			if (passengerFT.getSSRNbrInParty() == null) {
+				stmt.setNull(18, Types.NULL);
+			} else {
+				stmt.setShort(18, passengerFT.getSSRNbrInParty());
+			}
 			stmt.setString(19, passengerFT.getVendorCode());
 			stmt.setString(20, passengerFT.getHistoryActionCodeId());
 			stmt.setDate(21, passengerFT.getRecordUpdateDate());
 			stmt.setTime(22, passengerFT.getRecordUpdateTime());
-			if(passengerFT.getIntraPNRSetNbr()==null) {
-		    	stmt.setNull(23, Types.NULL);
-		    }else{
-		    	stmt.setShort(23, passengerFT.getIntraPNRSetNbr());
-		    }
-			stmt.setObject(24, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			if (passengerFT.getIntraPNRSetNbr() == null) {
+				stmt.setNull(23, Types.NULL);
+			} else {
+				stmt.setShort(23, passengerFT.getIntraPNRSetNbr());
+			}
+			stmt.setObject(24, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add this record to the batch
 		}
 

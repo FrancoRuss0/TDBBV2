@@ -24,7 +24,7 @@ public class ResAddressSql implements MethodInterface {
 
 	@Autowired
 	private Utility utility;
-	
+
 	private static final Logger logger = LogManager.getLogger(ResAddressSql.class);
 
 	@Override

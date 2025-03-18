@@ -144,7 +144,7 @@ public class TktDocumentSql implements MethodInterface {
 			stmt.setBigDecimal(88, document.getOBFeeTotalUSD());
 			stmt.setString(89, document.getPricedPassengerType());
 			stmt.setObject(90, utility.nowUtcTimestamp(), Types.TIMESTAMP);
-			
+
 			stmt.addBatch(); // Add this record to the batch
 		}
 
@@ -185,7 +185,7 @@ public class TktDocumentSql implements MethodInterface {
 		stmt.close();
 		return back;
 	}
-	
+
 	public void deleteTemp(Connection connection) throws IOException, SQLException {
 		PreparedStatement stmt = null;
 
@@ -194,11 +194,11 @@ public class TktDocumentSql implements MethodInterface {
 
 		// Create a PreparedStatement to execute the SQL query
 		stmt = connection.prepareStatement(sql);
-		
+
 		stmt.executeUpdate();
-		
+
 		logger.info("Successfully clear TktDocument_Temp");
-        stmt.close();
-        connection.commit();
+		stmt.close();
+		connection.commit();
 	}
 }

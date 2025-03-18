@@ -66,7 +66,7 @@ public class ResODFlightSql implements MethodInterface {
 			stmt.setString(11, odFlight.getAirlineDestCntry());
 			stmt.setString(12, odFlight.getTravelerOrigCntry());
 			stmt.setString(13, odFlight.getTravelerDestCntry());
-			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch(); // Add this record to the batch
 		}
 
@@ -76,36 +76,36 @@ public class ResODFlightSql implements MethodInterface {
 		logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
 		stmt.close();
 	}
-	
+
 	@Override
 	@Transactional
 	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
 		// Establish database connection
-				ArrayList<ResODFlight> resODFlights = new ArrayList<ResODFlight>();
-				for (Object flight : flights) {
-					resODFlights.add((ResODFlight) flight);
-				}
+		ArrayList<ResODFlight> resODFlights = new ArrayList<ResODFlight>();
+		for (Object flight : flights) {
+			resODFlights.add((ResODFlight) flight);
+		}
 		PreparedStatement stmt = null;
 
-			// Read the SQL insert query from the file
-			String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deleteResODFlight.sql");
+		// Read the SQL insert query from the file
+		String sql = utility.loadSqlFromFile("src/main/resources/query/delete/deleteResODFlight.sql");
 
-			// Create a PreparedStatement to execute the SQL query
-			stmt = connection.prepareStatement(sql);
+		// Create a PreparedStatement to execute the SQL query
+		stmt = connection.prepareStatement(sql);
 
-			// Add the flight data to the batch for bulk insertion
-			for (ResODFlight res : resODFlights) {
-				 	stmt.setString(1, res.getPNRLocatorID());
-				 	stmt.setDate(2, res.getPNRCreateDate());
-	                // Add the statement to the batch
-	                stmt.addBatch();
-			}
+		// Add the flight data to the batch for bulk insertion
+		for (ResODFlight res : resODFlights) {
+			stmt.setString(1, res.getPNRLocatorID());
+			stmt.setDate(2, res.getPNRCreateDate());
+			// Add the statement to the batch
+			stmt.addBatch();
+		}
 
-			// Execute the batch insert
-			int[] results = stmt.executeBatch();
-			String back=stmt.executeBatch().toString();
-			logger.info("Delete completed successfully. " + results.length + " records deleted.");
-	        stmt.close();
+		// Execute the batch insert
+		int[] results = stmt.executeBatch();
+		String back = stmt.executeBatch().toString();
+		logger.info("Delete completed successfully. " + results.length + " records deleted.");
+		stmt.close();
 		return back;
 	}
 }

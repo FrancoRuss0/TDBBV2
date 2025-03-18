@@ -12,24 +12,22 @@ import com.kmmaltairlines.mail.EmailRequest;
 
 @Configuration
 public class EmailConfig {
- 
- @Value("${mail.to}")
- private String emailIncoming;
- 
- @Bean
- public EmailRequest emailRequest() {
-  EmailRequest emailRequest = new EmailRequest();
-  emailRequest.setSubject("Subject");
-  emailRequest.setMessage("test");
-  
-  Set<String> recipientSet = Arrays.stream(emailIncoming.split(","))
-    .map(String::trim)
-    .collect(Collectors.toSet());
-  
-  emailRequest.setRecipients(recipientSet);
-  
-  return emailRequest;
- }
- 
+
+	@Value("${mail.to}")
+	private String emailIncoming;
+
+	@Bean
+	public EmailRequest emailRequest() {
+		EmailRequest emailRequest = new EmailRequest();
+		emailRequest.setSubject("Subject");
+		emailRequest.setMessage("test");
+
+		Set<String> recipientSet = Arrays.stream(emailIncoming.split(",")).map(String::trim)
+				.collect(Collectors.toSet());
+
+		emailRequest.setRecipients(recipientSet);
+
+		return emailRequest;
+	}
+
 }
- 

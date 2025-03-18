@@ -19,13 +19,13 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.OneIteration;
 import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 
 @Component
-public class ACSPaxDOCXSql implements MethodInterface{
+public class ACSPaxDOCXSql implements MethodInterface {
 
 	@Autowired
 	private Utility utility;
-	
+
 	private static final Logger logger = LogManager.getLogger(ACSPaxDOCXSql.class);
-	
+
 	/**
 	 * Inserts ACSFlightHistory records into the database in bulk.
 	 * 
@@ -114,13 +114,13 @@ public class ACSPaxDOCXSql implements MethodInterface{
 		int[] results = stmt.executeBatch();
 
 		logger.info("Bulk insert completed successfully. " + results.length + " records inserted.");
-        stmt.close();
+		stmt.close();
 	}
 
 	@Override
 	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
 		return null;
 		// TODO Auto-generated method stub
-		
+
 	}
 }

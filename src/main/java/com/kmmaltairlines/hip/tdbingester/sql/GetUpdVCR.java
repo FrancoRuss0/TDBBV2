@@ -67,57 +67,57 @@ public class GetUpdVCR {
 
 	public Map<String, Map<Date, List<Map<String, Object>>>> select(Connection connection)
 			throws IOException, SQLException {
-    Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep = new HashMap<>();
-    Statement stmt = null;
-    ResultSet rs = null;
-    String sql = utility.loadSqlFromFile("src/main/resources/query/select/selectUpadteRecordVCR.sql");
+		Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep = new HashMap<>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = utility.loadSqlFromFile("src/main/resources/query/select/selectUpadteRecordVCR.sql");
 
-    // Creazione di un oggetto Statement
-    stmt = connection.createStatement();
+		// Creazione di un oggetto Statement
+		stmt = connection.createStatement();
 
-    // Esecuzione della query e ottenimento del risultato
-    rs = stmt.executeQuery(sql);
+		// Esecuzione della query e ottenimento del risultato
+		rs = stmt.executeQuery(sql);
 
-    // Elaborazione del risultato
-    while (rs.next()) {
-        String primaryDocNbr = rs.getString("PrimaryDocNbr");
-        Date vcrCreateDate = rs.getDate("VCRCreateDate");
-        String addlExchgTktData = rs.getString("AddlExchgTktData");
-        Timestamp fileTransactionDateTime = rs.getTimestamp("FileTransactionDateTime");
-        Timestamp dbTransactionDateTime = rs.getTimestamp("DBTransactionDateTime");
+		// Elaborazione del risultato
+		while (rs.next()) {
+			String primaryDocNbr = rs.getString("PrimaryDocNbr");
+			Date vcrCreateDate = rs.getDate("VCRCreateDate");
+			String addlExchgTktData = rs.getString("AddlExchgTktData");
+			Timestamp fileTransactionDateTime = rs.getTimestamp("FileTransactionDateTime");
+			Timestamp dbTransactionDateTime = rs.getTimestamp("DBTransactionDateTime");
 
-        // Verifica che primaryDocNbr non sia null prima di aggiungere
-        if (primaryDocNbr != null) {
-            // Converti i risultati in una mappa di valori
-            Map<String, Object> record = new HashMap<>();
-            record.put("PrimaryDocNbr", primaryDocNbr);
-            record.put("VCRCreateDate", vcrCreateDate);
-            record.put("AddlExchgTktData", addlExchgTktData);
-            record.put("FileTransactionDateTime", fileTransactionDateTime);
-            record.put("DBTransactionDateTime", dbTransactionDateTime);
+			// Verifica che primaryDocNbr non sia null prima di aggiungere
+			if (primaryDocNbr != null) {
+				// Converti i risultati in una mappa di valori
+				Map<String, Object> record = new HashMap<>();
+				record.put("PrimaryDocNbr", primaryDocNbr);
+				record.put("VCRCreateDate", vcrCreateDate);
+				record.put("AddlExchgTktData", addlExchgTktData);
+				record.put("FileTransactionDateTime", fileTransactionDateTime);
+				record.put("DBTransactionDateTime", dbTransactionDateTime);
 
-            // Ottieni la chiave esterna (PrimaryDocNbr come esempio)
-            String key = String.valueOf(primaryDocNbr);
+				// Ottieni la chiave esterna (PrimaryDocNbr come esempio)
+				String key = String.valueOf(primaryDocNbr);
 
-            // Ottieni la chiave interna (VCRCreateDate come esempio)
-            Date innerKey = vcrCreateDate;
+				// Ottieni la chiave interna (VCRCreateDate come esempio)
+				Date innerKey = vcrCreateDate;
 
-            if (!recordsToKeep.containsKey(key)) {
-                recordsToKeep.put(key, new HashMap<>());
-                
-            }
+				if (!recordsToKeep.containsKey(key)) {
+					recordsToKeep.put(key, new HashMap<>());
 
-            Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(key);
-            if (!innerMap.containsKey(innerKey)) {
-                innerMap.put(innerKey, new ArrayList<>());
-                
-            }
+				}
 
-            innerMap.get(innerKey).add(record);
-        }
-    }
+				Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(key);
+				if (!innerMap.containsKey(innerKey)) {
+					innerMap.put(innerKey, new ArrayList<>());
 
-    return recordsToKeep;
-}
+				}
+
+				innerMap.get(innerKey).add(record);
+			}
+		}
+
+		return recordsToKeep;
+	}
 
 }

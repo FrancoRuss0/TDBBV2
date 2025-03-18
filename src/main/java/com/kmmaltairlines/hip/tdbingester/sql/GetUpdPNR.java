@@ -29,18 +29,19 @@ import com.kmmaltairlines.hip.tdbingester.poc_tdb.Utility;
 public class GetUpdPNR {
 	@Autowired
 	private Utility utility;
-	
+
 	private static final Logger logger = LogManager.getLogger(GetUpdPNR.class);
-	
-	public int[] insert(List<Object> flights, Connection connection) throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+	public int[] insert(List<Object> flights, Connection connection)
+			throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// Converti il tipo da Object a Res
 		ArrayList<Res> trasformACSPaxBag = new ArrayList<Res>();
 		for (Object flight : flights) {
 			trasformACSPaxBag.add((Res) flight);
 		}
-		
+
 		PreparedStatement stmt = null;
-		
+
 		// Leggi la query SQL dal file
 		String sql = utility.loadSqlFromFile("src/main/resources/query/insert/Res_Temp.sql");
 
@@ -59,61 +60,61 @@ public class GetUpdPNR {
 		// Esegui il batch e ottieni il risultato come array di interi
 		int[] results = stmt.executeBatch();
 
-
 		// Chiudi il PreparedStatement
 		stmt.close();
-		
+
 		// Restituisci la lista di stringhe contenente i risultati
 		return results;
 	}
-	
-	public Map<String, Map<Date, List<Map<String, Object>>>> select(Connection connection) throws IOException, SQLException{
-		 Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep = new HashMap<>();
+
+	public Map<String, Map<Date, List<Map<String, Object>>>> select(Connection connection)
+			throws IOException, SQLException {
+		Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep = new HashMap<>();
 		Statement stmt = null;
 		ResultSet rs = null;
 		String sql = utility.loadSqlFromFile("src/main/resources/query/select/selectUpadteRecord.sql");
-	    // Creazione di un oggetto Statement
-        stmt = connection.createStatement();
-        
-        // Esecuzione della query e ottenimento del risultato
-        rs = stmt.executeQuery(sql);
+		// Creazione di un oggetto Statement
+		stmt = connection.createStatement();
 
-        // Elaborazione del risultato
-        while (rs.next()) {
-            String pnrLocatorID = rs.getString("PNRLocatorID");
-            Date pnrCreateDate = rs.getDate("PNRCreateDate");
-            Timestamp fileFromDateTime = rs.getTimestamp("FileFromDateTime");
-            Timestamp dbFromDateTime = rs.getTimestamp("DBFromDateTime");
+		// Esecuzione della query e ottenimento del risultato
+		rs = stmt.executeQuery(sql);
 
-            // Converti i risultati in una mappa di valori
-            Map<String, Object> record = new HashMap<>();
-            record.put("PNRLocatorID", pnrLocatorID);
-            record.put("PNRCreateDate", pnrCreateDate);
-            record.put("FileFromDateTime", fileFromDateTime);
-            record.put("DBFromDateTime", dbFromDateTime);
+		// Elaborazione del risultato
+		while (rs.next()) {
+			String pnrLocatorID = rs.getString("PNRLocatorID");
+			Date pnrCreateDate = rs.getDate("PNRCreateDate");
+			Timestamp fileFromDateTime = rs.getTimestamp("FileFromDateTime");
+			Timestamp dbFromDateTime = rs.getTimestamp("DBFromDateTime");
 
-            // Ottieni la chiave esterna (PNRLocatorID come esempio, puoi cambiarlo se necessario)
-            String key = String.valueOf(pnrLocatorID);
+			// Converti i risultati in una mappa di valori
+			Map<String, Object> record = new HashMap<>();
+			record.put("PNRLocatorID", pnrLocatorID);
+			record.put("PNRCreateDate", pnrCreateDate);
+			record.put("FileFromDateTime", fileFromDateTime);
+			record.put("DBFromDateTime", dbFromDateTime);
 
-            // Ottieni la chiave interna (PNRCreateDate come esempio)
-            Date innerKey = pnrCreateDate;
+			// Ottieni la chiave esterna (PNRLocatorID come esempio, puoi cambiarlo se
+			// necessario)
+			String key = String.valueOf(pnrLocatorID);
 
-            // Crea la mappa interna se non esiste
-            if (!recordsToKeep.containsKey(key)) {
-                recordsToKeep.put(key, new HashMap<>());
-            }
+			// Ottieni la chiave interna (PNRCreateDate come esempio)
+			Date innerKey = pnrCreateDate;
 
-            // Ottieni la lista di record per la data interna
-            Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(key);
-            if (!innerMap.containsKey(innerKey)) {
-                innerMap.put(innerKey, new ArrayList<>());
-            }
+			// Crea la mappa interna se non esiste
+			if (!recordsToKeep.containsKey(key)) {
+				recordsToKeep.put(key, new HashMap<>());
+			}
 
-            // Aggiungi il record alla lista
-            innerMap.get(innerKey).add(record);
-        }
-		
+			// Ottieni la lista di record per la data interna
+			Map<Date, List<Map<String, Object>>> innerMap = recordsToKeep.get(key);
+			if (!innerMap.containsKey(innerKey)) {
+				innerMap.put(innerKey, new ArrayList<>());
+			}
+
+			// Aggiungi il record alla lista
+			innerMap.get(innerKey).add(record);
+		}
+
 		return recordsToKeep;
 	}
 }
-

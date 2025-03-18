@@ -66,7 +66,7 @@ public class ResDataIndexSql implements MethodInterface {
 			stmt.setShort(11, dataIndex.getIntraPNRSetNbr());
 			stmt.setShort(12, dataIndex.getCDISeqNbr());
 			stmt.setString(13, dataIndex.getResActivityCode());
-			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(14, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}
 

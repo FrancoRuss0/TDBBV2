@@ -312,6 +312,5 @@ public class Res extends PNRRecord {
 				+ ", CreateHomeCityCode=" + CreateHomeCityCode + ", CodeSharePNRInd=" + CodeSharePNRInd
 				+ ", MCPCarrierInd=" + MCPCarrierInd + "]";
 	}
-	
-	
+
 }

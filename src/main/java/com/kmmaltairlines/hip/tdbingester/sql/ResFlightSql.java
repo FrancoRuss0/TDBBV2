@@ -147,7 +147,7 @@ public class ResFlightSql implements MethodInterface {
 			stmt.setString(52, flight.getIATAEquipCode());
 			stmt.setString(53, flight.getIATAEquipDesc());
 			stmt.setString(54, flight.getOperatingAirlnLocatorID());
-			stmt.setObject(55, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(55, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			// Add to batch
 			stmt.addBatch();
 		}

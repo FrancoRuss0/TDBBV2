@@ -72,7 +72,7 @@ public class ResEmergencyCtcSql implements MethodInterface {
 			stmt.setDate(17, emergencyCtc.getRecordUpdateDate());
 			stmt.setTime(18, emergencyCtc.getRecordUpdateTime());
 			stmt.setShort(19, emergencyCtc.getIntraPNRSetNbr());
-			stmt.setObject(20, utility.nowUtcTimestamp(), Types.TIMESTAMP); 
+			stmt.setObject(20, utility.nowUtcTimestamp(), Types.TIMESTAMP);
 			stmt.addBatch();
 		}
 
@@ -87,10 +87,10 @@ public class ResEmergencyCtcSql implements MethodInterface {
 	@Transactional
 	public String delete(List<Object> flights, Connection connection) throws SQLException, IOException {
 		// Establish database connection
-				ArrayList<ResEmergencyCtc> resEmergencyCtc = new ArrayList<ResEmergencyCtc>();
-				for (Object flight : flights) {
-					resEmergencyCtc.add((ResEmergencyCtc) flight);
-				}
+		ArrayList<ResEmergencyCtc> resEmergencyCtc = new ArrayList<ResEmergencyCtc>();
+		for (Object flight : flights) {
+			resEmergencyCtc.add((ResEmergencyCtc) flight);
+		}
 		PreparedStatement stmt = null;
 
 		// Read the SQL insert query from the file

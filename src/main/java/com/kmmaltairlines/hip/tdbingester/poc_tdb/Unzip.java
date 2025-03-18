@@ -17,7 +17,8 @@ public class Unzip {
 	 * decompresses it, and returns a HashMap with the filenames and their contents.
 	 * 
 	 * @param decryptedData - The byte array of decrypted (or compressed) data
-	 * @return HashMap<String, String> - A map where keys are file names and values are the decompressed file contents as strings
+	 * @return HashMap<String, String> - A map where keys are file names and values
+	 *         are the decompressed file contents as strings
 	 * @throws IOException - If there is an error during the decompression process
 	 */
 	public HashMap<String, String> unzipToMemory(byte[] decryptedData) throws IOException {
@@ -61,7 +62,8 @@ public class Unzip {
 		zipInputStream.close();
 		byteArrayInputStream.close();
 
-		// Return the map containing file names and their respective decompressed contents
+		// Return the map containing file names and their respective decompressed
+		// contents
 		return filesMap;
 	}
 }

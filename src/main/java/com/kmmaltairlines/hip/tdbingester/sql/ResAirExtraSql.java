@@ -75,17 +75,17 @@ public class ResAirExtraSql implements MethodInterface {
 			stmt.setTimestamp(27, rae.getPurchaseByDateTime());
 			stmt.setString(28, rae.getBookingSourceCode());
 			stmt.setString(29, rae.getEMDNbr());
-			if(rae.getEMDCouponNbr()==null) {
-		    	stmt.setNull(30, Types.NULL);
-		    }else{
-		    	stmt.setShort(30, rae.getEMDCouponNbr());
-		    }
+			if (rae.getEMDCouponNbr() == null) {
+				stmt.setNull(30, Types.NULL);
+			} else {
+				stmt.setShort(30, rae.getEMDCouponNbr());
+			}
 			stmt.setString(31, rae.getETicketNbr());
-			if(rae.getETicketCouponNbr()==null) {
-		    	stmt.setNull(32, Types.NULL);
-		    }else{
-		    	stmt.setShort(32, rae.getETicketCouponNbr());
-		    }
+			if (rae.getETicketCouponNbr() == null) {
+				stmt.setNull(32, Types.NULL);
+			} else {
+				stmt.setShort(32, rae.getETicketCouponNbr());
+			}
 			stmt.setString(33, rae.getSSRDirectFulfillCode());
 			stmt.setString(34, rae.getNonEMDFormofPayment());
 			stmt.setString(35, rae.getFeeWaivedCode());
@@ -93,12 +93,12 @@ public class ResAirExtraSql implements MethodInterface {
 			stmt.setString(37, rae.getAEBaseCurrencyCode());
 			stmt.setBigDecimal(38, rae.getAEEquivalentPaidAmount());
 			stmt.setString(39, rae.getAEEquivalentAmtCurrencyCd());
-			if(rae.getItemCount()==null) {
-		    	stmt.setNull(40, Types.NULL);
-		    }else{
-		    	stmt.setShort(40, rae.getItemCount());
-		    }
-			
+			if (rae.getItemCount() == null) {
+				stmt.setNull(40, Types.NULL);
+			} else {
+				stmt.setShort(40, rae.getItemCount());
+			}
+
 			stmt.setBigDecimal(41, rae.getAETotalPriceAmount());
 			stmt.setString(42, rae.getPassengerTypeCode());
 			stmt.setString(43, rae.getTaxIncludedCode());
@@ -117,32 +117,32 @@ public class ResAirExtraSql implements MethodInterface {
 			stmt.setString(56, rae.getRFISubCode());
 			stmt.setDate(57, rae.getRecordUpdateDate());
 			stmt.setTime(58, rae.getRecordUpdateTime());
-			if(rae.getIntraPNRSetNbr()==null) {
-		    	stmt.setNull(59, Types.NULL);
-		    }else{
-		    	stmt.setShort(59, rae.getIntraPNRSetNbr());
-		    }
-			
-			if(rae.getPNRPassengerSeqId()==null) {
-		    	stmt.setNull(60, Types.NULL);
-		    }else{
-		    	stmt.setShort(60, rae.getPNRPassengerSeqId());
-		    }
+			if (rae.getIntraPNRSetNbr() == null) {
+				stmt.setNull(59, Types.NULL);
+			} else {
+				stmt.setShort(59, rae.getIntraPNRSetNbr());
+			}
+
+			if (rae.getPNRPassengerSeqId() == null) {
+				stmt.setNull(60, Types.NULL);
+			} else {
+				stmt.setShort(60, rae.getPNRPassengerSeqId());
+			}
 			stmt.setString(61, rae.getAEFLight());
 			stmt.setString(62, rae.getAECurrentSegmentStatusCode());
 			stmt.setString(63, rae.getAEPreviousSegmentStatus());
-			if(rae.getPNRPassengerSeqId()==null) {
-		    	stmt.setNull(60, Types.NULL);
-		    }else{
-		    	stmt.setShort(60, rae.getPNRPassengerSeqId());
-		    }
+			if (rae.getPNRPassengerSeqId() == null) {
+				stmt.setNull(60, Types.NULL);
+			} else {
+				stmt.setShort(60, rae.getPNRPassengerSeqId());
+			}
 			stmt.setShort(64, rae.getACSCount());
-			if(rae.getAssociatedSegmentCount()==null) {
-		    	stmt.setNull(65, Types.NULL);
-		    }else{
-		    	stmt.setShort(65, rae.getAssociatedSegmentCount());
-		    }
-			
+			if (rae.getAssociatedSegmentCount() == null) {
+				stmt.setNull(65, Types.NULL);
+			} else {
+				stmt.setShort(65, rae.getAssociatedSegmentCount());
+			}
+
 			stmt.setTimestamp(66, utility.nowUtcTimestamp());
 			stmt.addBatch();
 		}

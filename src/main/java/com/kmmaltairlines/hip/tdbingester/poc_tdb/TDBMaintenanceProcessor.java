@@ -11,12 +11,15 @@ public class TDBMaintenanceProcessor {
 	 * It sets various fields such as the run ID, file name, number of records,
 	 * success flag, and timestamps for when the process started and ended.
 	 * 
-	 * @param run_id - The ID for the current run or process
-	 * @param baseFilename - The name of the file being processed
-	 * @param doneFileEntryValue - The value of the file entry after the process is done
-	 * @param currentIterationStartTime - The timestamp when the current iteration started
-	 * @param numRecords - The number of records processed
-	 * @param isExceptionThrown - A flag indicating if an exception was thrown during processing
+	 * @param run_id                    - The ID for the current run or process
+	 * @param baseFilename              - The name of the file being processed
+	 * @param doneFileEntryValue        - The value of the file entry after the
+	 *                                  process is done
+	 * @param currentIterationStartTime - The timestamp when the current iteration
+	 *                                  started
+	 * @param numRecords                - The number of records processed
+	 * @param isExceptionThrown         - A flag indicating if an exception was
+	 *                                  thrown during processing
 	 * @return TDB_Maintenance - A populated TDB_Maintenance object
 	 */
 	@SuppressWarnings("static-access")

@@ -19,7 +19,6 @@ import com.kmmaltairlines.hip.tdbingester.filepojos.VCRRecord;
 public class RecordPrunerUtil {
 	private static final Logger log = LoggerFactory.getLogger(RecordPrunerUtil.class);
 
-
 	/**
 	 * This method is used to remove VCRs from the payload which are not present in
 	 * {@param recordToKeep}.
@@ -134,7 +133,7 @@ public class RecordPrunerUtil {
 	 *         set contains only records which are updated PNRs or entirely new
 	 *         ones. As such, these must be stored in the database.
 	 */
-	public  List<Object> prunePNRs(final List<Object> payload,
+	public List<Object> prunePNRs(final List<Object> payload,
 			final Map<String, Map<Date, List<Map<String, Object>>>> recordsToKeep) {
 // Don't bother pruning if the payload is empty, just return.
 		if (payload.isEmpty()) {

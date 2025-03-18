@@ -41,7 +41,8 @@ import com.google.common.io.CountingInputStream;
  */
 public class QuerySingleFileProcessor {
 
-	//private static final Log logger = LogFactory.getLog(QuerySingleFileProcessor.class);
+	// private static final Log logger =
+	// LogFactory.getLog(QuerySingleFileProcessor.class);
 
 	/**
 	 * Reads DoneFile POJO from doneFile flowVariable, gets the corresponding .enc
